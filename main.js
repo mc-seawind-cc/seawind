@@ -273,39 +273,26 @@ function initTypewriter() {
 
   const cursor = document.createElement('span');
   cursor.className = 'cursor';
+  cursor.textContent = '_';
   el.appendChild(cursor);
-
-  const thinkingDots = document.createElement('span');
-  thinkingDots.className = 'thinking-dots';
-  el.insertBefore(thinkingDots, cursor);
 
   const mainText = document.createTextNode('');
   el.insertBefore(mainText, thinkingDots);
 
   const speed = 120;
-  const dotSpeed = 300;
+  const cursorChar = '_';
 
-  // Phase 1: show thinking "..."
-  let dots = '';
-  function addDot() {
-    if (dots.length < 3) {
-      dots += '...'[dots.length];
-      thinkingDots.textContent = dots;
-      playTick();
-      setTimeout(addDot, dotSpeed);
-    } else {
-      // Phase 2: type "在風與海之間，" with dots still showing
-      setTimeout(() => typeMain('在風與海之間，', 0, () => {
-        // Phase 3: pause, then dots disappear, type rest
-        setTimeout(() => {
-          thinkingDots.textContent = '';
-          typeMain('有一個可以長久生存的地方', 0, () => {
-            // Phase 4: done — cursor keeps blinking
-          });
-        }, 800);
-      }), 600);
-    }
-  }
+  // Phase 1: show blinking cursor prompt
+  const promptText = document.createTextNode(cursorChar);
+  el.insertBefore(promptText, cursor);
+
+  // Phase 2: after delay, clear prompt and type
+  setTimeout(() => {
+    promptText.textContent = '';
+    typeMain('在風與海之間，有一個可以長久生存的地方', 0, () => {
+      // Phase 3: done — cursor keeps blinking
+    });
+  }, 1800);
 
   function typeMain(text, idx, cb) {
     if (idx < text.length) {
@@ -316,8 +303,6 @@ function initTypewriter() {
       cb();
     }
   }
-
-  setTimeout(addDot, 600);
 }
 
 // --- Copy Server IP ---

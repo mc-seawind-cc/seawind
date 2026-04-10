@@ -729,10 +729,11 @@ button:focus-visible {
 
 .hero-subtitle .cursor {
   display: inline-block;
-  width: 2px;
+  width: auto;
   height: 1.1em;
-  background: var(--sky);
-  margin-left: 2px;
+  color: var(--sky);
+  font-weight: 400;
+  margin-left: 1px;
   vertical-align: text-bottom;
   animation: blink 0.8s step-end infinite;
 }
@@ -3650,7 +3651,7 @@ video.photo-item {
 }
 
 .guide-sidebar {
-  width: 220px;
+  width: 240px;
   flex-shrink: 0;
   position: sticky;
   top: 100px;
@@ -3677,23 +3678,58 @@ video.photo-item {
 .guide-sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 8px;
+}
+
+.guide-sb-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.guide-sb-heading {
+  display: block;
+  padding: 8px 10px 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--fog);
+  text-transform: none;
+  letter-spacing: 0.02em;
 }
 
 .guide-sb-link {
   display: block;
-  padding: 6px 10px;
-  font-size: 0.82rem;
+  padding: 5px 10px 5px 18px;
+  font-size: 0.8rem;
   color: var(--fog);
   text-decoration: none;
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
+  position: relative;
+}
+
+.guide-sb-link::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(157, 175, 255, 0.3);
+  transition: background 0.2s ease;
 }
 
 .guide-sb-link:hover,
 .guide-sb-link.active {
-  background: rgba(157, 175, 255, 0.1);
+  background: rgba(157, 175, 255, 0.08);
   color: var(--sky);
+}
+
+.guide-sb-link:hover::before,
+.guide-sb-link.active::before {
+  background: var(--sky);
 }
 
 .guide-main {
@@ -3739,12 +3775,28 @@ video.photo-item {
   .guide-sidebar-nav {
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .guide-sb-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 4px;
+  }
+
+  .guide-sb-heading {
+    padding: 4px 8px;
+    font-size: 0.75rem;
   }
 
   .guide-sb-link {
     padding: 5px 10px;
     font-size: 0.78rem;
+  }
+
+  .guide-sb-link::before {
+    display: none;
   }
 }
 
@@ -4093,11 +4145,6 @@ video.photo-item {
 [data-theme="light"] .partner-inline-detail {
   background: rgba(255, 105, 180, 0.03);
   border-color: rgba(255, 105, 180, 0.12);
-}
-
-/* Thinking dots for typewriter */
-.thinking-dots {
-  opacity: 0.5;
 }
 
 /* ═══════════════════════════════════════════
@@ -4689,7 +4736,7 @@ video.photo-item {
 }
 
 [data-theme="light"] .cursor {
-  background: var(--sky);
+  color: var(--sky);
 }
 
 [data-theme="light"] .particle {
