@@ -824,6 +824,12 @@ body {
   background: linear-gradient(180deg, #0d1117 0%, #0c1018 20%, #090e16 50%, #070b12 100%);
 }
 
+/* 風景照全寬 */
+.photo-page .content-section {
+  max-width: 100%;
+  padding: var(--space-xl) var(--space-lg);
+}
+
 .content-section::before {
   content: '';
   position: absolute;
@@ -2779,13 +2785,15 @@ body {
 
 .photo-grid {
   columns: 2;
-  column-gap: var(--space-md);
+  column-gap: var(--space-sm);
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .photo-item {
   width: 100%;
-  margin-bottom: var(--space-md);
-  border-radius: var(--radius-md);
+  margin-bottom: var(--space-sm);
+  border-radius: var(--radius-sm);
   border: 1px solid rgba(255, 255, 255, 0.06);
   object-fit: cover;
   display: block;
@@ -2801,7 +2809,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  .photo-grid { columns: 2; }
+  .photo-grid { columns: 2; max-width: 100%; }
+  .photo-page .content-section { padding: var(--space-lg) var(--space-sm); }
 }
 @media (max-width: 480px) {
   .photo-grid { columns: 1; }
