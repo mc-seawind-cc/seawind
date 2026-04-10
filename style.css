@@ -3719,6 +3719,8 @@ body {
   text-align: center;
   transition: all 0.35s var(--ease);
   overflow: hidden;
+  contain: layout style;
+  will-change: transform;
 }
 
 .feature-card::before {
@@ -4865,4 +4867,98 @@ body {
 [data-theme="light"] .community-card:hover {
   background: rgba(0, 0, 0, 0.04);
   border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* ═══ Back to Top Button ═══ */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(157, 175, 255, 0.2);
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(10px);
+  color: var(--sky);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), background 0.2s;
+  will-change: opacity, transform;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: rgba(157, 175, 255, 0.15);
+  border-color: rgba(157, 175, 255, 0.4);
+}
+
+[data-theme="light"] .back-to-top {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: var(--navy);
+}
+
+[data-theme="light"] .back-to-top:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 1.2rem;
+    right: 1.2rem;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ═══ Performance: content-visibility for below-fold ═══ */
+.lore-preview-grid,
+.postcard-section,
+.photo-carousel,
+.feature-grid,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
+}
+
+.lore-preview-card,
+.postcard-item,
+.community-card {
+  contain: layout style;
+}
+
+/* ═══ Performance: reduce paint for animated particles ═══ */
+.bg-atmosphere {
+  contain: strict;
+  pointer-events: none;
+}
+
+.hero-particles {
+  contain: strict;
+  pointer-events: none;
+}
+
+/* ═══ Smooth scroll behavior ═══ */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
