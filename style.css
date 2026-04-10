@@ -5073,6 +5073,22 @@ body {
   font-size: 0.95rem;
 }
 
+.community-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.community-desc {
+  font-size: 0.78rem;
+  color: var(--fog);
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 [data-theme="light"] .community-card {
   background: #ffffff;
   border-color: rgba(0, 0, 0, 0.08);
