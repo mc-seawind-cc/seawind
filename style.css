@@ -1764,6 +1764,14 @@ body {
   margin-top: 4px;
 }
 
+.page-revise {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--fog);
+  opacity: 0.5;
+  padding: 16px 0 8px;
+}
+
 /* --- Responsive --- */
 @media (max-width: 1024px) {
   .card-grid,
