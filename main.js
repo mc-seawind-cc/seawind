@@ -312,7 +312,7 @@ function initPhotoGallery() {
   const lightboxNext = document.getElementById('lightboxNext');
   const lightboxCounter = document.getElementById('lightboxCounter');
 
-  const BATCH_SIZE = 12;
+  const INITIAL_SHOW = 12;
 
   fetch('photos.json')
     .then(r => {
@@ -327,63 +327,50 @@ function initPhotoGallery() {
       container.innerHTML = '';
       const grid = document.createElement('div');
       grid.className = 'photo-grid';
+
+      data.photos.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = 'photo-item';
+        img.alt = `海風風景照 ${i + 1}`;
+        img.loading = 'lazy';
+        if (i >= INITIAL_SHOW) img.style.display = 'none';
+        img.onerror = function() { this.style.display = 'none'; };
+        grid.appendChild(img);
+      });
       container.appendChild(grid);
 
-      let loaded = 0;
+      // 查看全部按鈕
+      if (data.photos.length > INITIAL_SHOW) {
+        const actions = document.createElement('div');
+        actions.className = 'photo-actions';
 
-      function loadBatch() {
-        const end = Math.min(loaded + BATCH_SIZE, data.photos.length);
-        for (let i = loaded; i < end; i++) {
-          const img = document.createElement('img');
-          img.src = data.photos[i];
-          img.className = 'photo-item';
-          img.alt = `海風風景照 ${i + 1}`;
-          img.loading = 'lazy';
-          img.onerror = function() { this.style.display = 'none'; };
-          grid.appendChild(img);
-        }
-        loaded = end;
-
-        // 還有更多照片時，顯示載入感應器
-        if (loaded < data.photos.length) {
-          updateSentinel();
-        } else if (sentinel) {
-          sentinel.remove();
-          sentinel = null;
-        }
-
-        // 更新計數
-        if (counterEl) {
-          counterEl.textContent = `${loaded} / ${data.photos.length}`;
-        }
-      }
-
-      // 計數器
-      const counterEl = document.createElement('div');
-      counterEl.className = 'photo-counter';
-      counterEl.textContent = `0 / ${data.photos.length}`;
-      container.appendChild(counterEl);
-
-      // 無限滾動感應器
-      var sentinel = null;
-      function updateSentinel() {
-        if (sentinel) sentinel.remove();
-        sentinel = document.createElement('div');
-        sentinel.className = 'photo-sentinel';
-        sentinel.innerHTML = '<div class="photo-loading">載入中⋯</div>';
-        container.appendChild(sentinel);
-
-        const observer = new IntersectionObserver((entries) => {
-          if (entries[0].isIntersecting) {
-            observer.disconnect();
-            setTimeout(loadBatch, 300);
+        const moreBtn = document.createElement('button');
+        moreBtn.className = 'btn btn-outline';
+        let loaded = INITIAL_SHOW;
+        moreBtn.textContent = `展開更多（${data.photos.length - loaded} 張）`;
+        moreBtn.addEventListener('click', () => {
+          const items = grid.querySelectorAll('.photo-item');
+          const end = Math.min(loaded + INITIAL_SHOW, items.length);
+          for (let i = loaded; i < end; i++) items[i].style.display = '';
+          loaded = end;
+          if (loaded >= data.photos.length) {
+            moreBtn.remove();
+          } else {
+            moreBtn.textContent = `展開更多（${data.photos.length - loaded} 張）`;
           }
-        }, { rootMargin: '200px' });
-        observer.observe(sentinel);
+        });
+        actions.appendChild(moreBtn);
+
+        const allBtn = document.createElement('a');
+        allBtn.href = 'photos.html';
+        allBtn.className = 'btn btn-primary';
+        allBtn.textContent = `查看全部 ${data.photos.length} 張 →`;
+        actions.appendChild(allBtn);
+
+        container.appendChild(actions);
       }
 
-      // 載入第一批
-      loadBatch();
       setupLightbox();
     })
     .catch(err => {

@@ -2672,6 +2672,14 @@ body {
   margin: var(--space-lg) auto 0;
 }
 
+.photo-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+
 .photo-sentinel {
   padding: var(--space-lg) 0;
 }
