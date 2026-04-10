@@ -817,7 +817,7 @@ body {
 
 /* --- Content Sections --- */
 .content-section {
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
   padding: var(--space-2xl) var(--space-xl);
   position: relative;
@@ -2405,6 +2405,12 @@ body {
   background: rgba(100, 220, 180, 0.15);
   color: #7ae8c0;
   border: 1px solid rgba(100, 220, 180, 0.25);
+}
+
+.tag-維護 {
+  background: rgba(255, 130, 130, 0.15);
+  color: #ff9a9a;
+  border: 1px solid rgba(255, 130, 130, 0.25);
 }
 
 [data-theme="light"] .bulletin-board {
@@ -4669,8 +4675,8 @@ body {
 }
 
 .team-members {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-sm);
 }
 

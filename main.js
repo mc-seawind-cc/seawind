@@ -253,8 +253,7 @@ function initBulletinBoard() {
               <span class="b-tag tag-${item.tag}">${item.tag}</span>
               <span class="b-arrow">▾</span>
             </button>
-            <div class="bulletin-body">
-              <div class="b-date">📅 ${item.date} · ${item.id}</div>
+            <div class="bulletin-body" style="text-align:center;">
               <div class="b-content">${item.content.replace(/\n/g, '<br>')}</div>
             </div>
           </div>`;
