@@ -238,7 +238,7 @@ function initTypewriter() {
   const tickSounds = ['assets/sounds/tick1.mp3', 'assets/sounds/tick2.mp3', 'assets/sounds/tick3.mp3'];
   const tickAudio = tickSounds.map(src => {
     const a = new Audio(src);
-    a.volume = 0.4;
+    a.volume = 0.8;
     a.preload = 'auto';
     return a;
   });
