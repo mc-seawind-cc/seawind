@@ -237,7 +237,7 @@ function initBulletinBoard() {
   fetch('announcements.json')
     .then(r => r.json())
     .then(data => {
-      const MAX_SHOW = 7;
+      const MAX_SHOW = 100;
       const items = data.announcements;
       // Separate pinned and regular
       const pinned = items.filter(i => i.pinned);
