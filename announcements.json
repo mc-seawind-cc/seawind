@@ -225,6 +225,20 @@
       "content": "• 任務系統：\n  - 新增[任務幣](https://discord.com/channels/1266311059552342078/1429344520008499271)。\n  - 將冒險任務介面移除，並新增兌換商店介面。\n• 重生點新增兩棟功能性建築：\n  - 資本運作廳：交易兌換聚集地。\n  - 建材行：交易建材相關。\n• 更新魚套裝備及風汐系列工具（僅風汐系列於重生點可兌換）。\n• MM(MMOitem)特殊物品格式換新。"
     },
     {
+      "date": "115.02.04",
+      "tag": "更新",
+      "id": "#0258",
+      "title": "領地更新",
+      "content": "• 新增四個權限。\n• 修正分流一領地的隨機傳送指令[/rtp]傳送距離：\n  - 主世界大小±40萬，距離 1,000~200,000。\n  - 地獄大小±10萬，距離 1,500~50,000。\n  - 終界大小±20萬，距離 1,000~10,000。\n  - 每次冷卻 15 秒。\n![附圖1](https://cdn.discordapp.com/attachments/1270267126011396152/1468303456761676012/image.png?ex=69d9e1e7&is=69d89067&hm=109fe8821f79d38a233cbc5ad9574c32ca789b082e6e5280f1a45911ea89164f&)\n![附圖2](https://cdn.discordapp.com/attachments/1270267126011396152/1468303457235767419/image.png?ex=69d9e1e7&is=69d89067&hm=034abe9a827a3d767aeaa8e211e95c805639456ab8b6e69e2bd9e1b57752653e&)\n![附圖3](https://cdn.discordapp.com/attachments/1270267126011396152/1468303457617186948/image.png?ex=69d9e1e8&is=69d89068&hm=c54cf8dd31f7b5ae9beee909a0b8d7cff3a0d427d924ab92dbfbcb61c9242dec&)\n![附圖4](https://cdn.discordapp.com/attachments/1270267126011396152/1468303457973964982/image.png?ex=69d9e1e8&is=69d89068&hm=ffa7aa3768564c16b998bfc12631a47e875dedff3373d6a8029503fa4a3de6f2&)\n![附圖5](https://cdn.discordapp.com/attachments/1270267126011396152/1468303458548453610/image.png?ex=69d9e1e8&is=69d89068&hm=cc356e0903d091d51b2af7d86d19ad07fa5455ff7da18d9b50dc5257ef31ea57&)"
+    },
+    {
+      "date": "115.02.04",
+      "tag": "更新",
+      "id": "#0257",
+      "title": "領地小修復",
+      "content": "• 修復在[動作欄](https://zh.minecraft.wiki/w/动作栏)顯示格式錯誤的問題。\n  - 原本把通知由聊天室轉到動作欄，但格式沒改。\n![附圖1](https://cdn.discordapp.com/attachments/1270267126011396152/1468292401855725882/image.png?ex=69d9d79c&is=69d8861c&hm=02fa00a5b963b23d291c80e8faee0220878ab3462c2949d603a26823052c95f6&)\n![附圖2](https://cdn.discordapp.com/attachments/1270267126011396152/1468292402572689509/image.png?ex=69d9d79c&is=69d8861c&hm=1e49179e05d8dc6af481c6eaa7526cdb56a17b9040a5305624df658f276f61e5&)"
+    },
+    {
       "date": "2026.01.01",
       "tag": "公告",
       "id": "#0001",
