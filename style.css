@@ -1887,6 +1887,37 @@ button:focus-visible {
   margin-bottom: var(--space-sm);
 }
 
+.guide-img-wrap {
+  margin: var(--space-lg) 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.guide-img-wrap img {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+.guide-img-caption {
+  display: block;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--fog);
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .guide-img-wrap {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .guide-img-caption {
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--fog);
+}
+
 .rules-intro ul {
   list-style: none;
   padding: 0;
