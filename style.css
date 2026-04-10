@@ -3559,18 +3559,50 @@ video.photo-item {
   margin-top: var(--space-lg);
 }
 
-.toc-group {
-  margin-bottom: var(--space-lg);
+.toc-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: var(--space-md);
+  transition: all var(--duration) var(--ease);
 }
 
-.toc-group h2 {
+.toc-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.toc-card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.toc-card-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(157, 175, 255, 0.08);
+  border-radius: 12px;
+}
+
+.toc-card h3 {
   font-size: 1rem;
   font-weight: 700;
   color: var(--white);
-  margin-bottom: var(--space-sm);
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
+  margin: 0;
+}
+
+.toc-card-desc {
+  font-size: 0.8rem;
+  color: var(--fog);
+  margin: 2px 0 0;
 }
 
 .toc-links {
@@ -3624,6 +3656,24 @@ video.photo-item {
   background: rgba(157, 175, 255, 0.08);
   border-color: rgba(157, 175, 255, 0.2);
   color: var(--white);
+}
+
+[data-theme="light"] .toc-card {
+  background: rgba(0, 0, 0, 0.015);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .toc-card:hover {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .toc-card h3 {
+  color: var(--white);
+}
+
+[data-theme="light"] .toc-card-desc {
+  color: #6b7280;
 }
 
 /* --- Partner Detail --- */
