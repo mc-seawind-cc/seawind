@@ -2708,6 +2708,10 @@ button:focus-visible {
   width: 60px;
   text-align: center;
 }
+.bulletin-header span:nth-child(3) {
+  width: 60px;
+  text-align: center;
+}
 .bulletin-header span:last-child {
   width: 40px;
   text-align: center;
@@ -2770,6 +2774,16 @@ button:focus-visible {
   flex-shrink: 0;
   width: 50px;
   text-align: center;
+}
+
+.bulletin-toggle .b-id {
+  font-size: 0.72rem;
+  color: var(--text-muted, var(--fog));
+  margin-left: 12px;
+  flex-shrink: 0;
+  width: 50px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 
 .bulletin-toggle .b-arrow {

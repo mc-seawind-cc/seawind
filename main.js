@@ -523,7 +523,7 @@ function initBulletinBoard() {
       const regular = items.filter(i => !i.pinned);
       const maxRegular = Math.max(0, MAX_TOTAL - pinned.length);
       // header row
-      let html = '<div class="bulletin-header"><span>主旨</span><span>類型</span><span></span></div>';
+      let html = '<div class="bulletin-header"><span>主旨</span><span>類型</span><span>編號</span><span></span></div>';
       // Pinned items first (always visible)
       pinned.forEach((item, i) => {
         html += `
@@ -531,6 +531,7 @@ function initBulletinBoard() {
             <button class="bulletin-toggle" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>e.classList.remove('open'));if(!wasOpen)this.parentElement.classList.add('open')">
               <span class="b-title">📌 ${item.title}</span>
               <span class="b-tag tag-${item.tag}">${item.tag}</span>
+              <span class="b-id">${item.id}</span>
               <span class="b-arrow">▾</span>
             </button>
             <div class="bulletin-body" style="text-align:center;">
@@ -545,6 +546,7 @@ function initBulletinBoard() {
             <button class="bulletin-toggle" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>e.classList.remove('open'));if(!wasOpen)this.parentElement.classList.add('open')">
               <span class="b-title">${item.title}</span>
               <span class="b-tag tag-${item.tag}">${item.tag}</span>
+              <span class="b-id">${item.id}</span>
               <span class="b-arrow">▾</span>
             </button>
             <div class="bulletin-body">
