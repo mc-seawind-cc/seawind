@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Theme Toggle ---
+  // --- Critical: Theme Toggle (first paint) ---
   const themeBtn = document.getElementById('themeToggle');
   const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
   const savedTheme = localStorage.getItem('seabreeze-theme') || (prefersLight ? 'light' : 'dark');
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Mobile Nav Toggle ---
+  // --- Critical: Mobile Nav Toggle ---
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
   if (toggle && links) {
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Dropdown Toggle (mobile) ---
+  // --- Critical: Dropdown Toggle (mobile) ---
   document.querySelectorAll('.nav-dropdown-toggle').forEach(btn => {
     btn.addEventListener('click', (e) => {
       if (window.innerWidth <= 768) {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- Scroll Reveal Animations ---
+  // --- Critical: Scroll Reveal ---
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -60,18 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.fade-in, .slide-up, .zoom-in, .slide-left, .slide-right, .reveal-up').forEach(el => revealObserver.observe(el));
 
-  // Safety: reveal all remaining hidden elements after 3s (in case observer doesn't fire)
+  // Safety: reveal all remaining hidden elements after 3s
   setTimeout(() => {
     document.querySelectorAll('.fade-in:not(.visible), .slide-up:not(.visible), .zoom-in:not(.visible), .slide-left:not(.visible), .slide-right:not(.visible), .reveal-up:not(.visible)').forEach(el => el.classList.add('visible'));
   }, 3000);
 
-  // --- Nav Scroll Shadow + Scroll Progress ---
+  // --- Critical: Nav Scroll Shadow + Scroll Progress ---
   const nav = document.querySelector('.nav');
   const scrollProgress = document.getElementById('scrollProgress');
   if (nav) {
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
-      // Update scroll progress bar
       if (scrollProgress) {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -81,61 +80,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // --- Floating Particles ---
-  createParticles();
-  createHeroParticles();
+  // --- Deferred: Non-critical features ---
+  const deferredInit = () => {
+    createParticles();
+    createHeroParticles();
 
-  // --- Active Nav Link ---
-  const currentPage = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    const href = a.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      a.classList.add('active');
-    }
-  });
-
-  // --- Hero Typewriter (slower, staged) ---
-  initTypewriter();
-
-  // --- Real Server Status ---
-  fetchServerStatus();
-
-  // --- Bulletin Board ---
-  initBulletinBoard();
-
-  // --- Rotating Tips ---
-  initTips();
-
-  // --- Hero Scroll Down ---
-  const scrollBtn = document.querySelector('.hero-scroll');
-  if (scrollBtn) {
-    scrollBtn.style.cursor = 'pointer';
-    scrollBtn.addEventListener('click', () => {
-      const target = document.getElementById('about') || document.querySelector('.content-section');
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    // Active Nav Link
+    const currentPage = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      const href = a.getAttribute('href');
+      if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+        a.classList.add('active');
+      }
     });
-  }
 
-  // --- Back to Top ---
-  initBackToTop();
+    initTypewriter();
+    fetchServerStatus();
+    initBulletinBoard();
+    initTips();
 
-  // --- Mobile Nav: close on outside click ---
-  document.addEventListener('click', (e) => {
-    const navEl = document.querySelector('.nav');
-    if (links && links.classList.contains('open') && !navEl.contains(e.target)) {
-      links.classList.remove('open');
-      toggle.classList.remove('active');
+    // Hero Scroll Down
+    const scrollBtn = document.querySelector('.hero-scroll');
+    if (scrollBtn) {
+      scrollBtn.style.cursor = 'pointer';
+      scrollBtn.addEventListener('click', () => {
+        const target = document.getElementById('about') || document.querySelector('.content-section');
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
     }
-  });
 
-  // --- Photo Gallery ---
-  initPhotoGallery();
+    initBackToTop();
 
-  // --- Postcard Lightbox ---
-  initPostcardLightbox();
+    // Mobile Nav: close on outside click
+    document.addEventListener('click', (e) => {
+      const navEl = document.querySelector('.nav');
+      if (links && links.classList.contains('open') && !navEl.contains(e.target)) {
+        links.classList.remove('open');
+        toggle.classList.remove('active');
+      }
+    });
 
-  // --- General Lightbox (lore pages etc.) ---
-  initGeneralLightbox();
+    initPhotoGallery();
+    initPostcardLightbox();
+    initGeneralLightbox();
+  };
+
+  // Use requestIdleCallback if available, otherwise setTimeout
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(deferredInit, { timeout: 2000 });
+  } else {
+    setTimeout(deferredInit, 100);
+  }
 });
 
 function initBackToTop() {
@@ -164,7 +159,8 @@ function initBackToTop() {
 function createParticles() {
   const container = document.querySelector('.bg-atmosphere');
   if (!container) return;
-  const count = Math.min(20, Math.floor(window.innerWidth / 80));
+  const isMobile = window.innerWidth < 768;
+  const count = isMobile ? 8 : Math.min(20, Math.floor(window.innerWidth / 80));
   for (let i = 0; i < count; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
@@ -182,7 +178,8 @@ function createParticles() {
 function createHeroParticles() {
   const container = document.getElementById('particles');
   if (!container) return;
-  const count = 50;
+  const isMobile = window.innerWidth < 768;
+  const count = isMobile ? 20 : 50;
   for (let i = 0; i < count; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
