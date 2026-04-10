@@ -820,6 +820,13 @@ button:focus-visible {
   50% { opacity: 0; }
 }
 
+/* Scroll-triggered typewriter cursor */
+.tw-cursor {
+  color: var(--sky);
+  font-weight: 400;
+  animation: blink 0.8s step-end infinite;
+}
+
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;

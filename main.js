@@ -82,18 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Deferred: Non-critical features ---
   const deferredInit = () => {
-    // Lazy-load music player on first interaction or after 3s
+    // Lazy-load music player on first interaction or after 5s
     let musicLoaded = false;
     function loadMusicPlayer() {
       if (musicLoaded) return;
       musicLoaded = true;
-      const css = document.createElement('link');
-      css.rel = 'stylesheet';
-      css.href = 'music-player.css';
-      document.head.appendChild(css);
       const js = document.createElement('script');
       js.src = 'music-player.js';
-      js.defer = true;
       document.body.appendChild(js);
     }
     document.addEventListener('click', loadMusicPlayer, { once: true });
@@ -116,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hero click-to-reveal
     initHeroReveal();
     initBulletinBoard();
+    initScrollTypewriters();
 
     // Hero Scroll Down
     const scrollBtn = document.querySelector('.hero-scroll');
@@ -151,6 +147,66 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(deferredInit, 100);
   }
 });
+
+// --- Scroll-triggered Typewriter for .typewriter elements ---
+function initScrollTypewriters() {
+  const els = document.querySelectorAll('.typewriter[data-text]');
+  if (!els.length) return;
+
+  // MC-style tick sound (reuse from hero typewriter if available)
+  const tickSounds = ['assets/sounds/tick1.mp3', 'assets/sounds/tick2.mp3', 'assets/sounds/tick3.mp3'];
+  const tickAudio = tickSounds.map(src => {
+    const a = new Audio(src);
+    a.volume = 0.5;
+    a.preload = 'auto';
+    return a;
+  });
+  let tickIdx = 0;
+  function playTick() {
+    try {
+      const a = tickAudio[tickIdx % tickAudio.length];
+      a.currentTime = 0;
+      a.play().catch(() => {});
+      tickIdx++;
+    } catch(e) {}
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        if (el.dataset.typed) return;
+        el.dataset.typed = '1';
+        const text = el.dataset.text;
+        el.textContent = '';
+        const cursor = document.createElement('span');
+        cursor.className = 'tw-cursor';
+        cursor.textContent = '_';
+        el.appendChild(cursor);
+
+        let i = 0;
+        function type() {
+          if (i < text.length) {
+            el.insertBefore(document.createTextNode(text[i]), cursor);
+            playTick();
+            i++;
+            setTimeout(type, 60 + Math.random() * 40);
+          } else {
+            // Fade out cursor after done
+            setTimeout(() => {
+              cursor.style.opacity = '0';
+              cursor.style.transition = 'opacity 0.5s';
+            }, 1500);
+          }
+        }
+        setTimeout(type, 300);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  els.forEach(el => observer.observe(el));
+}
 
 // --- Hero Click-to-Reveal ---
 function initHeroReveal() {
