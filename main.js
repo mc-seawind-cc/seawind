@@ -247,6 +247,9 @@ function initHeroReveal() {
       }
     }
   });
+
+  // Auto-reveal after 1.5s if user hasn't interacted
+  setTimeout(() => revealHero(), 1500);
 }
 
 function initBackToTop() {
