@@ -5729,7 +5729,7 @@ video.photo-item {
 /* Rain toggle button (left of music player) */
 .rain-toggle {
   position: fixed;
-  bottom: 88px;
+  bottom: 78px;
   right: 248px;
   z-index: 998;
   width: 40px;
