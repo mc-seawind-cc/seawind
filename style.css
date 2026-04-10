@@ -432,11 +432,6 @@ body {
 }
 
 /* Light theme nav adjustments */
-[data-theme="light"] .nav-links {
-  background: rgba(240, 242, 245, 0.95);
-  border-bottom-color: rgba(0, 0, 0, 0.05);
-}
-
 [data-theme="light"] .nav-links a {
   color: var(--fog);
 }
@@ -2454,9 +2449,9 @@ body {
 
 @keyframes wind-sway {
   0%, 100% { transform: rotate(0deg) translateX(0); }
-  25%      { transform: rotate(-1.5deg) translateX(-4px); }
-  50%      { transform: rotate(0.5deg) translateX(2px); }
-  75%      { transform: rotate(1deg) translateX(3px); }
+  25%      { transform: rotate(-1deg) translateX(-3px); }
+  50%      { transform: rotate(0.3deg) translateX(1px); }
+  75%      { transform: rotate(0.7deg) translateX(2px); }
 }
 
 /* --- Links Page --- */
@@ -3804,8 +3799,8 @@ body {
 }
 
 [data-theme="light"] .hero-tips {
-  background: rgba(255, 255, 255, 0.55);
-  border-color: rgba(0, 0, 0, 0.08);
+  background: none;
+  border-color: transparent;
 }
 
 [data-theme="light"] .home-intro {
