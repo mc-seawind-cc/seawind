@@ -98,6 +98,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Back to Top ---
+  initBackToTop();
+
+  // --- Mobile Nav: close on outside click ---
+  document.addEventListener('click', (e) => {
+    const navEl = document.querySelector('.nav');
+    if (links && links.classList.contains('open') && !navEl.contains(e.target)) {
+      links.classList.remove('open');
+    }
+  });
+
   // --- Photo Gallery ---
   initPhotoGallery();
 
@@ -107,6 +118,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- General Lightbox (lore pages etc.) ---
   initGeneralLightbox();
 });
+
+function initBackToTop() {
+  const btn = document.createElement('button');
+  btn.className = 'back-to-top';
+  btn.setAttribute('aria-label', '回到頂部');
+  btn.innerHTML = '↑';
+  document.body.appendChild(btn);
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 function createParticles() {
   const container = document.querySelector('.bg-atmosphere');
