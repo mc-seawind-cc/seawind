@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Standalone rain toggle button (left of music player)
     const rainBtn = document.createElement('button');
     rainBtn.id = 'rainToggle';
-    rainBtn.className = 'rain-toggle';
+    rainBtn.className = 'rain-toggle active';
     rainBtn.title = '雨聲';
     rainBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>';
     document.body.appendChild(rainBtn);
@@ -357,16 +357,18 @@ function createHeroParticles() {
     // Expose for rain toggle
     window._rainCtx = audioCtx;
     window._rainGain = gain;
-    window._rainOn = false;
+    window._rainOn = true;
 
-    // Fade in on first user interaction
-    const fadeIn = () => {
-      window._rainOn = true;
+    // Auto-start rain on first user interaction (browser autoplay policy)
+    const startRain = () => {
+      audioCtx.resume();
       gain.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 2);
     };
-    document.addEventListener('click', fadeIn, { once: true });
-    document.addEventListener('keydown', fadeIn, { once: true });
-    document.addEventListener('touchstart', fadeIn, { once: true });
+    document.addEventListener('click', startRain, { once: true });
+    document.addEventListener('keydown', startRain, { once: true });
+    document.addEventListener('touchstart', startRain, { once: true });
+    // Also try starting after short delay
+    setTimeout(startRain, 500);
   } catch(e) {}
 }
 
