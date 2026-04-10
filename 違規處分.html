@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="color-scheme" content="dark light">
@@ -17,6 +17,75 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="music-player.css">
+  <style>
+    /* 違規處分專用樣式 */
+    .violation-card {
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+    }
+    .violation-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .violation-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .violation-case-num {
+      font-size: 0.85rem;
+      color: var(--fog);
+    }
+    .violation-title {
+      margin: var(--space-xs) 0 0;
+      font-size: 1.1rem;
+    }
+    .violation-badge {
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      white-space: nowrap;
+      color: #fff;
+    }
+    .badge-mute {
+      background: #e5534b;
+    }
+    .badge-ban {
+      background: #b62324;
+    }
+    .violation-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+      font-size: 0.9rem;
+      color: var(--fog);
+    }
+    .violation-meta strong {
+      color: var(--cloud);
+    }
+    .violation-body {
+      background: var(--drift);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .violation-body ul {
+      margin: var(--space-xs) 0;
+      padding-left: 1.2em;
+    }
+    .violation-body p + ul {
+      margin-top: var(--space-xs);
+    }
+  </style>
 </head>
 <body>
   <div class="bg-atmosphere"></div>
@@ -60,7 +129,7 @@
           </ul>
         </li>
       </ul>
-      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button>
       <button class="nav-toggle" aria-label="選單">
         <span></span><span></span><span></span>
       </button>
@@ -68,17 +137,71 @@
   </nav>
 
   <div class="page">
-    <div class="page-hero fade-in">
-      <span class="section-tag">📋 文件</span>
+    <div class="page-hero fade-in visible">
+      <span class="section-tag">⚖️ 資料中心</span>
       <h1>違規處分</h1>
-      <p class="section-desc">海風伺服器違規處分紀錄與相關文件。</p>
+      <p class="section-desc">海風法院正式判決公告，判決內容以法院文件為準。</p>
       <div class="section-divider" style="margin: var(--space-lg) auto 0;"></div>
     </div>
 
     <div class="content-section">
-      <div class="fade-in" style="text-align: center; padding: var(--space-2xl) 0;">
-        <p style="color: var(--fog); font-size: 1.1rem;">📂 違規處分文件即將上傳</p>
-        <p style="color: var(--fog); font-size: 0.9rem; margin-top: var(--space-sm);">此處將放置 PDF 格式的違規處分相關文件。</p>
+      <div class="fade-in visible">
+        <div class="rules-intro">
+          <p>如對處分有異議，請至 <strong>Discord 客服單</strong>申訴，由管理團隊做最終判定。</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
+
+          <!-- 案件 1：115年度簡字第0001號 -->
+          <div class="violation-card">
+            <div class="violation-header">
+              <div>
+                <span class="violation-case-num">115 年度簡字第 0001 號</span>
+                <h3 class="violation-title">史莱姆 Slime Ch. — 公然侮辱案</h3>
+              </div>
+              <span class="violation-badge badge-mute">🔇 禁言 7 日</span>
+            </div>
+            <div class="violation-meta">
+              <div><strong>原告：</strong>MrPotato（馬鈴薯）</div>
+              <div><strong>被告：</strong>史莱姆 Slime Ch.</div>
+              <div><strong>日期：</strong>115 年 4 月 3 日</div>
+              <div><strong>法官：</strong>tstw5306、tdse9</div>
+            </div>
+            <div class="violation-body">
+              <p><strong>主文：</strong>被告違反海風伺服器社群須知第一章第 2 條，處禁言 7 日。</p>
+              <p><strong>事實：</strong>被告於公開聊天室以「腦殘」等文字貶損原告之名譽，有截圖佐證，事證明確。</p>
+            </div>
+          </div>
+
+          <!-- 案件 2：114年度簡字第0001號 -->
+          <div class="violation-card">
+            <div class="violation-header">
+              <div>
+                <span class="violation-case-num">114 年度簡字第 0001 號</span>
+                <h3 class="violation-title">GoldenLao — 竊盜及破壞案</h3>
+              </div>
+              <span class="violation-badge badge-ban">⛔ 停權 7 日</span>
+            </div>
+            <div class="violation-meta">
+              <div><strong>被告：</strong>GoldenLao</div>
+              <div><strong>日期：</strong>114 年 5 月 2 日</div>
+              <div><strong>罰金：</strong>21,000 風幣（得易科罰金）</div>
+              <div><strong>性質：</strong>初犯</div>
+            </div>
+            <div class="violation-body">
+              <p><strong>主文：</strong>被告違反海風伺服器社群須知，初犯，處停權 7 日，得易科罰金 21,000 風幣。</p>
+              <p><strong>事實：</strong></p>
+              <ul>
+                <li>竊取鐵砧至少 24 個、剝皮橡木原木 3 個</li>
+                <li>竊取裝有聖誕節活動物品之界伏盒 2 個</li>
+                <li>破壞盔甲架至少 3 個，並取走其上裝備（鋼劍、獄髓斧等）</li>
+                <li>另有破壞行為逾 200 件，多數於破壞後復原</li>
+              </ul>
+              <p><strong>理由：</strong>被告並非單次少量行竊，而係連續多次、大量竊盜及破壞，具有慣性。考量犯後態度良好，酌予減輕其刑至 7 日。</p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -104,5 +227,6 @@
 
   <script src="main.js"></script>
   <script src="music-player.js"></script>
+  <button class="back-to-top" aria-label="回到頂部">↑</button>
 </body>
 </html>

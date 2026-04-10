@@ -149,7 +149,7 @@
       lightboxClose?.addEventListener('click', () => lightbox.classList.remove('open'));
       lightboxPrev?.addEventListener('click', e => { e.stopPropagation(); showLightbox(currentIdx - 1); });
       lightboxNext?.addEventListener('click', e => { e.stopPropagation(); showLightbox(currentIdx + 1); });
-      lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+      lightbox?.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
       document.addEventListener('keydown', e => {
         if (!lightbox.classList.contains('open')) return;
         if (e.key === 'Escape') lightbox.classList.remove('open');
