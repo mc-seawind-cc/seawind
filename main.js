@@ -402,7 +402,6 @@ function initTypewriter() {
     });
   }, 400);
 }
-}
 
 // --- Copy Server IP ---
 function copyServerIP() {
