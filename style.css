@@ -5678,6 +5678,58 @@ video.photo-item {
   color: var(--cloud);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
+
+/* Rain toggle button (left of music player) */
+.rain-toggle {
+  position: fixed;
+  bottom: 88px;
+  right: 248px;
+  z-index: 998;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(22, 27, 34, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.rain-toggle:hover {
+  background: rgba(22, 27, 34, 0.95);
+  border-color: rgba(157, 175, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.rain-toggle.active {
+  color: var(--sky);
+  border-color: rgba(157, 175, 255, 0.4);
+  background: rgba(157, 175, 255, 0.12);
+}
+
+[data-theme="light"] .rain-toggle {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .rain-toggle:hover {
+  background: #fff;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="light"] .rain-toggle.active {
+  color: var(--sky);
+  background: rgba(157, 175, 255, 0.1);
+}
+
 .back-to-top {
   position: fixed;
   bottom: 1.5rem;
