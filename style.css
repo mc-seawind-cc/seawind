@@ -4246,22 +4246,6 @@ body {
 .feature-grid .feature-card:nth-child(3) { transition-delay: 0.2s; }
 .feature-grid .feature-card:nth-child(4) { transition-delay: 0.3s; }
 
-/* --- Hero Wave Divider --- */
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background: var(--deep);
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='white' d='M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z'/%3E%3C/svg%3E");
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='white' d='M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z'/%3E%3C/svg%3E");
-  mask-size: cover;
-  -webkit-mask-size: cover;
-  z-index: 2;
-}
-
 /* --- Floating Wave BG --- */
 @keyframes wave-float {
   0%, 100% { transform: translateX(0) translateY(0); }
@@ -4404,25 +4388,9 @@ body {
   }
 }
 
-/* --- Footer Wave Top --- */
+/* --- Footer --- */
 .footer {
   position: relative;
-}
-
-.footer::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: var(--deep);
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='white' d='M0,30 C480,60 960,0 1440,30 L1440,0 L0,0 Z'/%3E%3C/svg%3E");
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='white' d='M0,30 C480,60 960,0 1440,30 L1440,0 L0,0 Z'/%3E%3C/svg%3E");
-  mask-size: cover;
-  -webkit-mask-size: cover;
-  transform: scaleY(-1);
-  z-index: 1;
 }
 
 /* --- Bulletin Item Hover --- */
