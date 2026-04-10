@@ -51,9 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
   document.querySelectorAll('.fade-in, .slide-up, .zoom-in, .slide-left, .slide-right, .reveal-up').forEach(el => revealObserver.observe(el));
+
+  // Safety: reveal all remaining hidden elements after 3s (in case observer doesn't fire)
+  setTimeout(() => {
+    document.querySelectorAll('.fade-in:not(.visible), .slide-up:not(.visible), .zoom-in:not(.visible), .slide-left:not(.visible), .slide-right:not(.visible), .reveal-up:not(.visible)').forEach(el => el.classList.add('visible'));
+  }, 3000);
 
   // --- Nav Scroll Shadow ---
   const nav = document.querySelector('.nav');
