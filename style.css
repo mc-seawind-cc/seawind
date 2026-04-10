@@ -4563,3 +4563,120 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* --- Photo Carousel --- */
+.photo-carousel {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+.photo-carousel-track {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-slide {
+  flex: 0 0 calc(100% / 3);
+  padding: 0 var(--space-sm);
+  box-sizing: border-box;
+}
+
+.carousel-slide img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.carousel-slide img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.photo-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--space-lg);
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--mist);
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: var(--sky);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.carousel-dot:hover {
+  background: var(--fog);
+}
+
+@media (max-width: 768px) {
+  .carousel-slide {
+    flex: 0 0 100%;
+    padding: 0;
+  }
+}
+
+/* --- Postcard Section --- */
+.postcard-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-md);
+}
+
+.postcard-item {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 3 / 4;
+}
+
+.postcard-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease), filter 0.4s var(--ease);
+}
+
+.postcard-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1) saturate(1.1);
+}
+
+.postcard-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.3) 100%);
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 1024px) {
+  .postcard-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .postcard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .postcard-item:last-child {
+    grid-column: span 2;
+    aspect-ratio: 16 / 9;
+  }
+}

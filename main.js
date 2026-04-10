@@ -304,23 +304,22 @@ function initGeneralLightbox() {
   });
 }
 
-// --- Photo Gallery (fixed path resolution) ---
+// --- Photo Carousel (auto-rotating) ---
 function initPhotoGallery() {
-  const container = document.getElementById('photoGrid');
+  const container = document.getElementById('photoCarousel');
   if (!container) return;
 
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxClose = document.getElementById('lightboxClose');
-  const lightboxPrev = document.getElementById('lightboxPrev');
-  const lightboxNext = document.getElementById('lightboxNext');
-  const lightboxCounter = document.getElementById('lightboxCounter');
-
-  const INITIAL_SHOW = 12;
+  const track = document.getElementById('carouselTrack');
+  const dotsContainer = document.getElementById('carouselDots');
+  const VISIBLE = 3;
+  const INTERVAL = 4000;
+  let photos = [];
+  let current = 0;
+  let timer = null;
 
   fetch('photos.json')
     .then(r => {
-      if (!r.ok) throw new Error(`photos.json 載入失敗 (${r.status})`);
+      if (!r.ok) throw new Error('photos.json 載入失敗');
       return r.json();
     })
     .then(data => {
@@ -328,99 +327,66 @@ function initPhotoGallery() {
         container.innerHTML = '<div class="photo-placeholder">暫無照片</div>';
         return;
       }
-      container.innerHTML = '';
-      const grid = document.createElement('div');
-      grid.className = 'photo-grid';
-
-      data.photos.forEach((src, i) => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.className = 'photo-item';
-        img.alt = `海風風景照 ${i + 1}`;
-        img.loading = 'lazy';
-        if (i >= INITIAL_SHOW) img.style.display = 'none';
-        img.onerror = function() { this.style.display = 'none'; };
-        grid.appendChild(img);
-      });
-      container.appendChild(grid);
-
-      // 查看全部按鈕
-      if (data.photos.length > INITIAL_SHOW) {
-        const actions = document.createElement('div');
-        actions.className = 'photo-actions';
-
-        const moreBtn = document.createElement('button');
-        moreBtn.className = 'btn btn-outline';
-        let loaded = INITIAL_SHOW;
-        moreBtn.textContent = `展開更多（${data.photos.length - loaded} 張）`;
-        moreBtn.addEventListener('click', () => {
-          const items = grid.querySelectorAll('.photo-item');
-          const end = Math.min(loaded + INITIAL_SHOW, items.length);
-          for (let i = loaded; i < end; i++) items[i].style.display = '';
-          loaded = end;
-          if (loaded >= data.photos.length) {
-            moreBtn.remove();
-          } else {
-            moreBtn.textContent = `展開更多（${data.photos.length - loaded} 張）`;
-          }
-        });
-        actions.appendChild(moreBtn);
-
-        const allBtn = document.createElement('a');
-        allBtn.href = 'photos.html';
-        allBtn.className = 'btn btn-primary';
-        allBtn.textContent = `查看全部 ${data.photos.length} 張 →`;
-        actions.appendChild(allBtn);
-
-        container.appendChild(actions);
-      }
-
-      setupLightbox();
+      photos = data.photos.slice(0, 20); // max 20 for carousel
+      buildCarousel();
     })
     .catch(err => {
-      console.error('照片廊載入錯誤:', err);
-      container.innerHTML = '<div class="photo-placeholder">照片載入失敗，請稍後再試</div>';
+      console.error('照片輪播載入錯誤:', err);
+      container.innerHTML = '<div class="photo-placeholder">照片載入失敗</div>';
     });
 
-  function setupLightbox() {
-    if (!lightbox) return;
+  function buildCarousel() {
+    track.innerHTML = '';
+    photos.forEach((src, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'carousel-slide';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `海風風景照 ${i + 1}`;
+      img.loading = 'lazy';
+      img.onerror = function() { this.parentElement.style.display = 'none'; };
+      slide.appendChild(img);
+      track.appendChild(slide);
+    });
 
-    function getVisible() {
-      return Array.from(container.querySelectorAll('.photo-item')).filter(
-        img => img.style.display !== 'none' && img.naturalWidth > 0
-      );
+    // dots
+    const totalPages = Math.ceil(photos.length / VISIBLE);
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < totalPages; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
     }
 
-    let idx = 0;
+    goTo(0);
+    startTimer();
 
-    function show(i) {
-      const visible = getVisible();
-      if (!visible.length) return;
-      if (i < 0) i = visible.length - 1;
-      if (i >= visible.length) i = 0;
-      idx = i;
-      lightboxImg.src = visible[idx].src;
-      if (lightboxCounter) lightboxCounter.textContent = `${idx + 1} / ${visible.length}`;
-    }
+    container.addEventListener('mouseenter', () => stopTimer());
+    container.addEventListener('mouseleave', () => startTimer());
+  }
 
-    container.addEventListener('click', e => {
-      if (e.target.classList.contains('photo-item')) {
-        const visible = getVisible();
-        const vi = visible.indexOf(e.target);
-        show(vi >= 0 ? vi : 0);
-        lightbox.classList.add('open');
-      }
+  function goTo(page) {
+    const totalPages = Math.ceil(photos.length / VISIBLE);
+    if (page < 0) page = totalPages - 1;
+    if (page >= totalPages) page = 0;
+    current = page;
+
+    const slideWidth = 100 / VISIBLE;
+    const offset = -current * VISIBLE * slideWidth;
+    track.style.transform = `translateX(${offset}%)`;
+
+    dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
     });
+  }
 
-    lightboxClose?.addEventListener('click', () => lightbox.classList.remove('open'));
-    lightboxPrev?.addEventListener('click', e => { e.stopPropagation(); show(idx - 1); });
-    lightboxNext?.addEventListener('click', e => { e.stopPropagation(); show(idx + 1); });
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
-    document.addEventListener('keydown', e => {
-      if (!lightbox.classList.contains('open')) return;
-      if (e.key === 'Escape') lightbox.classList.remove('open');
-      if (e.key === 'ArrowLeft') show(idx - 1);
-      if (e.key === 'ArrowRight') show(idx + 1);
-    });
+  function startTimer() {
+    stopTimer();
+    timer = setInterval(() => goTo(current + 1), INTERVAL);
+  }
+
+  function stopTimer() {
+    if (timer) { clearInterval(timer); timer = null; }
   }
 }
