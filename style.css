@@ -5953,8 +5953,7 @@ video.photo-item {
 
 /* Below-fold sections get content-visibility */
 .lore-preview-grid,
-.postcard-section,
-.photo-carousel {
+.postcard-section {
   content-visibility: auto;
   contain-intrinsic-size: auto 400px;
 }

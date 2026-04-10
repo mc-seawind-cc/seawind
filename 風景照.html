@@ -160,9 +160,10 @@
       }
 
       container.addEventListener('click', e => {
-        if (e.target.classList.contains('photo-item')) {
+        const item = e.target.closest('.photo-item');
+        if (item) {
           const visible = getVisible();
-          const vi = visible.indexOf(e.target);
+          const vi = visible.indexOf(item);
           showLightbox(vi >= 0 ? vi : 0);
         }
       });
