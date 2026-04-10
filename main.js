@@ -234,22 +234,22 @@ function initTypewriter() {
   const el = document.getElementById('heroSubtitle');
   if (!el) return;
 
-  // MC-style tick sound via Web Audio API
-  let audioCtx = null;
+  // MC-style tick sound (real audio files)
+  const tickSounds = ['assets/sounds/tick1.mp3', 'assets/sounds/tick2.mp3', 'assets/sounds/tick3.mp3'];
+  const tickAudio = tickSounds.map(src => {
+    const a = new Audio(src);
+    a.volume = 0.4;
+    a.preload = 'auto';
+    return a;
+  });
+  let tickIdx = 0;
   function playTick() {
-    if (!audioCtx) {
-      try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) { return; }
-    }
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-    osc.type = 'square';
-    osc.frequency.setValueAtTime(600 + Math.random() * 200, audioCtx.currentTime);
-    gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
-    osc.start(audioCtx.currentTime);
-    osc.stop(audioCtx.currentTime + 0.05);
+    try {
+      const a = tickAudio[tickIdx % tickAudio.length];
+      a.currentTime = 0;
+      a.play().catch(() => {});
+      tickIdx++;
+    } catch(e) {}
   }
 
   const cursor = document.createElement('span');
