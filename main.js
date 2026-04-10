@@ -530,9 +530,6 @@ function initBulletinBoard() {
           <div class="bulletin-item pinned open" data-index="${i}">
             <button class="bulletin-toggle" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>e.classList.remove('open'));if(!wasOpen)this.parentElement.classList.add('open')">
               <span class="b-title">📌 ${item.title}</span>
-              <span class="b-tag tag-${item.tag}">${item.tag}</span>
-              <span class="b-id">${item.id}</span>
-              <span class="b-date-col">${item.date}</span>
               <span class="b-arrow">▾</span>
             </button>
             <div class="bulletin-body" style="text-align:center;">
