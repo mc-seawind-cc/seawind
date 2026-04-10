@@ -677,7 +677,7 @@ function initPhotoGallery() {
 
   const track = document.getElementById('carouselTrack');
   const dotsContainer = document.getElementById('carouselDots');
-  const VISIBLE = 5;
+  const VISIBLE = window.innerWidth >= 1400 ? 5 : window.innerWidth >= 900 ? 3 : 1;
   const INTERVAL = 4000;
   let photos = [];
   let current = 0;
@@ -715,6 +715,11 @@ function initPhotoGallery() {
       img.onerror = function() { this.parentElement.style.display = 'none'; };
       slide.appendChild(img);
       track.appendChild(slide);
+    });
+
+    // Set slide widths dynamically
+    track.querySelectorAll('.carousel-slide').forEach(s => {
+      s.style.flex = `0 0 ${100 / VISIBLE}%`;
     });
 
     // dots

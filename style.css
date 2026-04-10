@@ -1779,6 +1779,9 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 120px var(--space-xl) var(--space-2xl);
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   background: linear-gradient(135deg, #0f1117 0%, #1a2340 50%, #0f1117 100%);
   overflow: hidden;
 }
@@ -5498,8 +5501,13 @@ video.photo-item {
   overflow: hidden;
   border-radius: var(--radius-lg);
   position: relative;
-  margin: 0 calc(-1 * var(--space-xl));
-  padding: 0 var(--space-xl);
+}
+
+@media (min-width: 1400px) {
+  .photo-carousel {
+    margin: 0 calc(-1 * var(--space-xl));
+    padding: 0 var(--space-xl);
+  }
 }
 
 .photo-carousel-track {
@@ -5509,7 +5517,7 @@ video.photo-item {
 
 .carousel-slide {
   flex: 0 0 20%;
-  padding: 0 var(--space-sm);
+  padding: 0 4px;
   box-sizing: border-box;
   min-width: 0;
 }
