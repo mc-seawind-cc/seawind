@@ -991,7 +991,7 @@ body {
 }
 
 .intro-lead {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 400;
   line-height: 1.8;
   color: var(--cloud);
@@ -3660,14 +3660,14 @@ body {
 }
 
 .intro-slogan {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   color: var(--fog);
   line-height: 1.8;
   margin-bottom: var(--space-lg);
 }
 
 .intro-lead {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 400;
   line-height: 1.8;
   color: var(--cloud);
