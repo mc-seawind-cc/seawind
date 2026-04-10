@@ -5217,6 +5217,38 @@ video.photo-item {
 }
 
 /* ═══ Back to Top Button ═══ */
+
+/* --- Photo Float Counter (風景照頁面) --- */
+.photo-float-counter {
+  position: fixed;
+  bottom: 76px;
+  right: 20px;
+  z-index: 900;
+  padding: 8px 14px;
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(157, 175, 255, 0.15);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  color: var(--cloud);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.pfc-text {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-theme="light"] .photo-float-counter {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: var(--cloud);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
 .back-to-top {
   position: fixed;
   bottom: 2rem;

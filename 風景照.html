@@ -118,6 +118,12 @@
       let allPhotos = [];
       let loaded = 0;
 
+      // 浮窗：照片載入計數器
+      const floatCounter = document.createElement('div');
+      floatCounter.className = 'photo-float-counter';
+      floatCounter.innerHTML = '<span class="pfc-text">📸 載入中...</span>';
+      document.body.appendChild(floatCounter);
+
       const lightbox = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightboxImg');
       const lightboxClose = document.getElementById('lightboxClose');
@@ -213,6 +219,7 @@
             }
             loaded = end;
             counter.textContent = `${loaded} / ${allPhotos.length}`;
+            floatCounter.querySelector('.pfc-text').textContent = `📸 ${loaded} / ${allPhotos.length}`;
 
             if (loaded < allPhotos.length) {
               setupSentinel();
