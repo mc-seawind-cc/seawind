@@ -5219,6 +5219,23 @@ video.photo-item {
 /* ═══ Back to Top Button ═══ */
 
 /* --- Photo Float Counter (風景照頁面) --- */
+
+/* --- Photo Date Card --- */
+.photo-date-card {
+  text-align: center;
+  padding: 10px 20px;
+  margin-bottom: var(--space-lg);
+  background: rgba(157, 175, 255, 0.06);
+  border: 1px solid rgba(157, 175, 255, 0.12);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  color: var(--fog);
+}
+
+[data-theme="light"] .photo-date-card {
+  background: rgba(157, 175, 255, 0.08);
+  border-color: rgba(157, 175, 255, 0.18);
+}
 .photo-float-counter {
   position: fixed;
   bottom: 76px;
