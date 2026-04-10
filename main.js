@@ -791,3 +791,16 @@ function initGuideSidebar() {
 
   groups.forEach(g => observer.observe(g.target));
 }
+
+// --- Deployment Count ---
+(function() {
+  const el = document.getElementById('deployCount');
+  if (!el) return;
+  fetch('https://api.github.com/repos/mc-seawind-cc/website/deployments?per_page=1', { method: 'HEAD' })
+    .then(r => {
+      const link = r.headers.get('Link') || '';
+      const match = link.match(/page=(\d+)>; rel="last"/);
+      el.textContent = match ? match[1] : '—';
+    })
+    .catch(() => { el.textContent = '—'; });
+})();
