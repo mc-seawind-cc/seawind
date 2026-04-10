@@ -432,11 +432,6 @@ body {
 }
 
 /* Light theme nav adjustments */
-[data-theme="light"] .nav {
-  background: rgba(240, 242, 245, 0.35);
-  border-bottom-color: rgba(0, 0, 0, 0.06);
-}
-
 [data-theme="light"] .nav-links {
   background: rgba(240, 242, 245, 0.95);
   border-bottom-color: rgba(0, 0, 0, 0.05);
@@ -3825,7 +3820,7 @@ body {
 /* ═══ Light Theme — Comprehensive Fixes ═══ */
 
 [data-theme="light"] .nav {
-  background: rgba(240, 242, 245, 0.7);
+  background: rgba(240, 242, 245, 0.55);
   border-bottom-color: rgba(0, 0, 0, 0.06);
 }
 

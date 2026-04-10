@@ -166,13 +166,13 @@
 
 /* ─── Light Theme ─── */
 [data-theme="light"] .mp-widget {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(240, 242, 245, 0.92);
   border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="light"] .mp-header {
-  background: rgba(0, 0, 0, 0.02);
+  background: rgba(0, 0, 0, 0.03);
 }
 
 [data-theme="light"] .mp-title,
@@ -244,7 +244,7 @@
 }
 
 [data-theme="light"] .mp-muted-hint {
-  background: rgba(157, 175, 255, 0.2);
-  border-color: rgba(157, 175, 255, 0.4);
-  color: #1f2328;
+  background: rgba(157, 175, 255, 0.15);
+  border-color: rgba(157, 175, 255, 0.3);
+  color: #4a5260;
 }
