@@ -4447,6 +4447,114 @@ body {
   background: rgba(157, 175, 255, 0.04);
 }
 
+/* --- Bulletin More Link --- */
+.bulletin-more {
+  text-align: center;
+  padding: var(--space-lg) 0 0;
+}
+
+/* --- Announcements Page --- */
+.ann-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+}
+
+.ann-filters {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.ann-filter {
+  padding: 6px 16px;
+  border: 1px solid var(--mist);
+  border-radius: var(--radius-xl);
+  background: transparent;
+  color: var(--fog);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+}
+
+.ann-filter:hover {
+  border-color: var(--sky);
+  color: var(--sky);
+}
+
+.ann-filter.active {
+  background: var(--sky);
+  border-color: var(--sky);
+  color: var(--deep);
+}
+
+.ann-search input {
+  padding: 6px 16px;
+  border: 1px solid var(--mist);
+  border-radius: var(--radius-xl);
+  background: var(--ocean);
+  color: var(--cloud);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  width: 200px;
+  outline: none;
+  transition: border-color 0.3s var(--ease), width 0.3s var(--ease);
+}
+
+.ann-search input::placeholder {
+  color: var(--text-muted);
+}
+
+.ann-search input:focus {
+  border-color: var(--sky);
+  width: 260px;
+}
+
+.ann-stats {
+  color: var(--fog);
+  font-size: 0.85rem;
+  margin-bottom: var(--space-md);
+}
+
+.ann-empty {
+  text-align: center;
+  color: var(--fog);
+  padding: var(--space-2xl);
+}
+
+@media (max-width: 768px) {
+  .ann-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ann-search input {
+    width: 100%;
+  }
+  .ann-search input:focus {
+    width: 100%;
+  }
+}
+
+[data-theme="light"] .ann-filter {
+  border-color: var(--mist);
+  color: var(--fog);
+}
+
+[data-theme="light"] .ann-filter.active {
+  background: var(--sky);
+  color: #fff;
+}
+
+[data-theme="light"] .ann-search input {
+  background: var(--ocean);
+  border-color: var(--mist);
+  color: var(--cloud);
+}
+
 /* --- Reduced Motion --- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

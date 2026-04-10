@@ -234,10 +234,11 @@ function initBulletinBoard() {
   fetch('announcements.json')
     .then(r => r.json())
     .then(data => {
+      const MAX_SHOW = 7;
       const items = data.announcements;
       // header row
       let html = '<div class="bulletin-header"><span>主旨</span><span>類型</span><span></span></div>';
-      items.forEach((item, i) => {
+      items.slice(0, MAX_SHOW).forEach((item, i) => {
         html += `
           <div class="bulletin-item" data-index="${i}">
             <button class="bulletin-toggle" onclick="this.parentElement.classList.toggle('open')">
@@ -251,6 +252,9 @@ function initBulletinBoard() {
             </div>
           </div>`;
       });
+      if (items.length > MAX_SHOW) {
+        html += `<div class="bulletin-more"><a href="announcements.html" class="btn btn-outline">查看全部公告 (${items.length} 則) →</a></div>`;
+      }
       board.innerHTML = html;
     })
     .catch(() => { board.innerHTML = '<p style="text-align:center;color:var(--fog);padding:20px;">公告載入失敗</p>'; });
