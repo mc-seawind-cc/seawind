@@ -2,6 +2,15 @@
    海風 Seabreeze — Main Scripts
    ═══════════════════════════════════════════ */
 
+// Base path for root-level JSON/resource files
+const SITE_BASE = (() => {
+  // Determine how many levels deep we are from root
+  const parts = location.pathname.split('/').filter(Boolean);
+  // If last part has a dot (filename), it's not a directory
+  if (parts.length && parts[parts.length - 1].includes('.')) parts.pop();
+  return parts.length > 0 ? '../'.repeat(parts.length) : '';
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // --- Theme Toggle ---
   const themeBtn = document.getElementById('themeToggle');
@@ -68,10 +77,31 @@ document.addEventListener('DOMContentLoaded', () => {
   createHeroParticles();
 
   // --- Active Nav Link ---
-  const currentPage = location.pathname.split('/').pop() || 'index.html';
+  // Build the site-relative path (e.g. "guide/index.html") for comparison
+  const pathParts = location.pathname.split('/').filter(Boolean);
+  const lastPart = pathParts[pathParts.length - 1] || '';
+  let siteRelative;
+  if (lastPart.includes('.')) {
+    // e.g. /guide/index.html or /index.html
+    siteRelative = pathParts.join('/');
+  } else {
+    // trailing slash
+    siteRelative = pathParts.length ? pathParts.join('/') + '/index.html' : 'index.html';
+  }
   document.querySelectorAll('.nav-links a').forEach(a => {
     const href = a.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+    // Resolve href relative to root for comparison
+    let hrefRelative = href;
+    if (href.startsWith('../')) {
+      // Convert ../foo/index.html to foo/index.html based on current depth
+      const depth = siteRelative.split('/').length - 1;
+      let h = href;
+      for (let i = 0; i < depth; i++) {
+        if (h.startsWith('../')) h = h.slice(3);
+      }
+      hrefRelative = h || 'index.html';
+    }
+    if (hrefRelative === siteRelative || (siteRelative === 'index.html' && hrefRelative === 'index.html')) {
       a.classList.add('active');
     }
   });
@@ -231,7 +261,7 @@ function fetchServerStatus() {
 function initBulletinBoard() {
   const board = document.getElementById('bulletinBoard');
   if (!board) return;
-  fetch('announcements.json')
+  fetch(SITE_BASE + 'announcements.json')
     .then(r => r.json())
     .then(data => {
       const items = data.announcements;
@@ -314,7 +344,7 @@ function initPhotoGallery() {
 
   const INITIAL_SHOW = 12;
 
-  fetch('photos.json')
+  fetch(SITE_BASE + 'photos.json')
     .then(r => {
       if (!r.ok) throw new Error(`photos.json 載入失敗 (${r.status})`);
       return r.json();
@@ -363,7 +393,7 @@ function initPhotoGallery() {
         actions.appendChild(moreBtn);
 
         const allBtn = document.createElement('a');
-        allBtn.href = 'photos.html';
+        allBtn.href = SITE_BASE + 'photos/index.html';
         allBtn.className = 'btn btn-primary';
         allBtn.textContent = `查看全部 ${data.photos.length} 張 →`;
         actions.appendChild(allBtn);
