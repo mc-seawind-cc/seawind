@@ -479,7 +479,7 @@ function initBulletinBoard() {
   fetch('announcements.json')
     .then(r => r.json())
     .then(data => {
-      const MAX_TOTAL = 5;
+      const MAX_TOTAL = 100;
 
       // Markdown to HTML converter
       function md2html(text) {
