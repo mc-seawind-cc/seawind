@@ -821,7 +821,7 @@ body {
   margin: 0 auto;
   padding: var(--space-2xl) var(--space-xl);
   position: relative;
-  background: linear-gradient(180deg, var(--deep) 0%, #0d1420 15%, #0a0f18 50%, #070c14 100%);
+  background: linear-gradient(180deg, #0d1117 0%, #0c1018 20%, #090e16 50%, #070b12 100%);
 }
 
 .content-section::before {
