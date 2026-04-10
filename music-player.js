@@ -241,7 +241,12 @@ const MUSIC_PLAYER = (() => {
     if (!localStorage.getItem('sw-music-unmuted')) {
       var hint = document.createElement('div');
       hint.className = 'mp-muted-hint';
-      hint.textContent = '🔇 點擊任意處開啟音樂';
+      hint.textContent = '🎵 點右下角可以放音樂';
+      hint.style.cursor = 'pointer';
+      hint.style.pointerEvents = 'auto';
+      hint.addEventListener('click', function() {
+        this.remove();
+      });
       document.body.appendChild(hint);
     }
 

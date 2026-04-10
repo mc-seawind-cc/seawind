@@ -236,7 +236,6 @@
   z-index: 1000;
   cursor: pointer;
   animation: mp-hint-pulse 2s ease-in-out infinite;
-  pointer-events: none;
 }
 
 @keyframes mp-hint-pulse {
