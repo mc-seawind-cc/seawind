@@ -5493,8 +5493,7 @@ video.photo-item {
 .back-to-top {
   position: fixed;
   bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(16px);
+  right: 2rem;
   z-index: 900;
   width: 44px;
   height: 44px;
@@ -5516,7 +5515,7 @@ video.photo-item {
 
 .back-to-top.visible {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
   pointer-events: auto;
 }
 
@@ -5539,6 +5538,7 @@ video.photo-item {
 @media (max-width: 768px) {
   .back-to-top {
     bottom: 1rem;
+    right: 1.2rem;
     width: 40px;
     height: 40px;
   }
