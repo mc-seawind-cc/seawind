@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
+      } else {
+        entry.target.classList.remove('visible');
       }
     });
   }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
@@ -276,7 +277,7 @@ function initBulletinBoard() {
   fetch('announcements.json')
     .then(r => r.json())
     .then(data => {
-      const MAX_SHOW = 100;
+      const MAX_SHOW = 6;
 
       // Markdown to HTML converter
       function md2html(text) {
