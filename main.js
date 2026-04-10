@@ -507,14 +507,14 @@ function initBulletinBoard() {
             result.push('<li>' + trimmed.replace(/^[\s]*[•\-\*]\s+/, '') + '</li>');
           } else if (trimmed === '') {
             if (inList) { result.push('</ul>'); inList = false; }
-            result.push('<br>');
+            result.push('</p><p style="margin-top:6px;">');
           } else {
             if (inList) { result.push('</ul>'); inList = false; }
             result.push(trimmed);
           }
         });
         if (inList) result.push('</ul>');
-        return result.join('\n');
+        return '<p>' + result.join('\n') + '</p>';
       }
 
       const items = data.announcements;
