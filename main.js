@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPhotoGallery();
     initPostcardLightbox();
     initGeneralLightbox();
+    initGuideSidebar();
   };
 
   // Use requestIdleCallback if available, otherwise setTimeout
@@ -198,6 +199,24 @@ function initTypewriter() {
   const el = document.getElementById('heroSubtitle');
   if (!el) return;
 
+  // MC-style tick sound via Web Audio API
+  let audioCtx = null;
+  function playTick() {
+    if (!audioCtx) {
+      try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) { return; }
+    }
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(600 + Math.random() * 200, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+    osc.start(audioCtx.currentTime);
+    osc.stop(audioCtx.currentTime + 0.05);
+  }
+
   const cursor = document.createElement('span');
   cursor.className = 'cursor';
   el.appendChild(cursor);
@@ -218,6 +237,7 @@ function initTypewriter() {
     if (dots.length < 3) {
       dots += '...'[dots.length];
       thinkingDots.textContent = dots;
+      playTick();
       setTimeout(addDot, dotSpeed);
     } else {
       // Phase 2: type "在風與海之間，" with dots still showing
@@ -236,6 +256,7 @@ function initTypewriter() {
   function typeMain(text, idx, cb) {
     if (idx < text.length) {
       mainText.textContent += text[idx];
+      playTick();
       setTimeout(() => typeMain(text, idx + 1, cb), speed);
     } else {
       cb();
@@ -566,4 +587,33 @@ function initPhotoGallery() {
   function stopTimer() {
     if (timer) { clearInterval(timer); timer = null; }
   }
+}
+
+// --- Guide Sidebar Active State ---
+function initGuideSidebar() {
+  const sidebar = document.querySelector('.guide-sidebar-nav');
+  if (!sidebar) return;
+
+  const links = sidebar.querySelectorAll('.guide-sb-link');
+  const groups = [];
+
+  links.forEach(link => {
+    const id = link.getAttribute('href').replace('#', '');
+    const target = document.getElementById(id);
+    if (target) groups.push({ link, target });
+  });
+
+  if (!groups.length) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const match = groups.find(g => g.target === entry.target);
+        if (match) match.link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+
+  groups.forEach(g => observer.observe(g.target));
 }

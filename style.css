@@ -3547,8 +3547,115 @@ video.photo-item {
 }
 
 /* ═══════════════════════════════════════════
-   Guide Page Enhancements
+   Guide Page — Sidebar Layout
    ═══════════════════════════════════════════ */
+
+.guide-layout {
+  display: flex;
+  gap: var(--space-xl);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-xl);
+}
+
+.guide-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.guide-sidebar-inner {
+  padding: var(--space-lg);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+}
+
+.guide-sidebar-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.guide-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.guide-sb-link {
+  display: block;
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  color: var(--fog);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.guide-sb-link:hover,
+.guide-sb-link.active {
+  background: rgba(157, 175, 255, 0.1);
+  color: var(--sky);
+}
+
+.guide-main {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  max-width: none;
+  background: none;
+}
+
+.guide-main::before {
+  display: none;
+}
+
+[data-theme="light"] .guide-sidebar-inner {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .guide-sidebar-title {
+  color: var(--cloud);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .guide-sb-link:hover,
+[data-theme="light"] .guide-sb-link.active {
+  background: rgba(157, 175, 255, 0.12);
+}
+
+@media (max-width: 900px) {
+  .guide-layout {
+    flex-direction: column;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .guide-sidebar {
+    width: 100%;
+    position: static;
+    max-height: none;
+  }
+
+  .guide-sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .guide-sb-link {
+    padding: 5px 10px;
+    font-size: 0.78rem;
+  }
+}
 
 /* --- Breadcrumb --- */
 .breadcrumb {
