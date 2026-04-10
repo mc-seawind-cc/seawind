@@ -4570,24 +4570,9 @@ video.photo-item {
 /* --- Section Header Underline Reveal --- */
 .section-header h2 {
   position: relative;
-  display: inline-block;
 }
 
-.section-header h2::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--sky), var(--foam));
-  border-radius: 2px;
-  transition: width 0.8s var(--ease);
-}
-
-.section-header.fade-in.visible h2::after {
-  width: 100%;
-}
+/* Section header h2 underline removed — use .section-divider instead */
 
 /* Section headers use fade-in class for entrance */
 
