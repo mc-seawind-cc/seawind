@@ -2569,13 +2569,13 @@ body {
     url('assets/img/homeHero.png') center/cover no-repeat,
     radial-gradient(ellipse 600px 400px at 30% 20%, rgba(157,175,255,.08) 0%, transparent 70%),
     radial-gradient(ellipse 500px 300px at 70% 60%, rgba(168,230,207,.06) 0%, transparent 70%);
-  opacity: 0.5;
-  filter: brightness(0.85) contrast(1.1);
+  opacity: 0.85;
+  filter: brightness(1.05) contrast(1.05) saturate(1.1);
 }
 
 [data-theme="light"] .hero::after {
   background:
-    rgba(0, 0, 0, 0.3),
+    rgba(240, 242, 245, 0.1),
     linear-gradient(to bottom, transparent 65%, var(--deep) 100%);
 }
 
@@ -3893,14 +3893,6 @@ body {
 
 [data-theme="light"] .hero {
   background: linear-gradient(180deg, var(--deep) 0%, var(--ocean) 100%);
-}
-
-[data-theme="light"] .hero::before {
-  background: radial-gradient(ellipse 600px 400px at 50% 50%, rgba(157, 175, 255, 0.08) 0%, transparent 70%);
-}
-
-[data-theme="light"] .hero::after {
-  background: radial-gradient(ellipse 400px 300px at 30% 60%, rgba(168, 230, 207, 0.05) 0%, transparent 70%);
 }
 
 [data-theme="light"] .hero-title {
