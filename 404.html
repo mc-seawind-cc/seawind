@@ -19,376 +19,282 @@
       overflow: hidden;
       font-family: 'Noto Sans TC', system-ui, sans-serif;
       background: #060a14;
-      cursor: default;
+      user-select: none;
     }
 
-    .scene {
-      position: fixed;
-      inset: 0;
-    }
+    .scene { position: fixed; inset: 0; }
 
-    /* ═══ Sky ═══ */
     .sky {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(180deg, #050810 0%, #0a1225 25%, #0e1c38 50%, #0c1a30 100%);
     }
-
-    .star {
-      position: absolute;
-      background: #fff;
-      border-radius: 50%;
-    }
-
+    .star { position: absolute; background: #fff; border-radius: 50%; }
     .moon {
-      position: absolute;
-      top: 14%;
-      right: 20%;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
+      position: absolute; top: 14%; right: 20%;
+      width: 64px; height: 64px; border-radius: 50%;
       background: radial-gradient(circle at 35% 35%, #fffce8, #f0d878, #c49a30);
-      box-shadow: 0 0 30px 10px rgba(240, 216, 120, 0.1), 0 0 80px 30px rgba(240, 216, 120, 0.04);
+      box-shadow: 0 0 30px 10px rgba(240,216,120,0.1), 0 0 80px 30px rgba(240,216,120,0.04);
     }
 
-    /* ═══ Ocean ═══ */
     .ocean {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 45%;
+      position: absolute; bottom: 0; left: 0; right: 0; height: 45%;
     }
-
     .ocean-body {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg,
-        rgba(10, 18, 37, 0) 0%,
-        rgba(8, 16, 32, 0.8) 15%,
-        rgba(6, 14, 28, 0.95) 40%,
-        #060e1c 100%
-      );
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,18,37,0) 0%, rgba(8,16,32,0.8) 15%, rgba(6,14,28,0.95) 40%, #060e1c 100%);
     }
-
-    .wave-svg {
-      position: absolute;
-      left: 0;
-      width: 200%;
-      pointer-events: none;
-    }
+    .wave-svg { position: absolute; left: 0; width: 200%; pointer-events: none; }
     .wave-svg.w1 { top: 0%; height: 40%; animation: drift 16s linear infinite; }
     .wave-svg.w2 { top: 8%; height: 50%; animation: drift 22s linear infinite reverse; }
     .wave-svg.w3 { top: 18%; height: 60%; animation: drift 12s linear infinite; }
     .wave-svg.w4 { top: 30%; height: 70%; animation: drift 28s linear infinite reverse; }
-    @keyframes drift {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     .horizon {
-      position: absolute;
-      bottom: 42%;
-      left: 0; right: 0;
-      height: 40px;
-      background: linear-gradient(180deg, transparent, rgba(87, 138, 255, 0.04), transparent);
+      position: absolute; bottom: 42%; left: 0; right: 0; height: 40px;
+      background: linear-gradient(180deg, transparent, rgba(87,138,255,0.04), transparent);
       pointer-events: none;
     }
-
     .reflection {
-      position: absolute;
-      bottom: 38%;
-      right: calc(20% + 30px);
+      position: absolute; bottom: 38%; right: calc(20% + 30px);
       width: 3px;
-      background: linear-gradient(180deg, rgba(240, 216, 120, 0.2), rgba(240, 216, 120, 0.05), transparent);
-      border-radius: 2px;
-      filter: blur(2px);
+      background: linear-gradient(180deg, rgba(240,216,120,0.2), rgba(240,216,120,0.05), transparent);
+      border-radius: 2px; filter: blur(2px);
       animation: refl 5s ease-in-out infinite alternate;
     }
-    @keyframes refl {
-      0% { height: 60px; opacity: 0.5; }
-      100% { height: 100px; opacity: 0.2; }
-    }
+    @keyframes refl { 0% { height: 60px; opacity: 0.5; } 100% { height: 100px; opacity: 0.2; } }
 
     /* ═══ Content ═══ */
     .content {
-      position: absolute;
-      top: 38%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-      text-align: center;
+      position: absolute; top: 36%; left: 50%; transform: translate(-50%, -50%);
+      z-index: 10; text-align: center; width: 90%; max-width: 500px;
     }
-
     .code {
       font-family: 'Noto Serif TC', serif;
-      font-size: clamp(5rem, 16vw, 10rem);
-      font-weight: 700;
-      line-height: 1;
-      letter-spacing: 0.06em;
+      font-size: clamp(5rem, 16vw, 10rem); font-weight: 700;
+      line-height: 1; letter-spacing: 0.06em;
       background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(157,175,255,0.4) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
       margin-bottom: 1rem;
     }
-
     .title {
-      font-size: clamp(0.95rem, 2vw, 1.3rem);
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.75);
-      letter-spacing: 0.18em;
-      margin-bottom: 0.5rem;
+      font-size: clamp(0.95rem, 2vw, 1.3rem); font-weight: 600;
+      color: rgba(255,255,255,0.75); letter-spacing: 0.18em; margin-bottom: 0.5rem;
     }
-
     .desc {
-      font-size: clamp(0.78rem, 1.2vw, 0.88rem);
-      color: rgba(255, 255, 255, 0.3);
-      line-height: 2;
-      max-width: 300px;
-      margin: 0 auto 1.5rem;
-      font-weight: 300;
+      font-size: clamp(0.78rem, 1.2vw, 0.88rem); color: rgba(255,255,255,0.3);
+      line-height: 2; max-width: 300px; margin: 0 auto 1.5rem; font-weight: 300;
     }
-
-    .btns {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
-
+    .btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-      font-family: inherit;
-      transition: all 0.25s ease;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 22px; border-radius: 8px; font-size: 0.85rem; font-weight: 600;
+      text-decoration: none; font-family: inherit; transition: all 0.25s ease;
     }
     .btn-main {
-      background: rgba(87, 138, 255, 0.18);
-      border: 1px solid rgba(87, 138, 255, 0.25);
+      background: rgba(87,138,255,0.18); border: 1px solid rgba(87,138,255,0.25); color: #b3c8ff;
+    }
+    .btn-main:hover { background: rgba(87,138,255,0.3); border-color: rgba(87,138,255,0.45); transform: translateY(-1px); }
+    .btn-sub { background: transparent; border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); }
+    .btn-sub:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); transform: translateY(-1px); }
+
+    /* ═══ Game Menu ═══ */
+    .game-menu {
+      display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    }
+    .game-btn {
+      padding: 8px 16px; border-radius: 20px;
+      background: rgba(157,175,255,0.08); border: 1px solid rgba(157,175,255,0.12);
+      color: rgba(255,255,255,0.5); font-size: 0.78rem; font-weight: 500;
+      cursor: pointer; font-family: inherit; transition: all 0.2s ease;
+    }
+    .game-btn:hover, .game-btn.active {
+      background: rgba(157,175,255,0.18); border-color: rgba(157,175,255,0.3);
       color: #b3c8ff;
     }
-    .btn-main:hover {
-      background: rgba(87, 138, 255, 0.3);
-      border-color: rgba(87, 138, 255, 0.45);
-      transform: translateY(-1px);
-    }
-    .btn-sub {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: rgba(255, 255, 255, 0.4);
-    }
-    .btn-sub:hover {
-      border-color: rgba(255, 255, 255, 0.2);
-      color: rgba(255, 255, 255, 0.6);
-      transform: translateY(-1px);
-    }
 
-    /* ═══ Mini Game ═══ */
-    .game-hint {
-      font-size: 0.72rem;
-      color: rgba(255, 255, 255, 0.2);
-      letter-spacing: 0.1em;
-      cursor: pointer;
-      transition: color 0.3s ease;
-      user-select: none;
+    /* ═══ Game Container ═══ */
+    .game-container {
+      position: absolute; bottom: 45%; left: 50%; transform: translateX(-50%);
+      z-index: 20; display: none; width: 90%; max-width: 420px;
     }
-    .game-hint:hover { color: rgba(255, 255, 255, 0.4); }
+    .game-container.active { display: block; animation: game-in 0.3s ease-out; }
+    @keyframes game-in { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
 
-    .game-ui {
-      position: absolute;
-      bottom: 46%;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 20;
-      display: none;
-      align-items: center;
-      gap: 20px;
-      padding: 10px 24px;
-      background: rgba(6, 14, 28, 0.8);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(157, 175, 255, 0.15);
-      border-radius: 100px;
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.7);
+    /* Game HUD */
+    .game-hud {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 16px; margin-bottom: 10px;
+      background: rgba(6,14,28,0.85); backdrop-filter: blur(10px);
+      border: 1px solid rgba(157,175,255,0.12); border-radius: 100px;
+      font-size: 0.8rem; color: rgba(255,255,255,0.6);
     }
-    .game-ui.active { display: flex; }
-
-    .game-score {
-      color: var(--foam, #a8e6cf);
-      font-weight: 700;
-      font-variant-numeric: tabular-nums;
-      min-width: 24px;
-      text-align: center;
+    .hud-score { color: #a8e6cf; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .hud-timer { color: #9dafff; font-variant-numeric: tabular-nums; }
+    .hud-close {
+      background: none; border: none; color: rgba(255,255,255,0.3);
+      cursor: pointer; font-size: 0.75rem; font-family: inherit; padding: 2px 8px;
+      border-radius: 4px; transition: all 0.2s;
     }
+    .hud-close:hover { color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.05); }
 
-    .game-timer {
-      color: var(--sky, #9dafff);
-      font-variant-numeric: tabular-nums;
+    /* ═══ Fishing Game ═══ */
+    .fish-zone {
+      position: relative; height: 120px; overflow: hidden;
+      border-radius: 12px; background: rgba(6,14,28,0.3);
     }
-
-    .game-stop {
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.4);
-      cursor: pointer;
-      font-size: 0.78rem;
-      font-family: inherit;
-      padding: 2px 8px;
-      border-radius: 4px;
-      transition: all 0.2s;
-    }
-    .game-stop:hover { color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.05); }
-
     .fish {
-      position: absolute;
-      z-index: 15;
-      cursor: pointer;
-      font-size: 1.6rem;
+      position: absolute; font-size: 1.6rem; cursor: pointer;
+      user-select: none; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
       transition: transform 0.1s;
-      user-select: none;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
-      animation: fish-swim linear forwards;
     }
     .fish:hover { transform: scale(1.3); }
-    .fish.caught {
-      animation: fish-caught 0.4s ease-out forwards !important;
-      pointer-events: none;
-    }
-    @keyframes fish-swim {
-      from { opacity: 0; }
-      5% { opacity: 1; }
-      95% { opacity: 1; }
-      to { opacity: 0; }
-    }
-    @keyframes fish-caught {
+    .fish.caught { animation: fish-pop 0.4s ease-out forwards; pointer-events: none; }
+    @keyframes fish-pop {
       0% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.8) translateY(-20px); opacity: 0.8; }
       100% { transform: scale(0) translateY(-40px); opacity: 0; }
     }
-
-    /* Splash effect */
     .splash {
-      position: absolute;
-      z-index: 14;
-      pointer-events: none;
-      font-size: 1rem;
-      animation: splash-pop 0.6s ease-out forwards;
+      position: absolute; pointer-events: none; font-size: 1rem;
+      animation: splash-out 0.5s ease-out forwards;
     }
-    @keyframes splash-pop {
+    @keyframes splash-out {
       0% { transform: scale(0.5) translateY(0); opacity: 1; }
       100% { transform: scale(1.5) translateY(-15px); opacity: 0; }
     }
 
-    /* Result */
+    /* ═══ Memory Game ═══ */
+    .memory-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+      padding: 12px; background: rgba(6,14,28,0.5); border-radius: 12px;
+      border: 1px solid rgba(157,175,255,0.08);
+    }
+    .mem-card {
+      aspect-ratio: 1; border-radius: 8px; cursor: pointer;
+      background: rgba(157,175,255,0.1); border: 1px solid rgba(157,175,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; transition: all 0.25s ease;
+      position: relative; overflow: hidden;
+    }
+    .mem-card:hover { background: rgba(157,175,255,0.18); }
+    .mem-card .front, .mem-card .back {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .mem-card .front { transform: rotateY(90deg); opacity: 0; }
+    .mem-card .back { color: rgba(157,175,255,0.3); font-size: 1.2rem; }
+    .mem-card.flipped .front { transform: rotateY(0); opacity: 1; }
+    .mem-card.flipped .back { transform: rotateY(-90deg); opacity: 0; }
+    .mem-card.matched {
+      background: rgba(168,230,207,0.15); border-color: rgba(168,230,207,0.3);
+      pointer-events: none;
+    }
+    .mem-card.matched .front { animation: match-pulse 0.5s ease; }
+    @keyframes match-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* ═══ Star Catch Game ═══ */
+    .star-field {
+      position: relative; height: 180px; overflow: hidden;
+      border-radius: 12px; background: rgba(6,14,28,0.3);
+    }
+    .falling-star {
+      position: absolute; font-size: 1.4rem; cursor: pointer;
+      animation: fall linear forwards; user-select: none;
+      filter: drop-shadow(0 0 6px rgba(255,255,200,0.5));
+      transition: transform 0.1s;
+    }
+    .falling-star:hover { transform: scale(1.4); }
+    .falling-star.caught { animation: star-caught 0.3s ease-out forwards !important; pointer-events: none; }
+    @keyframes fall { from { top: -30px; } to { top: 200px; } }
+    @keyframes star-caught {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(2) translateY(-10px); opacity: 0; }
+    }
+
+    /* ═══ Result ═══ */
     .game-result {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 25;
-      text-align: center;
-      padding: 24px 36px;
-      background: rgba(6, 14, 28, 0.92);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(157, 175, 255, 0.2);
-      border-radius: 16px;
-      display: none;
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%); z-index: 25; text-align: center;
+      padding: 24px 36px; background: rgba(6,14,28,0.92);
+      backdrop-filter: blur(16px); border: 1px solid rgba(157,175,255,0.2);
+      border-radius: 16px; display: none; min-width: 200px;
     }
     .game-result.active { display: block; animation: result-in 0.3s ease-out; }
-    @keyframes result-in {
-      from { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
-      to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    }
+    @keyframes result-in { from { transform: translate(-50%,-50%) scale(0.9); opacity: 0; } to { transform: translate(-50%,-50%) scale(1); opacity: 1; } }
     .result-emoji { font-size: 2rem; margin-bottom: 8px; }
-    .result-score { font-size: 1.8rem; font-weight: 800; color: var(--foam, #a8e6cf); margin-bottom: 4px; }
+    .result-score { font-size: 1.8rem; font-weight: 800; color: #a8e6cf; margin-bottom: 4px; }
     .result-text { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
     .result-btn {
-      padding: 8px 20px;
-      border-radius: 8px;
-      background: rgba(87, 138, 255, 0.2);
-      border: 1px solid rgba(87, 138, 255, 0.3);
-      color: #b3c8ff;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      transition: all 0.2s;
+      padding: 8px 20px; border-radius: 8px;
+      background: rgba(87,138,255,0.2); border: 1px solid rgba(87,138,255,0.3);
+      color: #b3c8ff; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; font-family: inherit; transition: all 0.2s;
     }
-    .result-btn:hover { background: rgba(87, 138, 255, 0.35); }
+    .result-btn:hover { background: rgba(87,138,255,0.35); }
 
-    /* ═══ Responsive ═══ */
     @media (max-width: 768px) {
       .moon { width: 44px; height: 44px; top: 10%; right: 12%; }
-      .content { top: 35%; }
-      .game-ui { bottom: 50%; padding: 8px 16px; gap: 14px; font-size: 0.78rem; }
+      .content { top: 32%; }
+      .memory-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 8px; }
+      .mem-card { font-size: 1.2rem; }
+      .game-container { bottom: 48%; }
     }
   </style>
 </head>
 <body>
   <div class="scene">
-    <div class="sky" id="sky">
-      <div class="moon"></div>
-    </div>
+    <div class="sky" id="sky"><div class="moon"></div></div>
     <div class="reflection"></div>
     <div class="horizon"></div>
-    <div class="ocean" id="ocean">
+    <div class="ocean">
       <div class="ocean-body"></div>
-      <svg class="wave-svg w1" viewBox="0 0 2880 120" preserveAspectRatio="none">
-        <path d="M0,40 Q360,80 720,40 Q1080,0 1440,40 Q1800,80 2160,40 Q2520,0 2880,40 L2880,120 L0,120Z" fill="rgba(10,18,37,0.5)"/>
-      </svg>
-      <svg class="wave-svg w2" viewBox="0 0 2880 120" preserveAspectRatio="none">
-        <path d="M0,60 Q480,20 960,60 Q1440,100 1920,60 Q2400,20 2880,60 L2880,120 L0,120Z" fill="rgba(8,16,32,0.6)"/>
-      </svg>
-      <svg class="wave-svg w3" viewBox="0 0 2880 120" preserveAspectRatio="none">
-        <path d="M0,50 Q360,90 720,50 Q1080,10 1440,50 Q1800,90 2160,50 Q2520,10 2880,50 L2880,120 L0,120Z" fill="rgba(6,14,28,0.8)"/>
-      </svg>
-      <svg class="wave-svg w4" viewBox="0 0 2880 120" preserveAspectRatio="none">
-        <path d="M0,70 Q480,40 960,70 Q1440,100 1920,70 Q2400,40 2880,70 L2880,120 L0,120Z" fill="#060e1c"/>
-      </svg>
+      <svg class="wave-svg w1" viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0,40 Q360,80 720,40 Q1080,0 1440,40 Q1800,80 2160,40 Q2520,0 2880,40 L2880,120 L0,120Z" fill="rgba(10,18,37,0.5)"/></svg>
+      <svg class="wave-svg w2" viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0,60 Q480,20 960,60 Q1440,100 1920,60 Q2400,20 2880,60 L2880,120 L0,120Z" fill="rgba(8,16,32,0.6)"/></svg>
+      <svg class="wave-svg w3" viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0,50 Q360,90 720,50 Q1080,10 1440,50 Q1800,90 2160,50 Q2520,10 2880,50 L2880,120 L0,120Z" fill="rgba(6,14,28,0.8)"/></svg>
+      <svg class="wave-svg w4" viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0,70 Q480,40 960,70 Q1440,100 1920,70 Q2400,40 2880,70 L2880,120 L0,120Z" fill="#060e1c"/></svg>
     </div>
 
-    <!-- Fish zone (invisible, for spawning) -->
-    <div id="fishZone" style="position:absolute;bottom:42%;left:0;right:0;height:15%;z-index:12;pointer-events:none;"></div>
-
-    <!-- Game UI -->
-    <div class="game-ui" id="gameUI">
-      <span>🐟 <span class="game-score" id="gameScore">0</span></span>
-      <span>⏱ <span class="game-timer" id="gameTimer">30</span>s</span>
-      <button class="game-stop" onclick="endGame()">結束</button>
+    <!-- Game Container -->
+    <div class="game-container" id="gameContainer">
+      <div class="game-hud">
+        <span id="gameInfo">🐟 <span class="hud-score" id="gameScore">0</span></span>
+        <span class="hud-timer" id="gameTimer">⏱ 30s</span>
+        <button class="hud-close" onclick="closeGame()">✕</button>
+      </div>
+      <div id="gameArea"></div>
     </div>
 
     <!-- Game Result -->
     <div class="game-result" id="gameResult">
       <div class="result-emoji" id="resultEmoji">🐟</div>
       <div class="result-score" id="resultScore">0</div>
-      <div class="result-text" id="resultText">條魚</div>
-      <button class="result-btn" onclick="startGame()">再玩一次</button>
+      <div class="result-text" id="resultText"></div>
+      <button class="result-btn" id="resultBtn">再玩一次</button>
     </div>
 
-    <!-- Content -->
+    <!-- Main Content -->
     <div class="content" id="mainContent">
       <div class="code">404</div>
       <h1 class="title">您已航向未知的海域</h1>
       <p class="desc">看來這片海域沒有陸地。<br>別擔心，讓風帶你回到正確的航線。</p>
       <div class="btns">
-        <a href="首頁.html" class="btn btn-main">返回首頁</a>
+        <a href="首頁" class="btn btn-main">返回首頁</a>
         <a href="https://discord.gg/HdS2HrJEH7" target="_blank" class="btn btn-sub">加入社群</a>
       </div>
-      <span class="game-hint" onclick="startGame()">🎣 點擊開始釣魚小遊戲</span>
+      <div class="game-menu">
+        <button class="game-btn" onclick="startGame('fishing')">🎣 釣魚</button>
+        <button class="game-btn" onclick="startGame('memory')">🃏 翻牌</button>
+        <button class="game-btn" onclick="startGame('stars')">⭐ 打星星</button>
+      </div>
     </div>
   </div>
 
   <script>
-    // Stars
+    // ═══ Stars ═══
     const sky = document.getElementById('sky');
     for (let i = 0; i < 100; i++) {
       const s = document.createElement('div');
@@ -396,13 +302,10 @@
       s.style.left = Math.random() * 100 + '%';
       s.style.top = Math.random() * 55 + '%';
       const sz = 0.5 + Math.random() * 1.5;
-      s.style.width = sz + 'px';
-      s.style.height = sz + 'px';
+      s.style.width = sz + 'px'; s.style.height = sz + 'px';
       s.style.opacity = 0.15 + Math.random() * 0.6;
       sky.appendChild(s);
     }
-
-    // Shooting star
     function shoot() {
       const s = document.createElement('div');
       s.style.cssText = 'position:absolute;width:80px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0.7),transparent);border-radius:1px;z-index:2;';
@@ -418,106 +321,195 @@
     }
     setInterval(() => { if (Math.random() > 0.5) shoot(); }, 5000);
 
-    // ═══ Fishing Mini Game ═══
-    const FISH_TYPES = ['🐟', '🐠', '🐡', '🦈', '🐙', '🦑', '🦐', '🐬', '🐳', '🐋'];
-    let gameActive = false, score = 0, timer = 0, timerInterval = null, spawnInterval = null;
+    // ═══ Game Engine ═══
+    const FISH = ['🐟','🐠','🐡','🦈','🐙','🦑','🦐','🐬','🐳','🐋'];
+    const SEA = ['🐙','🦑','🦐','🐡','🐠','🐟','🐬','🐳','🦀','🦞','🐚','🪸'];
+    const STARS = ['⭐','🌟','💫','✨','🌠'];
 
-    function startGame() {
-      // Reset
-      gameActive = true; score = 0; timer = 30;
-      document.getElementById('gameScore').textContent = '0';
-      document.getElementById('gameTimer').textContent = '30';
-      document.getElementById('gameResult').classList.remove('active');
-      document.getElementById('gameUI').classList.add('active');
+    let currentGame = null, score = 0, timeLeft = 0;
+    let timerHandle = null, spawnHandle = null;
+
+    function startGame(type) {
+      closeGame();
+      currentGame = type;
+      score = 0; timeLeft = type === 'memory' ? 60 : 30;
+
       document.getElementById('mainContent').style.display = 'none';
+      document.getElementById('gameResult').classList.remove('active');
+      const gc = document.getElementById('gameContainer');
+      gc.classList.add('active');
+      document.getElementById('gameScore').textContent = '0';
+      document.getElementById('gameTimer').textContent = '⏱ ' + timeLeft + 's';
 
-      // Clear old fish
-      document.querySelectorAll('.fish, .splash').forEach(e => e.remove());
+      const area = document.getElementById('gameArea');
+      area.innerHTML = '';
 
-      // Timer
-      clearInterval(timerInterval);
-      timerInterval = setInterval(() => {
-        timer--;
-        document.getElementById('gameTimer').textContent = timer;
-        if (timer <= 0) endGame();
+      if (type === 'fishing') initFishing(area);
+      else if (type === 'memory') initMemory(area);
+      else if (type === 'stars') initStars(area);
+
+      clearInterval(timerHandle);
+      timerHandle = setInterval(() => {
+        timeLeft--;
+        document.getElementById('gameTimer').textContent = '⏱ ' + timeLeft + 's';
+        if (timeLeft <= 0) endGame();
       }, 1000);
-
-      // Spawn fish
-      clearInterval(spawnInterval);
-      spawnInterval = setInterval(spawnFish, 600);
-      spawnFish();
     }
 
     function endGame() {
-      gameActive = false;
-      clearInterval(timerInterval);
-      clearInterval(spawnInterval);
-      document.querySelectorAll('.fish').forEach(e => e.remove());
-      document.getElementById('gameUI').classList.remove('active');
+      clearInterval(timerHandle);
+      clearInterval(spawnHandle);
+      document.getElementById('gameContainer').classList.remove('active');
 
-      // Result
-      const emoji = score >= 20 ? '🏆' : score >= 12 ? '🎉' : score >= 5 ? '🐟' : '🌊';
-      const text = score >= 20 ? '釣魚大師！' : score >= 12 ? '收穫滿滿！' : score >= 5 ? '還不錯喔' : '繼續加油～';
+      const emoji = currentGame === 'fishing'
+        ? (score >= 15 ? '🏆' : score >= 8 ? '🎉' : score >= 3 ? '🐟' : '🌊')
+        : currentGame === 'memory'
+        ? (score >= 8 ? '🧠' : score >= 4 ? '🃏' : '💪')
+        : (score >= 20 ? '🌟' : score >= 10 ? '⭐' : '💫');
+
+      const text = currentGame === 'fishing'
+        ? (score >= 15 ? '釣魚大師！' : score >= 8 ? '收穫滿滿！' : score >= 3 ? '還不錯喔' : '繼續加油～')
+        : currentGame === 'memory'
+        ? (score >= 8 ? '記憶天才！' : score >= 4 ? '記憶力不錯' : '再試試看')
+        : (score >= 20 ? '星空獵手！' : score >= 10 ? '抓到不少星星' : '繼續努力～');
+
       document.getElementById('resultEmoji').textContent = emoji;
       document.getElementById('resultScore').textContent = score;
       document.getElementById('resultText').textContent = text;
+      document.getElementById('resultBtn').onclick = () => startGame(currentGame);
       document.getElementById('gameResult').classList.add('active');
     }
 
+    function closeGame() {
+      clearInterval(timerHandle);
+      clearInterval(spawnHandle);
+      document.querySelectorAll('.fish, .splash, .falling-star').forEach(e => e.remove());
+      document.getElementById('gameContainer').classList.remove('active');
+      document.getElementById('gameResult').classList.remove('active');
+      document.getElementById('mainContent').style.display = '';
+      currentGame = null;
+    }
+
+    // ═══ Fishing ═══
+    function initFishing(area) {
+      area.innerHTML = '<div class="fish-zone" id="fishZone"></div>';
+      document.getElementById('gameInfo').innerHTML = '🐟 <span class="hud-score" id="gameScore">0</span>';
+      clearInterval(spawnHandle);
+      spawnHandle = setInterval(spawnFish, 600);
+      spawnFish();
+    }
+
     function spawnFish() {
-      if (!gameActive) return;
+      if (currentGame !== 'fishing') return;
       const zone = document.getElementById('fishZone');
+      if (!zone) return;
       const fish = document.createElement('div');
       fish.className = 'fish';
-      fish.textContent = FISH_TYPES[Math.floor(Math.random() * FISH_TYPES.length)];
-
-      // Random direction (left-to-right or right-to-left)
+      fish.textContent = FISH[Math.floor(Math.random() * FISH.length)];
       const goRight = Math.random() > 0.5;
-      const duration = 3000 + Math.random() * 4000;
-      const y = 10 + Math.random() * 70; // % within zone
-
+      const dur = 2500 + Math.random() * 3000;
+      const y = 10 + Math.random() * 70;
       fish.style.top = y + '%';
-      fish.style.fontSize = (1.2 + Math.random() * 1) + 'rem';
+      fish.style.fontSize = (1.2 + Math.random() * 0.8) + 'rem';
 
-      if (goRight) {
-        fish.style.left = '-40px';
-        fish.style.animation = `fish-swim ${duration}ms linear forwards`;
-        fish.animate([
-          { left: '-40px' },
-          { left: (window.innerWidth + 40) + 'px' }
-        ], { duration, easing: 'linear', fill: 'forwards' });
-      } else {
-        fish.style.right = '-40px';
-        fish.style.animation = `fish-swim ${duration}ms linear forwards`;
-        fish.style.transform = 'scaleX(-1)';
-        fish.animate([
-          { right: '-40px' },
-          { right: (window.innerWidth + 40) + 'px' }
-        ], { duration, easing: 'linear', fill: 'forwards' });
-      }
+      const keyframes = goRight
+        ? [{ left: '-40px' }, { left: (zone.offsetWidth + 40) + 'px' }]
+        : [{ right: '-40px' }, { right: (zone.offsetWidth + 40) + 'px' }];
+      fish.style.transform = goRight ? '' : 'scaleX(-1)';
+      fish.animate(keyframes, { duration: dur, easing: 'linear', fill: 'forwards' });
 
-      fish.addEventListener('click', () => {
-        if (!gameActive || fish.classList.contains('caught')) return;
+      fish.onclick = () => {
+        if (fish.classList.contains('caught')) return;
         fish.classList.add('caught');
         score++;
         document.getElementById('gameScore').textContent = score;
-
-        // Splash effect
-        const splash = document.createElement('div');
-        splash.className = 'splash';
-        splash.textContent = '💦';
-        splash.style.left = fish.style.left || 'auto';
-        splash.style.right = fish.style.right || 'auto';
-        splash.style.top = fish.style.top;
-        zone.appendChild(splash);
-        setTimeout(() => splash.remove(), 600);
-
+        const sp = document.createElement('div');
+        sp.className = 'splash'; sp.textContent = '💦';
+        sp.style.left = fish.getBoundingClientRect().left - zone.getBoundingClientRect().left + 'px';
+        sp.style.top = fish.style.top;
+        zone.appendChild(sp);
+        setTimeout(() => sp.remove(), 500);
         setTimeout(() => fish.remove(), 400);
-      });
-
-      zone.style.pointerEvents = 'auto';
+      };
       zone.appendChild(fish);
-      setTimeout(() => { if (!fish.classList.contains('caught')) fish.remove(); }, duration);
+      setTimeout(() => { if (!fish.classList.contains('caught')) fish.remove(); }, dur);
+    }
+
+    // ═══ Memory ═══
+    function initMemory(area) {
+      document.getElementById('gameInfo').innerHTML = '🃏 配對 <span class="hud-score" id="gameScore">0</span>';
+      document.getElementById('gameTimer').textContent = '⏱ 60s';
+      timeLeft = 60;
+
+      const pairs = SEA.slice(0, 8);
+      const cards = [...pairs, ...pairs].sort(() => Math.random() - 0.5);
+
+      const grid = document.createElement('div');
+      grid.className = 'memory-grid';
+
+      let flipped = [], matched = 0, locked = false;
+
+      cards.forEach((emoji, i) => {
+        const card = document.createElement('div');
+        card.className = 'mem-card';
+        card.innerHTML = `<div class="back">?</div><div class="front">${emoji}</div>`;
+        card.onclick = () => {
+          if (locked || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+          card.classList.add('flipped');
+          flipped.push(card);
+
+          if (flipped.length === 2) {
+            locked = true;
+            const [a, b] = flipped;
+            if (a.querySelector('.front').textContent === b.querySelector('.front').textContent) {
+              a.classList.add('matched'); b.classList.add('matched');
+              matched += 2; score = matched;
+              document.getElementById('gameScore').textContent = score;
+              flipped = []; locked = false;
+              if (matched === cards.length) endGame();
+            } else {
+              setTimeout(() => {
+                a.classList.remove('flipped'); b.classList.remove('flipped');
+                flipped = []; locked = false;
+              }, 800);
+            }
+          }
+        };
+        grid.appendChild(card);
+      });
+      area.appendChild(grid);
+    }
+
+    // ═══ Star Catch ═══
+    function initStars(area) {
+      area.innerHTML = '<div class="star-field" id="starField"></div>';
+      document.getElementById('gameInfo').innerHTML = '⭐ <span class="hud-score" id="gameScore">0</span>';
+      clearInterval(spawnHandle);
+      spawnHandle = setInterval(spawnStar, 500);
+      spawnStar();
+    }
+
+    function spawnStar() {
+      if (currentGame !== 'stars') return;
+      const field = document.getElementById('starField');
+      if (!field) return;
+      const star = document.createElement('div');
+      star.className = 'falling-star';
+      star.textContent = STARS[Math.floor(Math.random() * STARS.length)];
+      star.style.left = (5 + Math.random() * 85) + '%';
+      const dur = 1500 + Math.random() * 2000;
+      star.style.animationDuration = dur + 'ms';
+
+      star.onclick = () => {
+        if (star.classList.contains('caught')) return;
+        star.classList.add('caught');
+        score++;
+        document.getElementById('gameScore').textContent = score;
+        setTimeout(() => star.remove(), 300);
+      };
+
+      field.appendChild(star);
+      setTimeout(() => { if (!star.classList.contains('caught')) star.remove(); }, dur);
     }
   </script>
 </body>
