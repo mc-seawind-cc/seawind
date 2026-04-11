@@ -640,9 +640,7 @@
       "id": "活動#0029(舊)",
       "title": "第四屆攝影大賽結束！",
       "content": "",
-      "images": [
-        "assets/announcements/evt_活動0029舊_4aa53f05.webp"
-      ]
+      "images": []
     },
     {
       "date": "114.09.01",
@@ -804,9 +802,7 @@
       "id": "活動#0026(舊)",
       "title": "第二屆攝影大賽結束！",
       "content": "",
-      "images": [
-        "assets/announcements/evt_活動0026舊_3d3eecaf.webp"
-      ]
+      "images": []
     },
     {
       "date": "114.07.29",
@@ -1308,9 +1304,7 @@
       "id": "活動#0020(舊)",
       "title": "RICH",
       "content": "",
-      "images": [
-        "assets/announcements/evt_活動0020舊_b7d0a391.webp"
-      ]
+      "images": []
     },
     {
       "date": "114.05.02",
@@ -1318,10 +1312,7 @@
       "id": "活動#0027(舊)",
       "title": "海風誕辰系列活動",
       "content": "",
-      "images": [
-        "assets/announcements/evt_活動0027舊_330f3ae1.webp",
-        "assets/announcements/evt_活動0027舊_77ab7834.webp"
-      ]
+      "images": []
     },
     {
       "date": "114.05.01",
@@ -1448,6 +1439,14 @@
       ]
     },
     {
+      "date": "114.04.17",
+      "tag": "公告",
+      "id": "公投#0005(舊)",
+      "title": "顯示頻道",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.04.16",
       "tag": "更新",
       "id": "#0173",
@@ -1541,6 +1540,14 @@
       "images": []
     },
     {
+      "date": "114.04.10",
+      "tag": "公告",
+      "id": "公投#0004(舊)",
+      "title": "格式選擇",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.04.08",
       "tag": "更新",
       "id": "#0168",
@@ -1562,10 +1569,7 @@
       "id": "活動#0018(舊)",
       "title": "紅蓮煉獄",
       "content": "",
-      "images": [
-        "assets/announcements/evt_活動0018舊_8e33217a.webp",
-        "assets/announcements/evt_活動0018舊_bea939a2.webp"
-      ]
+      "images": []
     },
     {
       "date": "114.04.06",
@@ -1610,9 +1614,7 @@
       "id": "活動#0016(舊)",
       "title": "懷舊之旅準備啟程！",
       "content": "",
-      "images": [
-        "assets/announcements/evt_活動0016舊_445743de.webp"
-      ]
+      "images": []
     },
     {
       "date": "114.04.04",
@@ -1620,10 +1622,7 @@
       "id": "活動#0017(舊)",
       "title": "MCU聯合盃參賽資訊",
       "content": "",
-      "images": [
-        "assets/announcements/evt_活動0017舊_04a8ff60.webp",
-        "assets/announcements/evt_活動0017舊_d4f278bc.webp"
-      ]
+      "images": []
     },
     {
       "date": "114.04.03",
@@ -1859,9 +1858,7 @@
       "id": "活動#0013(舊)",
       "title": "第一屆MCU聯合盃MBR麥塊大逃殺競賽",
       "content": "",
-      "images": [
-        "assets/announcements/evt_活動0013舊_c270274b.webp"
-      ]
+      "images": []
     },
     {
       "date": "114.03.19",
@@ -2097,10 +2094,7 @@
       "id": "活動#0012(舊)",
       "title": "獵殺時刻",
       "content": "@活動通知",
-      "images": [
-        "assets/announcements/evt_活動0012舊_040059d2.webp",
-        "assets/announcements/evt_活動0012舊_ef36ff86.webp"
-      ]
+      "images": []
     },
     {
       "date": "114.02.24",
@@ -2588,6 +2582,14 @@
       "images": []
     },
     {
+      "date": "113.12.15",
+      "tag": "公告",
+      "id": "公投#0003(舊)",
+      "title": "副本掉落物選擇",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "113.12.14",
       "tag": "更新",
       "id": "",
@@ -2996,6 +2998,14 @@
       "images": []
     },
     {
+      "date": "113.11.06",
+      "tag": "公告",
+      "id": "公投#0002(舊)",
+      "title": "更多進度系統",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "113.11.03",
       "tag": "更新",
       "id": "#0045",
@@ -3334,10 +3344,7 @@
       "id": "活動#0003(舊)",
       "title": "岩漿尋寶大冒險！",
       "content": "[https://discord.gg/HdS2HrJEH7?event=1287710510028034059](https://discord.gg/HdS2HrJEH7?event=1287710510028034059)",
-      "images": [
-        "assets/announcements/evt_活動0003舊_ea8f43b0.webp",
-        "assets/announcements/evt_活動0003舊_c5554fd5.webp"
-      ]
+      "images": []
     },
     {
       "date": "113.09.21",
@@ -3402,9 +3409,7 @@
       "id": "活動#0001(舊)",
       "title": "別踩白塊！",
       "content": "",
-      "images": [
-        "assets/announcements/evt_活動0001舊_4c8aa6d4.webp"
-      ]
+      "images": []
     },
     {
       "date": "113.09.16",
@@ -3475,6 +3480,14 @@
       "tag": "更新",
       "id": "",
       "title": "漏洞修復",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.09.09",
+      "tag": "公告",
+      "id": "公投#0001(舊)",
+      "title": "連結後改名",
       "content": "",
       "images": []
     },
