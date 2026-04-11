@@ -54,13 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- Critical: Scroll Reveal ---
+  // --- Critical: Scroll Reveal (只觸發一次，不反覆隱藏) ---
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-      } else {
-        entry.target.classList.remove('visible');
+        revealObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
