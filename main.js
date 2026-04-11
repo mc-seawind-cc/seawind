@@ -788,6 +788,7 @@ function initPhotoGallery() {
 
   const track = document.getElementById('carouselTrack');
   const dotsContainer = document.getElementById('carouselDots');
+  if (!track || !dotsContainer) return;
   const VISIBLE = window.innerWidth >= 1400 ? 5 : window.innerWidth >= 900 ? 3 : 1;
   const INTERVAL = 4000;
   let photos = [];
