@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260411f">
+  <link rel="stylesheet" href="style.css?v=260411g">
   <link rel="stylesheet" href="music-player.css">
 </head>
 <body>
@@ -103,21 +103,26 @@
           </div>
           <span class="partner-row-badge">Discord</span>
         </a>
-        <a href="https://discord.gg/ar2cmH5wMX" target="_blank" class="partner-row">
-          <div class="partner-row-info">
-            <h3>狐緣神社 Kitsune Shrine <span class="partner-tag">免費Nitro</span></h3>
-            <p>可愛 × 互動 × 狐狸等級 × 遊戲娛樂，找屬於你的狐族朋友，度過每個暖暖的夜晚。</p>
-            <div class="partner-inline-detail">
+        <div class="partner-row-wrap">
+          <a href="https://discord.gg/ar2cmH5wMX" target="_blank" class="partner-row">
+            <div class="partner-row-info">
+              <h3>狐緣神社 Kitsune Shrine <span class="partner-tag">免費Nitro</span></h3>
+              <p>可愛 × 互動 × 狐狸等級 × 遊戲娛樂，找屬於你的狐族朋友，度過每個暖暖的夜晚。</p>
+            </div>
+            <div class="partner-badges">
+              <span class="partner-row-badge">Discord</span>
+              <button class="partner-expand-btn" aria-expanded="false" onclick="event.preventDefault();event.stopPropagation();this.closest('.partner-row-wrap').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.partner-row-wrap').classList.contains('open'))">▾</button>
+            </div>
+          </a>
+          <div class="partner-detail-dropdown">
+            <div class="partner-detail-inner">
               <strong>【特色玩法】</strong>
               <span>✦ 等級系統 × 精品抽獎 × 神社小舖</span>
               <span>✦ 專屬身分組 × 可愛貼圖 × 成就系統</span>
               <span>✦ 深夜聊天 × 免費Nitro × 免費遊戲點數</span>
             </div>
           </div>
-          <div class="partner-badges">
-            <span class="partner-row-badge">Discord</span>
-          </div>
-        </a>
+        </div>
         <a href="https://discord.gg/Zc7vwaFeyR" target="_blank" class="partner-row">
           <div class="partner-row-info">
             <h3>蔚藍幻境</h3>
@@ -140,8 +145,6 @@
     </div>
   </div>
 
-  <footer</div>
-
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -161,6 +164,6 @@
 
   <p class="page-revise">網站最後修改日期 2026.04.11 / 總計修改 <span id="deployCount">—</span> 次</p>
 
-  <script src="main.js?v=260411f"></script>
+  <script src="main.js?v=260411g"></script>
 </body>
 </html>
