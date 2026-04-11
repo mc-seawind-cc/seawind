@@ -25,6 +25,22 @@
       "images": []
     },
     {
+      "date": "115.04.10",
+      "tag": "更新",
+      "id": "#0288",
+      "title": "基岩版更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.04.08",
+      "tag": "更新",
+      "id": "#0287",
+      "title": "可進入版本調整",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "115.04.07",
       "tag": "維護",
       "id": "#0124",
@@ -49,10 +65,95 @@
       "images": []
     },
     {
+      "date": "115.04.05",
+      "tag": "更新",
+      "id": "#0284",
+      "title": "優化與機制調整",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.04.05",
+      "tag": "更新",
+      "id": "#0285",
+      "title": "多動分流二",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.04.05",
+      "tag": "更新",
+      "id": "#0286",
+      "title": "地圖加修復錯誤",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0286_8289679c.webp"
+      ]
+    },
+    {
+      "date": "115.04.04",
+      "tag": "更新",
+      "id": "#0283",
+      "title": "修理會員",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "115.04.03",
       "tag": "公告",
       "id": "#0123",
       "title": "故障公告",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.04.03",
+      "tag": "更新",
+      "id": "#0282",
+      "title": "頻道更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.04.01",
+      "tag": "更新",
+      "id": "#0280",
+      "title": "暫時更名",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0280_18367146.webp",
+        "assets/announcements/ann_0280_aac822fe.webp"
+      ]
+    },
+    {
+      "date": "115.04.01",
+      "tag": "更新",
+      "id": "#0281",
+      "title": "更新選單",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.03.30",
+      "tag": "更新",
+      "id": "#0279",
+      "title": "更新連線版本",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.03.29",
+      "tag": "更新",
+      "id": "#0278",
+      "title": "修錯",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.03.19",
+      "tag": "更新",
+      "id": "#0277",
+      "title": "一個更新",
       "content": "",
       "images": []
     },
@@ -65,6 +166,14 @@
       "images": []
     },
     {
+      "date": "115.03.16",
+      "tag": "更新",
+      "id": "#0276",
+      "title": "小ㄍㄥ新",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "115.03.14",
       "tag": "維護",
       "id": "#0121",
@@ -73,6 +182,38 @@
       "images": [
         "assets/announcements/ann_0121_29e8e63b.webp"
       ]
+    },
+    {
+      "date": "115.03.13",
+      "tag": "更新",
+      "id": "#0274",
+      "title": "巴哈招生文",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.03.13",
+      "tag": "更新",
+      "id": "#0275",
+      "title": "延遲更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.03.12",
+      "tag": "更新",
+      "id": "#0272",
+      "title": "風語茶屋",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.03.12",
+      "tag": "更新",
+      "id": "#0273",
+      "title": "邊界修復",
+      "content": "",
+      "images": []
     },
     {
       "date": "115.03.11",
@@ -101,10 +242,164 @@
       "images": []
     },
     {
+      "date": "115.03.10",
+      "tag": "更新",
+      "id": "#0271",
+      "title": "重生路牌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.03.06",
+      "tag": "更新",
+      "id": "#0269",
+      "title": "修復",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.03.06",
+      "tag": "更新",
+      "id": "#0270",
+      "title": "名條和玩家列表顯示",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.03.05",
+      "tag": "更新",
+      "id": "#0267",
+      "title": "小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.03.05",
+      "tag": "更新",
+      "id": "#0268",
+      "title": "小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0268_041f4426.webp"
+      ]
+    },
+    {
+      "date": "115.03.04",
+      "tag": "更新",
+      "id": "#0266",
+      "title": "小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0266_54a93875.webp",
+        "assets/announcements/ann_0266_21a466b1.webp",
+        "assets/announcements/ann_0266_a633b261.webp"
+      ]
+    },
+    {
+      "date": "115.03.02",
+      "tag": "更新",
+      "id": "#0265",
+      "title": "小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.02.28",
+      "tag": "更新",
+      "id": "#0264",
+      "title": "小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.02.27",
+      "tag": "更新",
+      "id": "#0263",
+      "title": "領地小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.02.26",
+      "tag": "更新",
+      "id": "#0262",
+      "title": "小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.02.19",
+      "tag": "更新",
+      "id": "#0261",
+      "title": "小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0261_8518752c.webp",
+        "assets/announcements/ann_0261_06057dc8.webp"
+      ]
+    },
+    {
+      "date": "115.02.14",
+      "tag": "更新",
+      "id": "#0260",
+      "title": "例行性小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.02.08",
+      "tag": "更新",
+      "id": "#0259",
+      "title": "小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.02.04",
+      "tag": "更新",
+      "id": "#0257",
+      "title": "領地小修復",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0257_e4367bf8.webp",
+        "assets/announcements/ann_0257_ac806b55.webp"
+      ]
+    },
+    {
+      "date": "115.02.04",
+      "tag": "更新",
+      "id": "#0258",
+      "title": "領地更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0258_8baebfe7.webp",
+        "assets/announcements/ann_0258_b1d05116.webp",
+        "assets/announcements/ann_0258_4f50363b.webp",
+        "assets/announcements/ann_0258_7a86e697.webp",
+        "assets/announcements/ann_0258_80d5481f.webp"
+      ]
+    },
+    {
+      "date": "115.01.18",
+      "tag": "更新",
+      "id": "#0256",
+      "title": "修復一些問題",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "115.01.15",
       "tag": "更新",
       "id": "#0116",
       "title": "伺服器升級 1.21.11",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "115.01.15",
+      "tag": "更新",
+      "id": "#0255",
+      "title": "伺服器升級-主更新",
       "content": "",
       "images": []
     },
@@ -127,10 +422,90 @@
       "images": []
     },
     {
+      "date": "114.12.28",
+      "tag": "更新",
+      "id": "#0254",
+      "title": "基岩版連線版本更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.12.22",
+      "tag": "更新",
+      "id": "#0253",
+      "title": "年末小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.12.07",
+      "tag": "更新",
+      "id": "#0252",
+      "title": "改善體驗",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.11.30",
+      "tag": "更新",
+      "id": "#0251",
+      "title": "新增靈魂出竅",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.11.02",
+      "tag": "更新",
+      "id": "#0250",
+      "title": "更新支援連線版本",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.10.17",
+      "tag": "更新",
+      "id": "#0249",
+      "title": "新增一些快捷指令",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.10.16",
       "tag": "更新",
       "id": "#0113",
       "title": "近期動向",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.10.14",
+      "tag": "更新",
+      "id": "#0248",
+      "title": "玻璃展示櫃小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.10.10",
+      "tag": "更新",
+      "id": "#0247",
+      "title": "領地小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.10.05",
+      "tag": "更新",
+      "id": "#0246",
+      "title": "基岩版介面更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.10.01",
+      "tag": "更新",
+      "id": "#0245",
+      "title": "基岩版連線版本更新",
       "content": "",
       "images": []
     },
@@ -143,12 +518,79 @@
       "images": []
     },
     {
+      "date": "114.09.23",
+      "tag": "更新",
+      "id": "#0244",
+      "title": "新增每日任務",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.09.20",
+      "tag": "更新",
+      "id": "#0243",
+      "title": "小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.09.18",
+      "tag": "更新",
+      "id": "#0242",
+      "title": "分流二更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.09.15",
+      "tag": "更新",
+      "id": "#0240",
+      "title": "規則與倉庫更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0240_2a13f914.webp"
+      ]
+    },
+    {
+      "date": "114.09.15",
+      "tag": "更新",
+      "id": "#0241",
+      "title": "選單更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0241_81e09adf.webp",
+        "assets/announcements/ann_0241_9afd07c8.webp"
+      ]
+    },
+    {
       "date": "114.09.14",
       "tag": "更新",
       "id": "#0111",
       "title": "清空倉庫",
       "content": "",
       "images": []
+    },
+    {
+      "date": "114.09.13",
+      "tag": "更新",
+      "id": "#0239",
+      "title": "郵政介面更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0239_e5379592.webp"
+      ]
+    },
+    {
+      "date": "114.09.12",
+      "tag": "更新",
+      "id": "#0238",
+      "title": "任務更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0238_4ebd3f57.webp",
+        "assets/announcements/ann_0238_8397d68d.webp",
+        "assets/announcements/ann_0238_681e6090.webp"
+      ]
     },
     {
       "date": "114.09.08",
@@ -177,10 +619,58 @@
       "images": []
     },
     {
+      "date": "114.09.01",
+      "tag": "更新",
+      "id": "#0237",
+      "title": "頻道整理",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.08.31",
+      "tag": "更新",
+      "id": "#0236",
+      "title": "紅蓮劍與選單更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.08.27",
+      "tag": "更新",
+      "id": "#0234",
+      "title": "傳送小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.08.27",
+      "tag": "更新",
+      "id": "#0235",
+      "title": "選單更新",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.08.23",
       "tag": "活動",
       "id": "#0023",
       "title": "社區對戰排位賽開始",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.08.21",
+      "tag": "更新",
+      "id": "#0233",
+      "title": "安裝戴帽子插件",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.08.19",
+      "tag": "更新",
+      "id": "#0232",
+      "title": "基岩版連線更新",
       "content": "",
       "images": []
     },
@@ -193,11 +683,61 @@
       "images": []
     },
     {
+      "date": "114.08.14",
+      "tag": "更新",
+      "id": "#0231",
+      "title": "社區更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0231_14f887e1.webp"
+      ]
+    },
+    {
+      "date": "114.08.13",
+      "tag": "更新",
+      "id": "#0229",
+      "title": "簽到系統更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.08.13",
+      "tag": "更新",
+      "id": "#0230",
+      "title": "小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.08.12",
+      "tag": "更新",
+      "id": "#0228",
+      "title": "稱號更新",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.08.08",
       "tag": "公告",
-      "id": "#00108",
+      "id": "#0108",
       "title": "必看",
       "content": "# :report_button::report_button::report_button: 必看 :report_button::report_button::report_button:因分流二性質特殊，\n不支援MMOitem插件，\n包含任何除原版外的特殊物品（例如：鋼劍、各階魚套等裝備、武器或物品）。\n因此，\n# 請勿在分流二使用這些物品，以免東西損壞。\n# 請勿在分流二使用這些物品，以免東西損壞。\n# 請勿在分流二使用這些物品，以免東西損壞。",
+      "images": []
+    },
+    {
+      "date": "114.08.08",
+      "tag": "更新",
+      "id": "#0227",
+      "title": "設個人傳送點",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.08.07",
+      "tag": "更新",
+      "id": "#0226",
+      "title": "稱號小更新",
+      "content": "",
       "images": []
     },
     {
@@ -217,10 +757,78 @@
       "images": []
     },
     {
+      "date": "114.08.01",
+      "tag": "更新",
+      "id": "#0225",
+      "title": "選單小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.07.29",
+      "tag": "更新",
+      "id": "#0224",
+      "title": "自動整理小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.07.28",
+      "tag": "更新",
+      "id": "#0223",
+      "title": "小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0223_9d8773f7.webp"
+      ]
+    },
+    {
       "date": "114.07.26",
       "tag": "更新",
       "id": "#0105",
       "title": "搬遷至邊界內",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.07.26",
+      "tag": "更新",
+      "id": "#0221",
+      "title": "公共傳送點分類更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0221_6acb77eb.webp"
+      ]
+    },
+    {
+      "date": "114.07.26",
+      "tag": "更新",
+      "id": "#0222",
+      "title": "公共傳送點介面更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.07.22",
+      "tag": "更新",
+      "id": "#0220",
+      "title": "頻道與玩家列表格式更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.07.21",
+      "tag": "更新",
+      "id": "#0219",
+      "title": "資訊欄變尛了",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.07.20",
+      "tag": "更新",
+      "id": "#0218",
+      "title": "更新指南",
       "content": "",
       "images": []
     },
@@ -235,8 +843,34 @@
     {
       "date": "114.07.16",
       "tag": "公告",
-      "id": "#00103",
+      "id": "#0103",
       "title": "必看",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.07.13",
+      "tag": "更新",
+      "id": "#0217",
+      "title": "礦物機率調整",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.07.07",
+      "tag": "更新",
+      "id": "#0216",
+      "title": "領地介面小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0216_1df6e2a1.webp"
+      ]
+    },
+    {
+      "date": "114.07.04",
+      "tag": "更新",
+      "id": "#0215",
+      "title": "連線版本更新",
       "content": "",
       "images": []
     },
@@ -249,6 +883,72 @@
       "images": []
     },
     {
+      "date": "114.07.02",
+      "tag": "更新",
+      "id": "#0214",
+      "title": "蜂聊郵政",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.06.30",
+      "tag": "更新",
+      "id": "#0213",
+      "title": "小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.06.25",
+      "tag": "更新",
+      "id": "#0211",
+      "title": "身分組與選單",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.06.25",
+      "tag": "更新",
+      "id": "#0212",
+      "title": "連線版本更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.06.22",
+      "tag": "更新",
+      "id": "#0209",
+      "title": "規章更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.06.22",
+      "tag": "更新",
+      "id": "#0210",
+      "title": "計分板修復",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.06.20",
+      "tag": "更新",
+      "id": "#0207",
+      "title": "移除身分組",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.06.20",
+      "tag": "更新",
+      "id": "#0208",
+      "title": "選單更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0208_f9ce3f36.webp"
+      ]
+    },
+    {
       "date": "114.06.19",
       "tag": "更新",
       "id": "#0101",
@@ -257,10 +957,174 @@
       "images": []
     },
     {
+      "date": "114.06.18",
+      "tag": "更新",
+      "id": "#0206",
+      "title": "選單更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0206_f516b12b.webp"
+      ]
+    },
+    {
+      "date": "114.06.07",
+      "tag": "更新",
+      "id": "#0205",
+      "title": "修復 Bug",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0205_21cb9805.webp"
+      ]
+    },
+    {
+      "date": "114.06.06",
+      "tag": "更新",
+      "id": "#0204",
+      "title": "修復漏洞",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.06.04",
+      "tag": "更新",
+      "id": "#0202",
+      "title": "社區系統修復",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.06.04",
+      "tag": "更新",
+      "id": "#0203",
+      "title": "插件更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.06.02",
+      "tag": "更新",
+      "id": "#0201",
+      "title": "頻道格式",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.06.01",
+      "tag": "更新",
+      "id": "#0199",
+      "title": "倉庫",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.06.01",
+      "tag": "更新",
+      "id": "#0200",
+      "title": "倉庫",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0200_d5a7e8ae.webp"
+      ]
+    },
+    {
       "date": "114.05.31",
       "tag": "更新",
       "id": "#0100",
       "title": "海風社區系統上線啦",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.05.31",
+      "tag": "更新",
+      "id": "#0196",
+      "title": "社區系統",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0196_7128ec46.webp",
+        "assets/announcements/ann_0196_975caad8.webp"
+      ]
+    },
+    {
+      "date": "114.05.31",
+      "tag": "更新",
+      "id": "#0197",
+      "title": "頻道更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0197_3e6ca6e4.webp",
+        "assets/announcements/ann_0197_bb5e6b27.webp"
+      ]
+    },
+    {
+      "date": "114.05.31",
+      "tag": "更新",
+      "id": "#0198",
+      "title": "頻道與 Tab 更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0198_2d36efc0.webp"
+      ]
+    },
+    {
+      "date": "114.05.29",
+      "tag": "更新",
+      "id": "#0194",
+      "title": "社區大更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.05.29",
+      "tag": "更新",
+      "id": "#0195",
+      "title": "修復",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.05.25",
+      "tag": "更新",
+      "id": "#0193",
+      "title": "修復",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.05.22",
+      "tag": "更新",
+      "id": "#0192",
+      "title": "小修一下",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0192_4f7b0fc3.webp"
+      ]
+    },
+    {
+      "date": "114.05.16",
+      "tag": "更新",
+      "id": "#0191",
+      "title": "地圖",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0191_fbebbe18.webp"
+      ]
+    },
+    {
+      "date": "114.05.13",
+      "tag": "更新",
+      "id": "#0189",
+      "title": "分流二選單",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0189_7bb8079e.webp"
+      ]
+    },
+    {
+      "date": "114.05.13",
+      "tag": "更新",
+      "id": "#0190",
+      "title": "新增伺服器標籤",
       "content": "",
       "images": []
     },
@@ -275,10 +1139,160 @@
       ]
     },
     {
+      "date": "114.05.07",
+      "tag": "更新",
+      "id": "#0187",
+      "title": "指南與公傳",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.05.07",
+      "tag": "更新",
+      "id": "#0188",
+      "title": "修Bug",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.05.05",
+      "tag": "更新",
+      "id": "#0185",
+      "title": "連線版本支持 1.21.5",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.05.05",
+      "tag": "更新",
+      "id": "#0186",
+      "title": "客服服務",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.05.04",
+      "tag": "更新",
+      "id": "#0184",
+      "title": "基岩版皮膚",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.30",
+      "tag": "更新",
+      "id": "#0183",
+      "title": "身分組",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.26",
+      "tag": "更新",
+      "id": "#0182",
+      "title": "選單與公傳點",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.04.25",
       "tag": "維護",
       "id": "#0097",
       "title": "個人傳送點故障",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.25",
+      "tag": "更新",
+      "id": "#0181",
+      "title": "修資料同步",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.23",
+      "tag": "更新",
+      "id": "#0180",
+      "title": "修資料同步",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.22",
+      "tag": "更新",
+      "id": "#0178",
+      "title": "礦物代換修復",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.22",
+      "tag": "更新",
+      "id": "#0179",
+      "title": "雙論壇標籤更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.19",
+      "tag": "更新",
+      "id": "#0177",
+      "title": "公開傳送點更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.18",
+      "tag": "更新",
+      "id": "#0176",
+      "title": "公開傳送點更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0176_e227bb3e.webp"
+      ]
+    },
+    {
+      "date": "114.04.17",
+      "tag": "更新",
+      "id": "#0175",
+      "title": "小更",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0175_7b0945f4.webp"
+      ]
+    },
+    {
+      "date": "114.04.16",
+      "tag": "更新",
+      "id": "#0173",
+      "title": "分流指令",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.16",
+      "tag": "更新",
+      "id": "#0174",
+      "title": "修Bug",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.14",
+      "tag": "更新",
+      "id": "#0171",
+      "title": "修Bug",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0171_ee9e2591.webp"
+      ]
+    },
+    {
+      "date": "114.04.14",
+      "tag": "更新",
+      "id": "#0172",
+      "title": "新增分流",
       "content": "",
       "images": []
     },
@@ -294,10 +1308,50 @@
       ]
     },
     {
+      "date": "114.04.13",
+      "tag": "更新",
+      "id": "#0170",
+      "title": "新增官方 Pinterest 圖庫",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.12",
+      "tag": "更新",
+      "id": "#0169",
+      "title": "修名條Bug",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.08",
+      "tag": "更新",
+      "id": "#0168",
+      "title": "箱子商店",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.07",
+      "tag": "更新",
+      "id": "#0167",
+      "title": "公會修Bug",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.04.06",
       "tag": "更新",
       "id": "#0095",
       "title": "補救高延遲",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.06",
+      "tag": "更新",
+      "id": "#0166",
+      "title": "連線位址",
       "content": "",
       "images": []
     },
@@ -310,6 +1364,71 @@
       "images": []
     },
     {
+      "date": "114.04.04",
+      "tag": "更新",
+      "id": "#0165",
+      "title": "新重生點",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0165_f0cc7d07.webp",
+        "assets/announcements/ann_0165_8f070672.webp",
+        "assets/announcements/ann_0165_05a2c449.webp",
+        "assets/announcements/ann_0165_9da23211.webp"
+      ]
+    },
+    {
+      "date": "114.04.03",
+      "tag": "更新",
+      "id": "#0164",
+      "title": "兌幣機準備就緒",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0164_25dd8d1c.webp"
+      ]
+    },
+    {
+      "date": "114.04.02",
+      "tag": "更新",
+      "id": "#0161",
+      "title": "聊天顯示時間",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0161_48896789.webp"
+      ]
+    },
+    {
+      "date": "114.04.02",
+      "tag": "更新",
+      "id": "#0162",
+      "title": "突襲更動",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.02",
+      "tag": "更新",
+      "id": "#0163",
+      "title": "遊戲聊天頻道更動",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.01",
+      "tag": "更新",
+      "id": "#0160",
+      "title": "防礦透礦物被動生成功能上線啦",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.31",
+      "tag": "更新",
+      "id": "#0159",
+      "title": "個人傳送點更新與資料遺失",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.03.30",
       "tag": "更新",
       "id": "#0093",
@@ -318,6 +1437,30 @@
       "images": [
         "assets/announcements/ann_0093_3743b1b8.webp"
       ]
+    },
+    {
+      "date": "114.03.30",
+      "tag": "更新",
+      "id": "#0156",
+      "title": "小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.30",
+      "tag": "更新",
+      "id": "#0157",
+      "title": "傳點數量更動",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.30",
+      "tag": "更新",
+      "id": "#0158",
+      "title": "容量",
+      "content": "",
+      "images": []
     },
     {
       "date": "114.03.29",
@@ -338,6 +1481,14 @@
       "images": []
     },
     {
+      "date": "114.03.29",
+      "tag": "更新",
+      "id": "#0155",
+      "title": "分二更新",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.03.28",
       "tag": "公告",
       "id": "#0090",
@@ -346,9 +1497,33 @@
       "images": []
     },
     {
+      "date": "114.03.28",
+      "tag": "更新",
+      "id": "#0153",
+      "title": "延遲修復",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.28",
+      "tag": "更新",
+      "id": "#0154",
+      "title": "連啦",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.03.26",
       "tag": "更新",
       "id": "#0089",
+      "title": "規章更動",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.26",
+      "tag": "更新",
+      "id": "#0152",
       "title": "規章更動",
       "content": "",
       "images": []
@@ -362,6 +1537,88 @@
       "images": [
         "assets/announcements/ann_0088_e8b59ad6.webp"
       ]
+    },
+    {
+      "date": "114.03.22",
+      "tag": "更新",
+      "id": "#0149",
+      "title": "兒少代表權限調整",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.22",
+      "tag": "更新",
+      "id": "#0150",
+      "title": "每日任務機率調整",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.22",
+      "tag": "更新",
+      "id": "#0151",
+      "title": "tab排序修復",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0151_cb59b969.webp"
+      ]
+    },
+    {
+      "date": "114.03.21",
+      "tag": "更新",
+      "id": "#0148",
+      "title": "頻道與權限調整",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.19",
+      "tag": "更新",
+      "id": "#0147",
+      "title": "完了&#215;4",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.18",
+      "tag": "更新",
+      "id": "#0146",
+      "title": "完了&#215;3",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.17",
+      "tag": "更新",
+      "id": "#0145",
+      "title": "完了&#215;2",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.16",
+      "tag": "更新",
+      "id": "#0144",
+      "title": "完了",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.15",
+      "tag": "更新",
+      "id": "#0142",
+      "title": "做啦",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.15",
+      "tag": "更新",
+      "id": "#0143",
+      "title": "修了",
+      "content": "",
+      "images": []
     },
     {
       "date": "114.03.14",
@@ -412,6 +1669,38 @@
       "images": []
     },
     {
+      "date": "114.03.09",
+      "tag": "更新",
+      "id": "#0139",
+      "title": "風汐點數更新-2",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0139_7689a7e2.webp"
+      ]
+    },
+    {
+      "date": "114.03.09",
+      "tag": "更新",
+      "id": "#0140",
+      "title": "選單更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0140_20dec2b0.webp",
+        "assets/announcements/ann_0140_251f6e23.webp"
+      ]
+    },
+    {
+      "date": "114.03.09",
+      "tag": "更新",
+      "id": "#0141",
+      "title": "換啦",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0141_bcbcd1fc.webp",
+        "assets/announcements/ann_0141_fad86444.webp"
+      ]
+    },
+    {
       "date": "114.03.08",
       "tag": "更新",
       "id": "#0080",
@@ -444,6 +1733,32 @@
       "images": []
     },
     {
+      "date": "114.03.05",
+      "tag": "更新",
+      "id": "#0138",
+      "title": "身分組更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.04",
+      "tag": "更新",
+      "id": "#0137",
+      "title": "風汐點數更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0137_5b15d8d9.webp"
+      ]
+    },
+    {
+      "date": "114.03.02",
+      "tag": "更新",
+      "id": "#0136",
+      "title": "修Bug",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.02.26",
       "tag": "更新",
       "id": "#0077",
@@ -452,10 +1767,62 @@
       "images": []
     },
     {
+      "date": "114.02.24",
+      "tag": "更新",
+      "id": "#0135",
+      "title": "修Bug",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.02.23",
+      "tag": "更新",
+      "id": "#0134",
+      "title": "更新伺服器指南",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.02.21",
+      "tag": "更新",
+      "id": "#0133",
+      "title": "修正文本",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0133_1a80cfe0.webp"
+      ]
+    },
+    {
       "date": "114.02.19",
       "tag": "公告",
       "id": "#0076",
       "title": "海風官方LINE公告群組",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.02.17",
+      "tag": "更新",
+      "id": "#0131",
+      "title": "更新建議頻道",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.02.17",
+      "tag": "更新",
+      "id": "#0132",
+      "title": "新增",
+      "content": "",
+      "images": [
+        "assets/announcements/ann_0132_dbeaa1cc.webp"
+      ]
+    },
+    {
+      "date": "114.02.15",
+      "tag": "更新",
+      "id": "#0130",
+      "title": "調整簽到系統",
       "content": "",
       "images": []
     },
@@ -524,17 +1891,118 @@
       "images": []
     },
     {
+      "date": "114.01.15",
+      "tag": "更新",
+      "id": "",
+      "title": "動態頻道更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__e9c744bc.webp"
+      ]
+    },
+    {
+      "date": "114.01.15",
+      "tag": "更新",
+      "id": "",
+      "title": "修復問題",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__d4210c40.webp"
+      ]
+    },
+    {
+      "date": "114.01.14",
+      "tag": "更新",
+      "id": "",
+      "title": "地震預警系統更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__a722bdaa.webp",
+        "assets/announcements/ann__f6ff7b28.webp"
+      ]
+    },
+    {
       "date": "114.01.13",
       "tag": "更新",
-      "id": "公告0067",
+      "id": "#0067",
       "title": "海風遊玩滿意度調查",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.01.13",
+      "tag": "更新",
+      "id": "",
+      "title": "修復機器人調整後的問題",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.01.11",
+      "tag": "更新",
+      "id": "",
+      "title": "調整",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.01.10",
+      "tag": "更新",
+      "id": "",
+      "title": "更改伺服器圖貼",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__ab1e4448.webp"
+      ]
+    },
+    {
+      "date": "114.01.10",
+      "tag": "更新",
+      "id": "",
+      "title": "更改伺服器圖貼",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__150c1ea6.webp"
+      ]
+    },
+    {
+      "date": "114.01.10",
+      "tag": "更新",
+      "id": "",
+      "title": "更改伺服器圖貼",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.01.10",
+      "tag": "更新",
+      "id": "",
+      "title": "機器人指令的一些調整",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__bd241464.webp"
+      ]
+    },
+    {
+      "date": "114.01.08",
+      "tag": "公告",
+      "id": "",
+      "title": "@ 通知顯示",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.01.06",
+      "tag": "更新",
+      "id": "",
+      "title": "團隊名單",
       "content": "",
       "images": []
     },
     {
       "date": "114.01.03",
       "tag": "維護",
-      "id": "公告0066",
+      "id": "#0066",
       "title": "伺服器維護",
       "content": "",
       "images": []
@@ -542,15 +2010,34 @@
     {
       "date": "114.01.02",
       "tag": "更新",
-      "id": "公告0065",
+      "id": "#0065",
       "title": "更新重點",
       "content": "",
       "images": []
     },
     {
+      "date": "114.01.02",
+      "tag": "更新",
+      "id": "",
+      "title": "格式化代碼",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.01.02",
+      "tag": "更新",
+      "id": "",
+      "title": "點擊互動更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__42eb2a5d.webp",
+        "assets/announcements/ann__fd46cc5c.webp"
+      ]
+    },
+    {
       "date": "113.12.39",
       "tag": "更新",
-      "id": "公告0061",
+      "id": "#0061",
       "title": "緊急修復重啟",
       "content": "",
       "images": [
@@ -560,15 +2047,23 @@
     {
       "date": "113.12.31",
       "tag": "維護",
-      "id": "公告0064",
+      "id": "#0064",
       "title": "伺服器維護",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.12.31",
+      "tag": "更新",
+      "id": "",
+      "title": "新增頻道",
       "content": "",
       "images": []
     },
     {
       "date": "113.12.30",
       "tag": "更新",
-      "id": "公告0063",
+      "id": "#0063",
       "title": "跨年……？",
       "content": "",
       "images": [
@@ -579,15 +2074,133 @@
     {
       "date": "113.12.29",
       "tag": "維護",
-      "id": "公告0062",
+      "id": "#0062",
       "title": "伺服器維護",
       "content": "",
       "images": []
     },
     {
+      "date": "113.12.29",
+      "tag": "更新",
+      "id": "",
+      "title": "小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__b31b8450.webp",
+        "assets/announcements/ann__c93a6439.webp",
+        "assets/announcements/ann__dd7dc2f3.webp",
+        "assets/announcements/ann__f931f5b4.webp"
+      ]
+    },
+    {
+      "date": "113.12.26",
+      "tag": "更新",
+      "id": "",
+      "title": "加碼加碼",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__69e0efcf.webp",
+        "assets/announcements/ann__88da7ba0.webp"
+      ]
+    },
+    {
+      "date": "113.12.26",
+      "tag": "更新",
+      "id": "",
+      "title": "小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__8501be43.webp"
+      ]
+    },
+    {
+      "date": "113.12.25",
+      "tag": "更新",
+      "id": "",
+      "title": "格式小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__9fa2013e.webp"
+      ]
+    },
+    {
+      "date": "113.12.24",
+      "tag": "更新",
+      "id": "",
+      "title": "修復地圖顯示錯誤",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__581b8483.webp"
+      ]
+    },
+    {
+      "date": "113.12.24",
+      "tag": "更新",
+      "id": "",
+      "title": "小更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.12.22",
+      "tag": "更新",
+      "id": "",
+      "title": "掉落物模式更換",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__664d15d7.webp"
+      ]
+    },
+    {
+      "date": "113.12.21",
+      "tag": "更新",
+      "id": "",
+      "title": "線上商城更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.12.21",
+      "tag": "更新",
+      "id": "",
+      "title": "線上商城更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.12.20",
+      "tag": "更新",
+      "id": "",
+      "title": "小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__ba1d9467.webp"
+      ]
+    },
+    {
+      "date": "113.12.15",
+      "tag": "更新",
+      "id": "",
+      "title": "新增資訊",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.12.14",
+      "tag": "更新",
+      "id": "",
+      "title": "領地系統更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__4ec57465.webp",
+        "assets/announcements/ann__a32b3cd5.webp",
+        "assets/announcements/ann__8c9d50e0.webp"
+      ]
+    },
+    {
       "date": "113.12.13",
       "tag": "維護",
-      "id": "公告0059",
+      "id": "#0059",
       "title": "伺服器維護",
       "content": "",
       "images": []
@@ -595,15 +2208,43 @@
     {
       "date": "113.12.13",
       "tag": "更新",
-      "id": "公告0060",
+      "id": "#0060",
       "title": "伺服器已開啟",
       "content": "",
       "images": []
     },
     {
+      "date": "113.12.13",
+      "tag": "更新",
+      "id": "",
+      "title": "領地通用權限更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__753b8910.webp"
+      ]
+    },
+    {
+      "date": "113.12.13",
+      "tag": "更新",
+      "id": "",
+      "title": "連線版本支援1.21.4+",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.12.13",
+      "tag": "更新",
+      "id": "",
+      "title": "小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__14a2082f.webp"
+      ]
+    },
+    {
       "date": "113.12.11",
       "tag": "維護",
-      "id": "公告0057",
+      "id": "#0057",
       "title": "伺服器維護",
       "content": "",
       "images": []
@@ -611,15 +2252,94 @@
     {
       "date": "113.12.11",
       "tag": "更新",
-      "id": "公告0058",
+      "id": "#0058",
       "title": "伺服器已開啟",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.12.11",
+      "tag": "更新",
+      "id": "",
+      "title": "領地小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__7616f73f.webp"
+      ]
+    },
+    {
+      "date": "113.12.10",
+      "tag": "更新",
+      "id": "",
+      "title": "地圖畫販售者的福音",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__c685bd20.webp"
+      ]
+    },
+    {
+      "date": "113.12.09",
+      "tag": "更新",
+      "id": "",
+      "title": "領地小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__2a80bb78.webp"
+      ]
+    },
+    {
+      "date": "113.12.08",
+      "tag": "更新",
+      "id": "",
+      "title": "格式小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__52dfcf07.webp"
+      ]
+    },
+    {
+      "date": "113.12.05",
+      "tag": "更新",
+      "id": "",
+      "title": "修復錯誤",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__d4cd955c.webp"
+      ]
+    },
+    {
+      "date": "113.12.05",
+      "tag": "更新",
+      "id": "",
+      "title": "修復錯誤",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__755c5b0c.webp"
+      ]
+    },
+    {
+      "date": "113.12.04",
+      "tag": "更新",
+      "id": "",
+      "title": "玻璃展示櫃更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__0a84c30e.webp",
+        "assets/announcements/ann__de583546.webp"
+      ]
+    },
+    {
+      "date": "113.12.02",
+      "tag": "更新",
+      "id": "",
+      "title": "動態格式小更新",
       "content": "",
       "images": []
     },
     {
       "date": "113.12.01",
       "tag": "更新",
-      "id": "公告0055",
+      "id": "#0055",
       "title": "伺服器暫時關閉",
       "content": "",
       "images": []
@@ -627,7 +2347,7 @@
     {
       "date": "113.12.01",
       "tag": "更新",
-      "id": "公告0056",
+      "id": "#0056",
       "title": "伺服器已開啟",
       "content": "",
       "images": []
@@ -635,7 +2355,7 @@
     {
       "date": "113.11.30",
       "tag": "維護",
-      "id": "公告0053",
+      "id": "#0053",
       "title": "維護完畢",
       "content": "",
       "images": []
@@ -643,7 +2363,7 @@
     {
       "date": "113.11.30",
       "tag": "更新",
-      "id": "公告0054",
+      "id": "#0054",
       "title": "工具或裝備附魔錯誤",
       "content": "",
       "images": [
@@ -651,9 +2371,36 @@
       ]
     },
     {
+      "date": "113.11.30",
+      "tag": "更新",
+      "id": "",
+      "title": "修復錯誤及小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__be233b47.webp",
+        "assets/announcements/ann__b23513fc.webp",
+        "assets/announcements/ann__3e501b5f.webp",
+        "assets/announcements/ann__02bfba1f.webp",
+        "assets/announcements/ann__9e4bcde6.webp",
+        "assets/announcements/ann__7e47a4eb.webp",
+        "assets/announcements/ann__18fd3052.webp",
+        "assets/announcements/ann__43ac757d.webp",
+        "assets/announcements/ann__c6465291.webp",
+        "assets/announcements/ann__f90f4df4.webp"
+      ]
+    },
+    {
+      "date": "113.11.29",
+      "tag": "更新",
+      "id": "",
+      "title": "修復錯誤",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "113.11.28",
       "tag": "維護",
-      "id": "公告0050",
+      "id": "#0050",
       "title": "伺服器緊急維護",
       "content": "",
       "images": []
@@ -661,23 +2408,81 @@
     {
       "date": "113.11.28",
       "tag": "維護",
-      "id": "公告0051",
+      "id": "#0051",
       "title": "維護完畢",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.11.26",
+      "tag": "更新",
+      "id": "",
+      "title": "修復錯誤",
       "content": "",
       "images": []
     },
     {
       "date": "113.11.24",
       "tag": "維護",
-      "id": "公告0049",
+      "id": "#0049",
       "title": "維護完畢",
       "content": "",
       "images": []
     },
     {
+      "date": "113.11.24",
+      "tag": "更新",
+      "id": "",
+      "title": "頻道更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.11.23",
+      "tag": "更新",
+      "id": "",
+      "title": "領地小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__619138ec.webp"
+      ]
+    },
+    {
+      "date": "113.11.22",
+      "tag": "更新",
+      "id": "",
+      "title": "更新海風指南",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.11.21",
+      "tag": "更新",
+      "id": "",
+      "title": "更新生物重生系統",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__6ff961dc.webp"
+      ]
+    },
+    {
+      "date": "113.11.20",
+      "tag": "更新",
+      "id": "",
+      "title": "領地小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__be042926.webp",
+        "assets/announcements/ann__7696a3bc.webp",
+        "assets/announcements/ann__51efc00b.webp",
+        "assets/announcements/ann__d73e72fb.webp",
+        "assets/announcements/ann__ecee4214.webp"
+      ]
+    },
+    {
       "date": "113.11.18",
       "tag": "維護",
-      "id": "公告0048",
+      "id": "#0048",
       "title": "伺服器維護",
       "content": "",
       "images": []
@@ -685,55 +2490,161 @@
     {
       "date": "113.11.18",
       "tag": "維護",
-      "id": "公告0052",
+      "id": "#0052",
       "title": "伺服器維護",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.11.18",
+      "tag": "更新",
+      "id": "",
+      "title": "更新海風指南",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.11.16",
+      "tag": "更新",
+      "id": "",
+      "title": "簽到月曆修復",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.11.15",
+      "tag": "更新",
+      "id": "",
+      "title": "移除先前之<a href=\"https://discord.com/channels/1266311059552342078/1270267126011396152/1302311171545759771\" onclick=\"scrollToMessage(event, '1302311171545759771')\">進度及其配套翻譯包</a>",
       "content": "",
       "images": []
     },
     {
       "date": "113.11.14",
       "tag": "更新",
-      "id": "公告0047",
+      "id": "#0047",
       "title": "發布伺服器品質二改計畫",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.11.11",
+      "tag": "更新",
+      "id": "",
+      "title": "列出常見問題",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.11.11",
+      "tag": "更新",
+      "id": "",
+      "title": "插件更新",
       "content": "",
       "images": []
     },
     {
       "date": "113.11.10",
       "tag": "更新",
-      "id": "公告0046",
+      "id": "#0046",
       "title": "伺服器暫時關閉",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.11.10",
+      "tag": "活動",
+      "id": "",
+      "title": "商城 / Boss 開放",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.11.10",
+      "tag": "更新",
+      "id": "",
+      "title": "新增資訊",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__c3df359c.webp"
+      ]
+    },
+    {
+      "date": "113.11.10",
+      "tag": "更新",
+      "id": "",
+      "title": "新增資訊",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.11.09",
+      "tag": "更新",
+      "id": "",
+      "title": "位置更換",
       "content": "",
       "images": []
     },
     {
       "date": "113.11.03",
       "tag": "更新",
-      "id": "公告0045",
+      "id": "#0045",
       "title": "新增一坨進度（成就）",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.11.03",
+      "tag": "更新",
+      "id": "",
+      "title": "新增進度及其配套翻譯包",
       "content": "",
       "images": []
     },
     {
       "date": "113.11.02",
       "tag": "維護",
-      "id": "公告0044",
+      "id": "#0044",
       "title": "<s>伺服器維護</s>　已取消",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.10.29",
+      "tag": "更新",
+      "id": "",
+      "title": "Discord群組名稱變更",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.10.29",
+      "tag": "更新",
+      "id": "",
+      "title": "新增頻道",
       "content": "",
       "images": []
     },
     {
       "date": "113.10.27",
       "tag": "更新",
-      "id": "公告0043",
+      "id": "#0043",
       "title": "伺服器重啟",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.10.27",
+      "tag": "更新",
+      "id": "",
+      "title": "連線版本向上支援",
       "content": "",
       "images": []
     },
     {
       "date": "113.10.26",
       "tag": "更新",
-      "id": "公告0042",
+      "id": "#0042",
       "title": "伺服器開啟",
       "content": "",
       "images": []
@@ -741,7 +2652,7 @@
     {
       "date": "113.10.24",
       "tag": "維護",
-      "id": "公告0041",
+      "id": "#0041",
       "title": "伺服器維護",
       "content": "",
       "images": []
@@ -749,7 +2660,7 @@
     {
       "date": "113.10.20",
       "tag": "更新",
-      "id": "公告0039",
+      "id": "#0039",
       "title": "伺服器暫時關閉",
       "content": "",
       "images": []
@@ -757,15 +2668,31 @@
     {
       "date": "113.10.20",
       "tag": "更新",
-      "id": "公告0040",
+      "id": "#0040",
       "title": "伺服器恢復",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.10.20",
+      "tag": "更新",
+      "id": "",
+      "title": "海風官方繪師開樓了！？",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.10.20",
+      "tag": "更新",
+      "id": "",
+      "title": "每日任務",
       "content": "",
       "images": []
     },
     {
       "date": "113.10.18",
       "tag": "維護",
-      "id": "公告0038",
+      "id": "#0038",
       "title": "伺服器維護",
       "content": "",
       "images": []
@@ -773,31 +2700,118 @@
     {
       "date": "113.10.16",
       "tag": "維護",
-      "id": "公告0037",
+      "id": "#0037",
       "title": "伺服器維護",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.10.15",
+      "tag": "更新",
+      "id": "",
+      "title": "偷窺蜜蜂的家",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__2217db4d.webp"
+      ]
+    },
+    {
+      "date": "113.10.14",
+      "tag": "更新",
+      "id": "",
+      "title": "綁定帳號後將可發言",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.10.12",
+      "tag": "更新",
+      "id": "",
+      "title": "光源",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.10.12",
+      "tag": "更新",
+      "id": "",
+      "title": "光源配方",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__bfb6f06e.webp"
+      ]
+    },
+    {
+      "date": "113.10.10",
+      "tag": "更新",
+      "id": "",
+      "title": "選單更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.10.07",
+      "tag": "更新",
+      "id": "",
+      "title": "社群頻道更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.10.07",
+      "tag": "更新",
+      "id": "",
+      "title": "帳號綁定",
       "content": "",
       "images": []
     },
     {
       "date": "113.10.05",
       "tag": "更新",
-      "id": "公告0036",
+      "id": "#0036",
       "title": "勿用線上商城",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.10.05",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
       "content": "",
       "images": []
     },
     {
       "date": "113.10.04",
       "tag": "更新",
-      "id": "公告0035",
+      "id": "#0035",
       "title": "伺服器開啟",
       "content": "",
       "images": []
     },
     {
+      "date": "113.10.04",
+      "tag": "更新",
+      "id": "",
+      "title": "社群更新",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.10.04",
+      "tag": "更新",
+      "id": "",
+      "title": "領地介面小更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__a1e15d71.webp",
+        "assets/announcements/ann__d628e5e2.webp"
+      ]
+    },
+    {
       "date": "113.10.03",
       "tag": "更新",
-      "id": "公告0034",
+      "id": "#0034",
       "title": "伺服器暫時關閉",
       "content": "",
       "images": []
@@ -805,7 +2819,7 @@
     {
       "date": "113.10.02",
       "tag": "更新",
-      "id": "公告0033",
+      "id": "#0033",
       "title": "改了被改的暱稱",
       "content": "",
       "images": [
@@ -813,9 +2827,17 @@
       ]
     },
     {
+      "date": "113.10.02",
+      "tag": "更新",
+      "id": "",
+      "title": "領地數量調整",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "113.09.30",
       "tag": "更新",
-      "id": "公告0032",
+      "id": "#0032",
       "title": "領回商城商品",
       "content": "",
       "images": []
@@ -823,7 +2845,7 @@
     {
       "date": "113.09.29",
       "tag": "更新",
-      "id": "公告0031",
+      "id": "#0031",
       "title": "生物上限",
       "content": "",
       "images": []
@@ -831,7 +2853,7 @@
     {
       "date": "113.09.28",
       "tag": "更新",
-      "id": "公告0030",
+      "id": "#0030",
       "title": "伺服器重啟",
       "content": "",
       "images": []
@@ -839,23 +2861,61 @@
     {
       "date": "113.09.27",
       "tag": "維護",
-      "id": "公告0029",
+      "id": "#0029",
       "title": "伺服器維護",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.09.27",
+      "tag": "更新",
+      "id": "",
+      "title": "實體設定",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.09.26",
+      "tag": "更新",
+      "id": "",
+      "title": "領地介面更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__5a54bd27.webp",
+        "assets/announcements/ann__6e6fdff3.webp",
+        "assets/announcements/ann__fbf6c8a7.webp"
+      ]
+    },
+    {
+      "date": "113.09.22",
+      "tag": "更新",
+      "id": "#0028",
+      "title": "線上商城更換",
       "content": "",
       "images": []
     },
     {
       "date": "113.09.22",
       "tag": "更新",
-      "id": "公告0028",
-      "title": "線上商城更換",
+      "id": "",
+      "title": "選單音效更新",
       "content": "",
       "images": []
     },
     {
+      "date": "113.09.21",
+      "tag": "更新",
+      "id": "",
+      "title": "玩家列表更新",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__283301a3.webp"
+      ]
+    },
+    {
       "date": "113.09.19",
       "tag": "更新",
-      "id": "公告0026",
+      "id": "#0026",
       "title": "颱風假",
       "content": "",
       "images": []
@@ -863,7 +2923,7 @@
     {
       "date": "113.09.19",
       "tag": "公告",
-      "id": "公告0027",
+      "id": "#0027",
       "title": "通知身分組更新",
       "content": "",
       "images": [
@@ -873,47 +2933,128 @@
     {
       "date": "113.09.18",
       "tag": "更新",
-      "id": "公告0025",
+      "id": "#0025",
       "title": "伺服器連線逾時",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.09.18",
+      "tag": "更新",
+      "id": "",
+      "title": "修改表達格式",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__9b1bada0.webp",
+        "assets/announcements/ann__45297fdf.webp"
+      ]
+    },
+    {
+      "date": "113.09.17",
+      "tag": "更新",
+      "id": "",
+      "title": "修改介面格式",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__4671294f.webp"
+      ]
+    },
+    {
+      "date": "113.09.15",
+      "tag": "更新",
+      "id": "",
+      "title": "規章小更動",
       "content": "",
       "images": []
     },
     {
       "date": "113.09.14",
       "tag": "更新",
-      "id": "公告0024",
+      "id": "#0024",
       "title": "資源再生",
       "content": "",
       "images": []
     },
     {
-      "date": "113.09.12",
+      "date": "113.09.14",
       "tag": "更新",
-      "id": "公告0022",
-      "title": "物品更新",
+      "id": "",
+      "title": "修改介面格式",
       "content": "",
       "images": []
     },
     {
-      "date": "113.09.12",
+      "date": "113.09.13",
       "tag": "更新",
-      "id": "公告0023",
-      "title": "編號資料庫",
+      "id": "",
+      "title": "新增選單功能",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.09.11",
+      "tag": "更新",
+      "id": "",
+      "title": "社群規章更動",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.09.10",
+      "tag": "更新",
+      "id": "",
+      "title": "社群規章更動",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.09.09",
+      "tag": "更新",
+      "id": "",
+      "title": "海風伺服器管理通則修正",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.09.09",
+      "tag": "更新",
+      "id": "",
+      "title": "漏洞修復",
       "content": "",
       "images": []
     },
     {
       "date": "113.09.08",
       "tag": "更新",
-      "id": "公告0021",
+      "id": "#0021",
       "title": "伺服器開啟",
       "content": "",
       "images": []
     },
     {
+      "date": "113.09.08",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__4f632002.webp"
+      ]
+    },
+    {
+      "date": "113.09.08",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__16795946.webp"
+      ]
+    },
+    {
       "date": "113.09.07",
       "tag": "公告",
-      "id": "公告0018",
+      "id": "#0018",
       "title": "伺服器公告",
       "content": "",
       "images": []
@@ -921,7 +3062,7 @@
     {
       "date": "113.09.07",
       "tag": "更新",
-      "id": "公告0019",
+      "id": "#0019",
       "title": "伺服器掛掉",
       "content": "",
       "images": []
@@ -929,15 +3070,25 @@
     {
       "date": "113.09.07",
       "tag": "維護",
-      "id": "公告0020",
+      "id": "#0020",
       "title": "伺服器維護",
       "content": "",
       "images": []
     },
     {
+      "date": "113.09.06",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__2dcf6612.webp"
+      ]
+    },
+    {
       "date": "113.09.05",
       "tag": "維護",
-      "id": "公告0017",
+      "id": "#0017",
       "title": "伺服器維護",
       "content": "",
       "images": []
@@ -945,15 +3096,55 @@
     {
       "date": "113.09.04",
       "tag": "維護",
-      "id": "公告0016",
+      "id": "#0016",
       "title": "伺服器維護",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.09.03",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
       "content": "",
       "images": []
     },
     {
       "date": "113.08.31",
       "tag": "更新",
-      "id": "公告0015",
+      "id": "#0015",
+      "title": "伺服器重啟",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.31",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.31",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.31",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.30",
+      "tag": "更新",
+      "id": "#0014",
       "title": "伺服器重啟",
       "content": "",
       "images": []
@@ -961,39 +3152,89 @@
     {
       "date": "113.08.30",
       "tag": "更新",
-      "id": "公告0014",
-      "title": "伺服器重啟",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.30",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
       "content": "",
       "images": []
     },
     {
       "date": "113.08.29",
       "tag": "維護",
-      "id": "公告0013",
+      "id": "#0013",
       "title": "伺服器維護",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.29",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
       "content": "",
       "images": []
     },
     {
       "date": "113.08.28",
       "tag": "更新",
-      "id": "公告0012",
+      "id": "#0012",
       "title": "重啟伺服器",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.28",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
       "content": "",
       "images": []
     },
     {
       "date": "113.08.26",
       "tag": "公告",
-      "id": "公告0011",
+      "id": "#0011",
       "title": "維護公告",
       "content": "",
       "images": []
     },
     {
+      "date": "113.08.25",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.25",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.25",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__c7defba5.webp"
+      ]
+    },
+    {
       "date": "113.08.24",
       "tag": "更新",
-      "id": "公告0009",
+      "id": "#0009",
       "title": "經濟更新",
       "content": "",
       "images": []
@@ -1001,15 +3242,106 @@
     {
       "date": "113.08.24",
       "tag": "更新",
-      "id": "公告0010",
+      "id": "#0010",
       "title": "40人吹海風",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.24",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.24",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.22",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.22",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": [
+        "assets/announcements/ann__824a0a91.webp",
+        "assets/announcements/ann__f2714b0e.webp"
+      ]
+    },
+    {
+      "date": "113.08.19",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.19",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.19",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.18",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.18",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.18",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.18",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
       "content": "",
       "images": []
     },
     {
       "date": "113.08.17",
       "tag": "維護",
-      "id": "公告0008",
+      "id": "#0008",
       "title": "關服維護",
       "content": "",
       "images": []
@@ -1017,15 +3349,31 @@
     {
       "date": "113.08.16",
       "tag": "活動",
-      "id": "公告0007",
+      "id": "#0007",
       "title": "開放遊玩時間",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.16",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.16",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
       "content": "",
       "images": []
     },
     {
       "date": "113.08.15",
       "tag": "更新",
-      "id": "公告0005",
+      "id": "#0005",
       "title": "海風伺服器",
       "content": "",
       "images": []
@@ -1033,23 +3381,55 @@
     {
       "date": "113.08.15",
       "tag": "更新",
-      "id": "公告0006",
+      "id": "#0006",
       "title": "系統停用",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.15",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.15",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.15",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
       "content": "",
       "images": []
     },
     {
       "date": "113.08.14",
       "tag": "更新",
-      "id": "公告0004",
+      "id": "#0004",
       "title": "海風伺服器",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.08.14",
+      "tag": "更新",
+      "id": "",
+      "title": "更新日誌",
       "content": "",
       "images": []
     },
     {
       "date": "113.08.12",
       "tag": "更新",
-      "id": "公告0003",
+      "id": "#0003",
       "title": "海風伺服器",
       "content": "",
       "images": []
@@ -1057,7 +3437,7 @@
     {
       "date": "113.08.09",
       "tag": "更新",
-      "id": "公告0002",
+      "id": "#0002",
       "title": "伺服器狀況",
       "content": "",
       "images": []
@@ -1065,7 +3445,7 @@
     {
       "date": "113.08.08",
       "tag": "更新",
-      "id": "公告0001",
+      "id": "#0001",
       "title": "伺服器調整",
       "content": "",
       "images": []
