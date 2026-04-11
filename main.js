@@ -755,15 +755,28 @@ function initPhotoGallery() {
     photos.forEach((src, i) => {
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = `海風風景照 ${i + 1}`;
-      img.loading = 'lazy';
-      img.style.cursor = 'zoom-in';
-      img.onerror = function() { this.parentElement.style.display = 'none'; };
-      // 點擊放大
-      img.addEventListener('click', () => showCarouselLightbox(i));
-      slide.appendChild(img);
+      const isVideo = /\.(mp4|webm|mov)(\?|$)/i.test(src);
+      let media;
+      if (isVideo) {
+        media = document.createElement('video');
+        media.src = src;
+        media.muted = true;
+        media.loop = true;
+        media.playsInline = true;
+        media.autoplay = true;
+        media.preload = 'none';
+        media.addEventListener('mouseenter', () => media.play().catch(()=>{}));
+        media.addEventListener('mouseleave', () => media.pause());
+      } else {
+        media = document.createElement('img');
+        media.src = src;
+        media.alt = `海風風景照 ${i + 1}`;
+        media.loading = 'lazy';
+      }
+      media.style.cursor = 'zoom-in';
+      media.onerror = function() { this.parentElement.style.display = 'none'; };
+      media.addEventListener('click', () => showCarouselLightbox(i));
+      slide.appendChild(media);
       track.appendChild(slide);
     });
 

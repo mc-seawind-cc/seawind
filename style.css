@@ -2457,8 +2457,17 @@ button:focus-visible {
 .lore-preview-card:hover {
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(157, 175, 255, 0.2);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+.lore-preview-card img {
+  transition: transform 0.6s var(--ease), filter 0.4s var(--ease);
+}
+
+.lore-preview-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 .lore-preview-card img {
@@ -3142,8 +3151,9 @@ video.photo-item {
 
 .photo-item:hover {
   border-color: rgba(157, 175, 255, 0.25);
-  transform: scale(1.03);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transform: scale(1.04);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  filter: brightness(1.1);
   z-index: 2;
   position: relative;
 }
@@ -4537,8 +4547,6 @@ video.photo-item {
   margin-bottom: var(--space-lg);
 }
 
-}
-
 /* Home intro paragraphs */
 .home-intro {
   margin-bottom: var(--space-xl);
@@ -5226,25 +5234,6 @@ video.photo-item {
   50% { transform: translateY(10px); opacity: 1; }
 }
 
-/* --- Lore Preview Card Hover --- */
-.lore-preview-card {
-  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
-}
-
-.lore-preview-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
-}
-
-.lore-preview-card img {
-  transition: transform 0.6s var(--ease), filter 0.4s var(--ease);
-}
-
-.lore-preview-card:hover img {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
 /* --- Button Ripple on Hover --- */
 .btn {
   position: relative;
@@ -5264,14 +5253,7 @@ video.photo-item {
 
 /* --- Photo Item Hover --- */
 .photo-item {
-  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), filter 0.3s var(--ease);
   cursor: pointer;
-}
-
-.photo-item:hover {
-  transform: scale(1.04);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  filter: brightness(1.1);
 }
 
 /* --- Intro Block Entrance --- */
@@ -5291,10 +5273,6 @@ video.photo-item {
 }
 
 /* --- Footer --- */
-.footer {
-  position: relative;
-}
-
 /* --- Bulletin Item Hover --- */
 .bulletin-item {
   transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
@@ -5315,9 +5293,6 @@ video.photo-item {
 .bulletin-item.pinned .bulletin-body {
   background: rgba(157, 175, 255, 0.03);
   border-top: 1px solid rgba(157, 175, 255, 0.1);
-}
-
-.bulletin-item.pinned .bulletin-body {
   max-height: 600px;
 }
 
@@ -5349,51 +5324,6 @@ video.photo-item {
   flex-wrap: wrap;
 }
 
-.ann-filter {
-  padding: 6px 16px;
-  border: 1px solid var(--mist);
-  border-radius: var(--radius-xl);
-  background: transparent;
-  color: var(--fog);
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.3s var(--ease);
-}
-
-.ann-filter:hover {
-  border-color: var(--sky);
-  color: var(--sky);
-}
-
-.ann-filter.active {
-  background: var(--sky);
-  border-color: var(--sky);
-  color: var(--deep);
-}
-
-.ann-search input {
-  padding: 6px 16px;
-  border: 1px solid var(--mist);
-  border-radius: var(--radius-xl);
-  background: var(--ocean);
-  color: var(--cloud);
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  width: 200px;
-  outline: none;
-  transition: border-color 0.3s var(--ease), width 0.3s var(--ease);
-}
-
-.ann-search input::placeholder {
-  color: var(--text-muted);
-}
-
-.ann-search input:focus {
-  border-color: var(--sky);
-  width: 260px;
-}
-
 .ann-stats {
   color: var(--fog);
   font-size: 0.85rem;
@@ -5417,22 +5347,6 @@ video.photo-item {
   .ann-search input:focus {
     width: 100%;
   }
-}
-
-[data-theme="light"] .ann-filter {
-  border-color: var(--mist);
-  color: var(--fog);
-}
-
-[data-theme="light"] .ann-filter.active {
-  background: var(--sky);
-  color: #fff;
-}
-
-[data-theme="light"] .ann-search input {
-  background: var(--ocean);
-  border-color: var(--mist);
-  color: var(--cloud);
 }
 
 /* --- Reduced Motion --- */
@@ -5855,25 +5769,20 @@ video.photo-item {
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  overflow: hidden;
   border: 1px solid rgba(157, 175, 255, 0.08);
   border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  overflow: hidden;
   text-decoration: none;
   color: var(--cloud);
-  transition: all 0.3s var(--ease);
 }
 
 .community-card:hover {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.14);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   border-color: rgba(157, 175, 255, 0.2);
   transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .community-icon {
