@@ -343,9 +343,10 @@ function createHeroParticles() {
   } catch(e) {}
 }
 
-// --- Hero Typewriter (staged with thinking dots) ---
+// --- Hero Typewriter (disabled) ---
 function initTypewriter() {
-  const el = document.getElementById('heroSubtitle');
+  return; // typewriter effect removed
+}
   if (!el) return;
   // Prevent double-init
   if (el.dataset.typed) return;
