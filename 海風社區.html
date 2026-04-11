@@ -5,12 +5,12 @@
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>海風社區 — 關於 — 海風</title>
-  <meta name="description" content="海風伺服器海風社區列表。">
+  <meta name="description" content="海風伺服器玩家自發組成的社區群組。">
   <link rel="icon" href="assets/img/logo.png">
   <meta property="og:title" content="海風社區 — 關於 — 海風">
-  <meta property="og:description" content="海風伺服器海風社區列表。">
+  <meta property="og:description" content="海風伺服器玩家自發組成的社區群組。">
   <meta property="og:image" content="assets/img/logo.png">
-  <meta property="og:type" "website">
+  <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#0d1117">
   <link rel="dns-prefetch" href="//cdn.discordapp.com">
@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260411">
+  <link rel="stylesheet" href="style.css?v=260411bb">
   <link rel="stylesheet" href="music-player.css">
 </head>
 <body>
@@ -28,7 +28,7 @@
 
   <nav class="nav">
     <a href="首頁.html" class="nav-logo">
-      <img src="assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48">
+      <img src="assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high">
       <span>海風伺服器</span>
     </a>
     <div class="nav-right">
@@ -84,77 +84,105 @@
     <div class="content-section">
       <div class="community-grid fade-in">
 
-        <div class="community-card" onclick="this.classList.toggle('open')">
-          <div class="community-header">
-            <span class="community-icon">#</span>
+        <div class="community-card" id="comm-1">
+          <button class="community-header" aria-expanded="false" aria-controls="comm-1-body" onclick="this.closest('.community-card').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.community-card').classList.contains('open'))">
+            <span class="community-icon">🐺</span>
             <span class="community-name">wolf-gang</span>
             <span class="community-arrow">▾</span>
+          </button>
+          <div class="community-body" id="comm-1-body">
+            <p>一群熱愛冒險與合作的玩家，打造屬於狼群的家園。</p>
           </div>
         </div>
 
-        <div class="community-card" onclick="this.classList.toggle('open')">
-          <div class="community-header">
-            <span class="community-icon">#</span>
+        <div class="community-card" id="comm-2">
+          <button class="community-header" aria-expanded="false" aria-controls="comm-2-body" onclick="this.closest('.community-card').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.community-card').classList.contains('open'))">
+            <span class="community-icon">🚩</span>
             <span class="community-name">薄旗豪想社</span>
             <span class="community-arrow">▾</span>
+          </button>
+          <div class="community-body" id="comm-2-body">
+            <p>以建築與創意為核心的社區，歡迎所有對建設有想法的玩家加入。</p>
           </div>
         </div>
 
-        <div class="community-card" onclick="this.classList.toggle('open')">
-          <div class="community-header">
-            <span class="community-icon">#</span>
+        <div class="community-card" id="comm-3">
+          <button class="community-header" aria-expanded="false" aria-controls="comm-3-body" onclick="this.closest('.community-card').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.community-card').classList.contains('open'))">
+            <span class="community-icon">🏠</span>
             <span class="community-name">廢柴社區</span>
             <span class="community-arrow">▾</span>
+          </button>
+          <div class="community-body" id="comm-3-body">
+            <p>佛系玩家的庇護所，沒有壓力、沒有 KPI，慢慢玩就好。</p>
           </div>
         </div>
 
-        <div class="community-card" onclick="this.classList.toggle('open')">
-          <div class="community-header">
-            <span class="community-icon">#</span>
+        <div class="community-card" id="comm-4">
+          <button class="community-header" aria-expanded="false" aria-controls="comm-4-body" onclick="this.closest('.community-card').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.community-card').classList.contains('open'))">
+            <span class="community-icon">🌑</span>
             <span class="community-name">eclipse</span>
             <span class="community-arrow">▾</span>
+          </button>
+          <div class="community-body" id="comm-4-body">
+            <p>如日蝕般神秘的社區，在黑暗中尋找自己的光芒。</p>
           </div>
         </div>
 
-        <div class="community-card" onclick="this.classList.toggle('open')">
-          <div class="community-header">
+        <div class="community-card" id="comm-5">
+          <button class="community-header" aria-expanded="false" aria-controls="comm-5-body" onclick="this.closest('.community-card').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.community-card').classList.contains('open'))">
             <span class="community-icon">🍁</span>
             <span class="community-name">楓櫻村</span>
             <span class="community-arrow">▾</span>
-          </div>
-          <div class="community-body">
-            <p>🍁是個主打休閒養老的村子 村長Zhong🍁副村長 阿飄👻 歡迎加入咱們優質的楓櫻村</p>
+          </button>
+          <div class="community-body" id="comm-5-body">
+            <p>🍁 是個主打休閒養老的村子。村長 Zhong🍁 副村長 阿飄👻 歡迎加入咱們優質的楓櫻村！</p>
           </div>
         </div>
 
-        <div class="community-card" onclick="this.classList.toggle('open')">
-          <div class="community-header">
-            <span class="community-icon">#</span>
+        <div class="community-card" id="comm-6">
+          <button class="community-header" aria-expanded="false" aria-controls="comm-6-body" onclick="this.closest('.community-card').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.community-card').classList.contains('open'))">
+            <span class="community-icon">☕</span>
             <span class="community-name">休閒咖啡廳</span>
             <span class="community-arrow">▾</span>
+          </button>
+          <div class="community-body" id="comm-6-body">
+            <p>泡杯咖啡，坐下來聊聊天。一個輕鬆自在的聚會場所。</p>
           </div>
         </div>
 
-        <div class="community-card" onclick="this.classList.toggle('open')">
-          <div class="community-header">
+        <div class="community-card" id="comm-7">
+          <button class="community-header" aria-expanded="false" aria-controls="comm-7-body" onclick="this.closest('.community-card').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.community-card').classList.contains('open'))">
             <span class="community-icon">🌙</span>
             <span class="community-name">塵封小月</span>
             <span class="community-arrow">▾</span>
-          </div>
-          <div class="community-body">
-            <p>塵風曉月已於2024/12/31沉睡在永無止盡的夢鄉。若以前曾玩過塵風曉月伺服器，失去自己的家園，現在在海風形單影隻，四處漂泊。那就進來吧，這裡都是塵風曉月的家人們。</p>
+          </button>
+          <div class="community-body" id="comm-7-body">
+            <p>塵風曉月已於 2024/12/31 沉睡在永無止盡的夢鄉。若以前曾玩過塵風曉月伺服器，失去自己的家園，現在在海風形單影隻，四處漂泊。那就進來吧，這裡都是塵風曉月的家人們。</p>
           </div>
         </div>
 
-        <div class="community-card" onclick="this.classList.toggle('open')">
-          <div class="community-header">
-            <span class="community-icon">#</span>
+        <div class="community-card" id="comm-8">
+          <button class="community-header" aria-expanded="false" aria-controls="comm-8-body" onclick="this.closest('.community-card').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.community-card').classList.contains('open'))">
+            <span class="community-icon">🌸</span>
             <span class="community-name">さくらあらし</span>
             <span class="community-arrow">▾</span>
+          </button>
+          <div class="community-body" id="comm-8-body">
+            <p>櫻吹雪的暴風——來自日本的玩家社群，跨越語言與文化的交流。</p>
           </div>
         </div>
 
       </div>
+
+      <div class="fade-in" style="margin-top: var(--space-2xl);">
+        <div style="padding: var(--space-lg); background: rgba(157, 175, 255, 0.04); border: 1px solid rgba(157, 175, 255, 0.1); border-radius: var(--radius-md); text-align: center;">
+          <p style="color: var(--sky); font-weight: 600; margin-bottom: var(--space-sm);">🏘️ 想建立自己的社區？</p>
+          <p style="color: var(--cloud); font-size: 0.9rem; line-height: 1.8;">
+            在海風，你可以自由組建社區。透過 <a href="https://discord.gg/HdS2HrJEH7" style="color: var(--sky);">Discord</a> 聯繫管理團隊申請。
+          </p>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -177,6 +205,7 @@
 
   <p class="page-revise">網站最後修改日期 2026.04.11 / 總計修改 <span id="deployCount">—</span> 次</p>
 
-  <script src="main.js?v=260411"></script>
+  <script src="tips.js" defer></script>
+  <script src="main.js?v=260411bb"></script>
 </body>
 </html>

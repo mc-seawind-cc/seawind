@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>找不到頁面 — 海風</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/img/logo.png">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=260411b">
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .error-code {
+      font-size: clamp(6rem, 15vw, 10rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--sky), var(--foam), var(--sky));
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: error-shimmer 4s ease-in-out infinite;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    @keyframes error-shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .error-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .error-desc {
+      color: var(--fog);
+      font-size: 1rem;
+      max-width: 400px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .error-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-atmosphere"></div>
+  <div class="error-page">
+    <div class="error-code">404</div>
+    <h1 class="error-title">航向未知的海域</h1>
+    <p class="error-desc">看來這片海域沒有陸地。<br>別擔心，讓風帶你回到正確的航線。</p>
+    <div class="error-actions">
+      <a href="首頁.html" class="btn btn-primary">返回首頁</a>
+      <a href="https://discord.gg/HdS2HrJEH7" target="_blank" class="btn btn-outline">加入社群</a>
+    </div>
+    <svg class="error-wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,30 1440,60 L1440,120 L0,120Z" fill="var(--sky)"/>
+    </svg>
+  </div>
+</body>
+</html>

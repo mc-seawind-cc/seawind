@@ -222,57 +222,18 @@ function initScrollTypewriters() {
   els.forEach(el => observer.observe(el));
 }
 
-// --- Hero Click-to-Reveal ---
+// --- Hero Auto-Reveal (直接顯示，無需點擊) ---
 function initHeroReveal() {
   const heroContent = document.getElementById('heroContent');
   if (!heroContent) return;
 
-  let revealed = false;
+  // 直接展開，保留動畫效果
+  heroContent.classList.remove('hero-collapsed');
 
-  function revealHero() {
-    if (revealed) return;
-    revealed = true;
-    heroContent.classList.remove('hero-collapsed');
-
-    // Start typewriter, server status, and tips after reveal
-    setTimeout(() => initTypewriter(), 200);
-    fetchServerStatus();
-    initTips();
-  }
-
-  // Click, scroll, or keyboard to reveal
-  function bindReveal(handler) {
-    handler.addEventListener('click', revealHero);
-  }
-
-  heroContent.addEventListener('click', (e) => {
-    if (e.target.closest('a, button, .info-card-copy')) return;
-    revealHero();
-  });
-
-  // Scroll = reveal
-  window.addEventListener('scroll', () => revealHero(), { passive: true });
-
-  // Prompt click
-  const prompt = document.getElementById('heroPrompt');
-  if (prompt) {
-    prompt.addEventListener('click', (e) => {
-      e.stopPropagation();
-      revealHero();
-    });
-  }
-
-  // Keyboard
-  document.addEventListener('keydown', (e) => {
-    if (!revealed && (e.key === 'Enter' || e.key === ' ')) {
-      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-        revealHero();
-      }
-    }
-  });
-
-  // Auto-reveal after 0.3s if user hasn't interacted
-  setTimeout(() => revealHero(), 300);
+  // 啟動打字機效果、伺服器狀態和提示
+  setTimeout(() => initTypewriter(), 200);
+  fetchServerStatus();
+  initTips();
 }
 
 function initBackToTop() {
@@ -528,7 +489,7 @@ function initBulletinBoard() {
       pinned.forEach((item, i) => {
         html += `
           <div class="bulletin-item pinned open" data-index="${i}">
-            <button class="bulletin-toggle" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>e.classList.remove('open'));if(!wasOpen)this.parentElement.classList.add('open')">
+            <button class="bulletin-toggle" aria-expanded="true" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>{e.classList.remove('open');e.querySelector('.bulletin-toggle').setAttribute('aria-expanded','false');});if(!wasOpen){this.parentElement.classList.add('open');this.setAttribute('aria-expanded','true');}">
               <span class="b-title">📌 ${item.title}</span>
               <span class="b-arrow">▾</span>
             </button>
@@ -541,7 +502,7 @@ function initBulletinBoard() {
       regular.slice(0, maxRegular).forEach((item, i) => {
         html += `
           <div class="bulletin-item" data-index="${i}">
-            <button class="bulletin-toggle" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>e.classList.remove('open'));if(!wasOpen)this.parentElement.classList.add('open')">
+            <button class="bulletin-toggle" aria-expanded="false" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>{e.classList.remove('open');e.querySelector('.bulletin-toggle').setAttribute('aria-expanded','false');});if(!wasOpen){this.parentElement.classList.add('open');this.setAttribute('aria-expanded','true');}">
               <span class="b-title">${item.title}</span>
               <span class="b-tag tag-${item.tag}">${item.tag}</span>
               <span class="b-id">${item.id}</span>
@@ -640,6 +601,31 @@ function initPostcardLightbox() {
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox();
   });
+
+  // Touch swipe support for mobile
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  const SWIPE_THRESHOLD = 50;
+
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diffX = touchStartX - touchEndX;
+    const diffY = Math.abs(touchStartY - e.changedTouches[0].screenY);
+    // 只有水平滑動距離大於垂直才觸發切換
+    if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(diffX) > diffY) {
+      if (diffX > 0) {
+        show(idx + 1); // 向左滑 = 下一張
+      } else {
+        show(idx - 1); // 向右滑 = 上一張
+      }
+    }
+  }, { passive: true });
 }
 
 // --- General Lightbox (for lore pages etc.) ---
