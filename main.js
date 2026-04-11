@@ -917,11 +917,11 @@ function initGuideSidebar() {
   groups.forEach(g => observer.observe(g.target));
 }
 
-// --- Deployment Count ---
+// --- Deployment Count (使用 GitHub commits API) ---
 (function() {
   const el = document.getElementById('deployCount');
   if (!el) return;
-  fetch('https://api.github.com/repos/mc-seawind-cc/website/deployments?per_page=1', { method: 'HEAD' })
+  fetch('https://api.github.com/repos/mc-seawind-cc/website/commits?per_page=1')
     .then(r => {
       const link = r.headers.get('Link') || '';
       const match = link.match(/page=(\d+)>; rel="last"/);
