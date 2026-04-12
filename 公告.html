@@ -11,147 +11,151 @@
   <meta property="og:description" content="海風伺服器公告、更新與活動記錄。">
   <meta property="og:image" content="assets/img/logo.png">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="assets/img/logo.png">
   <meta name="theme-color" content="#0d1117">
-  <link rel="dns-prefetch" href="//cdn.discordapp.com">
-  <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260412b">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=260412g">
   <link rel="stylesheet" href="music-player.css">
   <style>
-    /* ═══ 公告頁面專用樣式 ═══ */
+    /* ═══ 公告頁面 v2 ═══ */
 
-    /* 頁面頭部 */
-    .ann-page-hero {
+    /* Hero */
+    .ann-hero {
       text-align: center;
-      padding: var(--space-xl) 0;
-      margin-bottom: var(--space-lg);
+      padding: var(--space-xl) 0 var(--space-lg);
     }
-    .ann-page-hero h1 {
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      margin-bottom: var(--space-sm);
+    .ann-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      margin-bottom: 6px;
     }
-    .ann-page-hero .ann-subtitle {
+    .ann-hero .ann-subtitle {
       color: var(--fog);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
-    /* 統計卡片列 */
-    .ann-stats-row {
+    /* 統計列 */
+    .ann-stats {
       display: flex;
-      gap: 12px;
+      gap: 10px;
+      justify-content: center;
       margin-bottom: var(--space-lg);
       flex-wrap: wrap;
     }
-    .ann-stat-card {
-      flex: 1;
-      min-width: 100px;
+    .ann-stat {
       background: var(--ocean);
       border: 1px solid var(--mist);
       border-radius: var(--radius-md);
-      padding: 14px 16px;
+      padding: 12px 20px;
       text-align: center;
-      transition: border-color var(--duration) var(--ease), transform var(--duration) var(--ease);
+      min-width: 80px;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .ann-stat-card:hover {
-      border-color: var(--sky);
-      transform: translateY(-1px);
-    }
-    .ann-stat-card .stat-num {
-      font-size: 1.5rem;
+    .ann-stat:hover { border-color: var(--sky); transform: translateY(-1px); }
+    .ann-stat .num {
+      font-size: 1.4rem;
       font-weight: 800;
       color: var(--cloud);
       line-height: 1.2;
     }
-    .ann-stat-card .stat-label {
-      font-size: 0.72rem;
+    .ann-stat .label {
+      font-size: 0.68rem;
       color: var(--fog);
       margin-top: 2px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    .ann-stat-card[data-tag="公告"] { border-left: 3px solid rgba(87,138,255,0.6); }
-    .ann-stat-card[data-tag="更新"] { border-left: 3px solid rgba(100,220,180,0.6); }
-    .ann-stat-card[data-tag="維護"] { border-left: 3px solid rgba(255,130,130,0.6); }
-    .ann-stat-card[data-tag="活動"] { border-left: 3px solid rgba(255,170,50,0.6); }
+    .ann-stat[data-tag="公告"] { border-left: 3px solid rgba(87,138,255,0.6); }
+    .ann-stat[data-tag="更新"] { border-left: 3px solid rgba(100,220,180,0.6); }
+    .ann-stat[data-tag="活動"] { border-left: 3px solid rgba(255,170,50,0.6); }
 
-    /* 篩選列 */
-    .ann-filter-bar {
+    /* 工具列 */
+    .ann-toolbar {
       display: flex;
       gap: 12px;
       align-items: center;
       margin-bottom: var(--space-lg);
       flex-wrap: wrap;
+      position: sticky;
+      top: 64px;
+      z-index: 50;
+      background: var(--bg);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--mist);
     }
-    .ann-filters {
+    .ann-toolbar::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      background: var(--bg);
+      z-index: -1;
+    }
+
+    /* Tag 篩選 */
+    .ann-tags {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
       flex: 1;
     }
-    .ann-filter {
+    .ann-tag-btn {
       background: var(--ocean);
       border: 1px solid var(--mist);
       color: var(--fog);
-      padding: 7px 14px;
+      padding: 6px 14px;
       border-radius: 99px;
       font-size: 0.82rem;
       cursor: pointer;
-      transition: all var(--duration) var(--ease);
+      transition: all 0.2s;
       font-family: var(--font-body);
       white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .ann-filter:hover {
-      border-color: var(--sky);
-      color: var(--cloud);
-    }
-    .ann-filter.active {
+    .ann-tag-btn:hover { border-color: var(--sky); color: var(--cloud); }
+    .ann-tag-btn.active {
       background: rgba(157,175,255,0.1);
       border-color: rgba(157,175,255,0.3);
       color: var(--sky);
       font-weight: 600;
     }
-    [data-theme="light"] .ann-filter {
-      background: rgba(0,0,0,0.02);
-      border-color: rgba(0,0,0,0.06);
+    .ann-tag-btn .badge {
+      background: rgba(255,255,255,0.08);
+      padding: 1px 6px;
+      border-radius: 99px;
+      font-size: 0.7rem;
+      font-weight: 600;
     }
-    [data-theme="light"] .ann-filter.active {
-      background: rgba(74,108,247,0.08);
-      border-color: rgba(74,108,247,0.2);
-      color: #4a6cf7;
+    .ann-tag-btn.active .badge {
+      background: rgba(157,175,255,0.2);
     }
 
-    /* 搜尋框 */
-    .ann-search {
+    /* 搜尋 */
+    .ann-search-wrap {
       position: relative;
       flex-shrink: 0;
     }
-    .ann-search input {
+    .ann-search-wrap input {
       background: var(--ocean);
       border: 1px solid var(--mist);
       color: var(--cloud);
       padding: 8px 36px 8px 14px;
       border-radius: 99px;
       font-size: 0.85rem;
-      width: 200px;
+      width: 220px;
       outline: none;
-      transition: all var(--duration) var(--ease);
+      transition: all 0.25s;
       font-family: var(--font-body);
     }
-    .ann-search input:focus {
+    .ann-search-wrap input:focus {
       border-color: var(--sky);
-      width: 260px;
+      width: 280px;
       box-shadow: 0 0 0 3px rgba(157,175,255,0.1);
     }
-    .ann-search input::placeholder { color: var(--text-muted); }
-    [data-theme="light"] .ann-search input {
-      background: rgba(0,0,0,0.02);
-      border-color: rgba(0,0,0,0.06);
-    }
-    .ann-search .search-clear {
+    .ann-search-wrap input::placeholder { color: var(--text-muted); }
+    .ann-search-wrap .clear-btn {
       position: absolute;
       right: 10px;
       top: 50%;
@@ -165,84 +169,93 @@
       display: none;
       line-height: 1;
     }
-    .ann-search .search-clear.visible { display: block; }
+    .ann-search-wrap .clear-btn.visible { display: block; }
+
+    /* 月份導航 */
+    .ann-month-nav {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: var(--space-md);
+    }
+    .ann-month-btn {
+      background: none;
+      border: 1px solid transparent;
+      color: var(--fog);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+    .ann-month-btn:hover { color: var(--cloud); background: rgba(255,255,255,0.03); }
+    .ann-month-btn.active {
+      color: var(--sky);
+      border-color: rgba(157,175,255,0.2);
+      background: rgba(157,175,255,0.05);
+    }
 
     /* 公告列表 */
-    .ann-list {
+    .ann-list { display: flex; flex-direction: column; gap: 2px; }
+
+    /* 月份標題 */
+    .ann-month-header {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--fog);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: var(--space-md) 0 var(--space-sm);
+      border-bottom: 1px solid var(--mist);
+      margin-bottom: var(--space-sm);
       display: flex;
-      flex-direction: column;
+      align-items: center;
       gap: 8px;
     }
-
-    /* 空狀態 */
-    .ann-empty {
-      text-align: center;
-      padding: var(--space-2xl) var(--space-lg);
-      color: var(--fog);
-    }
-    .ann-empty .empty-icon {
-      font-size: 3rem;
-      margin-bottom: var(--space-md);
-      opacity: 0.4;
-    }
-    .ann-empty p {
-      font-size: 0.95rem;
+    .ann-month-header .month-count {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      font-weight: 400;
     }
 
     /* 公告卡片 */
     .ann-card {
       background: var(--ocean);
       border: 1px solid var(--mist);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-sm);
       overflow: hidden;
-      transition: all var(--duration) var(--ease);
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
     .ann-card:hover {
+      border-color: rgba(157,175,255,0.15);
+    }
+    .ann-card.open {
       border-color: rgba(157,175,255,0.2);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
     }
-    .ann-card.pinned {
-      border-left: 3px solid var(--sky);
-      background: linear-gradient(135deg, rgba(157,175,255,0.03), transparent);
-    }
-    .ann-card[data-tag="公告"] .ann-card-header { border-left: 3px solid rgba(87,138,255,0.4); }
-    .ann-card[data-tag="更新"] .ann-card-header { border-left: 3px solid rgba(100,220,180,0.4); }
-    .ann-card[data-tag="維護"] .ann-card-header { border-left: 3px solid rgba(255,130,130,0.4); }
-    .ann-card[data-tag="活動"] .ann-card-header { border-left: 3px solid rgba(255,170,50,0.4); }
-    .ann-card.pinned .ann-card-header { border-left: none; }
 
-    /* 卡片頭部（可點擊） */
-    .ann-card-header {
+    /* 卡片標頭 */
+    .ann-card-head {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 16px;
+      padding: 10px 14px;
       cursor: pointer;
       user-select: none;
-      transition: background var(--duration) var(--ease);
+      transition: background 0.15s;
+      min-height: 48px;
     }
-    .ann-card-header:hover {
-      background: rgba(157,175,255,0.03);
-    }
-    [data-theme="light"] .ann-card-header:hover {
-      background: rgba(0,0,0,0.015);
-    }
-
-    .ann-card-icon {
-      font-size: 1.1rem;
-      flex-shrink: 0;
-      width: 28px;
-      text-align: center;
-    }
+    .ann-card-head:hover { background: rgba(157,175,255,0.02); }
+    [data-theme="light"] .ann-card-head:hover { background: rgba(0,0,0,0.01); }
 
     .ann-card-date {
       font-size: 0.72rem;
       color: var(--fog);
       flex-shrink: 0;
-      min-width: 75px;
+      min-width: 70px;
       font-variant-numeric: tabular-nums;
     }
-
     .ann-card-title {
       flex: 1;
       font-size: 0.88rem;
@@ -251,89 +264,78 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      padding: 0 4px;
     }
-
-    .ann-card-meta {
+    .ann-card-right {
       display: flex;
       align-items: center;
       gap: 6px;
       flex-shrink: 0;
     }
-
     .ann-card-id {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       color: var(--text-muted);
       font-family: monospace;
     }
-
     .ann-card-tag {
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       padding: 2px 8px;
       border-radius: 99px;
       font-weight: 500;
-      letter-spacing: 0.3px;
     }
     .ann-card-tag.tag-公告 { background: rgba(87,138,255,0.1); color: rgba(87,138,255,0.9); }
     .ann-card-tag.tag-更新 { background: rgba(100,220,180,0.1); color: rgba(100,220,180,0.9); }
-    .ann-card-tag.tag-維護 { background: rgba(255,130,130,0.1); color: rgba(255,130,130,0.9); }
     .ann-card-tag.tag-活動 { background: rgba(255,170,50,0.1); color: rgba(255,170,50,0.9); }
+    .ann-card-tag.tag-維護 { background: rgba(255,130,130,0.1); color: rgba(255,130,130,0.9); }
     [data-theme="light"] .ann-card-tag.tag-公告 { background: rgba(74,108,247,0.08); color: #4a6cf7; }
     [data-theme="light"] .ann-card-tag.tag-更新 { background: rgba(0,150,100,0.08); color: #009664; }
-    [data-theme="light"] .ann-card-tag.tag-維護 { background: rgba(220,80,80,0.08); color: #dc5050; }
     [data-theme="light"] .ann-card-tag.tag-活動 { background: rgba(220,140,30,0.08); color: #dc8c1e; }
+    [data-theme="light"] .ann-card-tag.tag-維護 { background: rgba(220,80,80,0.08); color: #dc5050; }
 
-    .ann-card-pin {
-      font-size: 0.7rem;
-      color: var(--sky);
+    .ann-card-img-indicator {
+      width: 16px;
+      height: 16px;
+      opacity: 0.4;
     }
-
     .ann-card-arrow {
       color: var(--fog);
-      font-size: 0.8rem;
-      transition: transform var(--duration) var(--ease);
-      flex-shrink: 0;
+      font-size: 0.75rem;
+      transition: transform 0.25s;
     }
-    .ann-card.open .ann-card-arrow {
-      transform: rotate(180deg);
-    }
+    .ann-card.open .ann-card-arrow { transform: rotate(180deg); }
 
-    /* 卡片身體 */
+    /* 卡片展開內容 */
     .ann-card-body {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
     }
-    .ann-card.open .ann-card-body {
-      max-height: 2000px;
-    }
+    .ann-card.open .ann-card-body { max-height: 3000px; }
     .ann-card-body-inner {
-      padding: 0 16px 16px;
+      padding: 0 14px 14px;
       border-top: 1px solid var(--mist);
     }
 
-    /* 內容樣式 */
-    .ann-card-body .b-content {
+    /* 內文 */
+    .ann-content {
       color: var(--cloud);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       line-height: 1.8;
       margin-top: 12px;
     }
-    [data-theme="light"] .ann-card-body .b-content { color: #4a5260; }
-    .ann-card-body .b-content p { margin-bottom: 0.6em; }
-    .ann-card-body .b-content p:last-child { margin-bottom: 0; }
-    .ann-card-body .b-content ul,
-    .ann-card-body .b-content ol { padding-left: 1.4em; margin: 4px 0; }
-    .ann-card-body .b-content a { color: var(--sky); text-decoration: none; }
-    .ann-card-body .b-content a:hover { text-decoration: underline; }
-    .ann-card-body .b-content code {
+    [data-theme="light"] .ann-content { color: #4a5260; }
+    .ann-content p { margin-bottom: 0.5em; }
+    .ann-content p:last-child { margin-bottom: 0; }
+    .ann-content ul, .ann-content ol { padding-left: 1.4em; margin: 4px 0; }
+    .ann-content a { color: var(--sky); text-decoration: none; }
+    .ann-content a:hover { text-decoration: underline; }
+    .ann-content code {
       background: rgba(157,175,255,0.08);
       padding: 1px 6px;
       border-radius: 4px;
       font-size: 0.84em;
       font-family: 'SF Mono', 'Cascadia Code', monospace;
     }
-    .ann-card-body .b-content blockquote.ann-quote {
+    .ann-content blockquote {
       border-left: 3px solid rgba(157,175,255,0.2);
       padding: 6px 14px;
       margin: 8px 0;
@@ -341,89 +343,120 @@
       border-radius: 0 6px 6px 0;
       color: var(--fog);
     }
-    .ann-card-body .b-content blockquote.ann-quote[data-depth="2"] {
-      border-left-color: rgba(157,175,255,0.35);
-      background: rgba(157,175,255,0.05);
-    }
-    .ann-card-body .b-content .ann-small { color: var(--text-muted); font-size: 0.8em; }
-    .ann-card-body .b-content .ann-spoiler {
+    .ann-content .ann-small { color: var(--text-muted); font-size: 0.8em; }
+    .ann-content .ann-spoiler {
       background: var(--mist);
       color: transparent;
       border-radius: 3px;
       padding: 0 4px;
       cursor: pointer;
-      transition: all var(--duration) var(--ease);
+      transition: all 0.2s;
     }
-    .ann-card-body .b-content .ann-spoiler.revealed {
+    .ann-content .ann-spoiler.revealed {
       background: rgba(157,175,255,0.1);
       color: var(--cloud);
     }
-    [data-theme="light"] .ann-card-body .b-content .ann-spoiler.revealed {
-      background: rgba(74,108,247,0.06);
-      color: #1f2328;
-    }
-    .ann-card-body .b-content .ann-sub-item { margin-left: 1em; }
 
-    /* 公告圖片 */
-    .ann-card-images {
+    /* 圖片 */
+    .ann-images {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       flex-wrap: wrap;
-      margin-top: 12px;
+      margin-top: 10px;
     }
-    .ann-card-images .ann-img {
-      max-width: 200px;
-      max-height: 150px;
-      border-radius: var(--radius-sm);
+    .ann-images img {
+      max-width: 180px;
+      max-height: 140px;
+      border-radius: 6px;
       cursor: zoom-in;
-      transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+      transition: transform 0.2s, box-shadow 0.2s;
       object-fit: cover;
     }
-    .ann-card-images .ann-img:hover {
+    .ann-images img:hover {
       transform: scale(1.03);
       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
 
-    /* 響應式 */
-    @media (max-width: 768px) {
-      .ann-filter-bar { flex-direction: column; align-items: stretch; }
-      .ann-filters { gap: 6px; }
-      .ann-filter {
-        padding: 10px 14px;
-        font-size: 0.85rem;
-        min-height: 44px;
-      }
-      .ann-search input {
-        width: 100%;
-        font-size: 16px; /* 防止 iOS 自動縮放 */
-        padding: 12px 40px 12px 16px;
-      }
-      .ann-search input:focus { width: 100%; }
-      .ann-stats-row {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
-      }
-      .ann-stat-card { min-width: unset; padding: 10px 8px; }
-      .ann-stat-card .stat-num { font-size: 1.1rem; }
-      .ann-stat-card .stat-label { font-size: 0.62rem; }
-      .ann-card-header {
-        padding: 12px 10px;
-        gap: 6px;
-        min-height: 50px;
-      }
-      .ann-card-date { min-width: 60px; font-size: 0.68rem; }
-      .ann-card-title { font-size: 0.82rem; }
-      .ann-card-id { display: none; }
-      .ann-card-tag { font-size: 0.6rem; padding: 2px 6px; }
-      .ann-card-images .ann-img { max-width: 110px; max-height: 80px; }
-      .ann-card-body-inner { padding: 0 12px 14px; }
-      .ann-card-body .b-content { font-size: 0.88rem; }
+    /* 底部 meta */
+    .ann-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .ann-reactions {
+      display: flex;
+      gap: 4px;
+    }
+    .ann-reaction {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 99px;
+      padding: 2px 8px;
+      font-size: 0.72rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .ann-reaction .rcount { color: var(--fog); }
+
+    /* Load more */
+    .ann-load-more {
+      text-align: center;
+      padding: var(--space-lg) 0;
     }
 
+    /* 空狀態 */
+    .ann-empty {
+      text-align: center;
+      padding: var(--space-2xl) var(--space-lg);
+      color: var(--fog);
+    }
+    .ann-empty .icon { font-size: 3rem; margin-bottom: var(--space-md); opacity: 0.4; }
+
+    /* Lightbox */
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9999; align-items: center; justify-content: center; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+    .lb-close, .lb-prev, .lb-next {
+      position: absolute; background: rgba(255,255,255,0.1); border: none; color: #fff;
+      font-size: 1.5rem; cursor: pointer; padding: 12px; border-radius: 50%;
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .lb-close:hover, .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,0.2); }
+    .lb-close { top: 16px; right: 16px; font-size: 1.2rem; }
+    .lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
+    .lb-counter { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.6); font-size: 0.82rem; }
+
+    /* RWD */
+    @media (max-width: 768px) {
+      .ann-toolbar { flex-direction: column; align-items: stretch; top: 56px; }
+      .ann-tags { gap: 6px; }
+      .ann-tag-btn { padding: 8px 12px; font-size: 0.82rem; min-height: 40px; }
+      .ann-search-wrap input { width: 100%; font-size: 16px; padding: 12px 40px 12px 16px; }
+      .ann-search-wrap input:focus { width: 100%; }
+      .ann-stats { gap: 6px; }
+      .ann-stat { padding: 10px 12px; min-width: 70px; }
+      .ann-stat .num { font-size: 1.1rem; }
+      .ann-stat .label { font-size: 0.6rem; }
+      .ann-card-head { padding: 10px 10px; gap: 6px; min-height: 48px; }
+      .ann-card-date { min-width: 55px; font-size: 0.66rem; }
+      .ann-card-title { font-size: 0.82rem; }
+      .ann-card-id { display: none; }
+      .ann-images img { max-width: 100px; max-height: 75px; }
+      .ann-month-nav { gap: 4px; }
+      .ann-month-btn { padding: 3px 8px; font-size: 0.7rem; }
+    }
     @media (max-width: 375px) {
-      .ann-stats-row { grid-template-columns: repeat(2, 1fr); }
-      .ann-card-date { min-width: 55px; font-size: 0.62rem; }
+      .ann-stats { justify-content: space-between; }
+      .ann-stat { flex: 1; min-width: 0; padding: 8px 6px; }
+      .ann-card-date { min-width: 50px; font-size: 0.62rem; }
       .ann-card-title { font-size: 0.78rem; }
     }
   </style>
@@ -440,7 +473,7 @@
     <div class="nav-right">
       <ul class="nav-links">
         <li><a href="首頁.html">首頁</a></li>
-        <li><a href="公告.html">公告</a></li>
+        <li><a href="公告.html" class="active">公告</a></li>
         <li class="nav-dropdown">
           <a href="文化藝廊.html" class="nav-dropdown-toggle">關於 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
@@ -480,46 +513,45 @@
   </nav>
 
   <div class="page">
-    <div class="page-hero ann-page-hero fade-in">
+    <div class="page-hero ann-hero fade-in">
       <h1>📢 海風公告</h1>
-      <p class="ann-subtitle">伺服器所有公告、更新與活動記錄，掌握海風最新動態。</p>
+      <p class="ann-subtitle">伺服器所有公告、更新與活動記錄，掌握海風最新動態</p>
     </div>
 
     <div class="content-section">
+      <!-- 統計 -->
+      <div class="ann-stats fade-in" id="annStats"></div>
 
-      <!-- 統計卡片 -->
-      <div class="ann-stats-row fade-in" id="annStats"></div>
-
-      <!-- 篩選列 -->
-      <div class="ann-filter-bar fade-in">
-        <div class="ann-filters">
-          <button class="ann-filter active" data-tag="all">全部</button>
-          <button class="ann-filter" data-tag="公告">📢 公告</button>
-          <button class="ann-filter" data-tag="更新">🔧 更新</button>
-          <button class="ann-filter" data-tag="維護">🛠 維護</button>
-          <button class="ann-filter" data-tag="活動">🎉 活動</button>
+      <!-- 工具列 -->
+      <div class="ann-toolbar fade-in">
+        <div class="ann-tags" id="annTags">
+          <button class="ann-tag-btn active" data-tag="all">全部</button>
+          <button class="ann-tag-btn" data-tag="公告">📢 公告</button>
+          <button class="ann-tag-btn" data-tag="更新">🔧 更新</button>
+          <button class="ann-tag-btn" data-tag="活動">🎉 活動</button>
         </div>
-        <div class="ann-search">
-          <input type="text" id="annSearch" placeholder="搜尋公告標題或內容..." autocomplete="off">
-          <button class="search-clear" id="searchClear" aria-label="清除搜尋">✕</button>
+        <div class="ann-search-wrap">
+          <input type="text" id="annSearch" placeholder="搜尋公告..." autocomplete="off">
+          <button class="clear-btn" id="searchClear">✕</button>
         </div>
       </div>
 
+      <!-- 月份快速導航 -->
+      <div class="ann-month-nav fade-in" id="monthNav"></div>
+
       <!-- 公告列表 -->
-      <div id="annList" class="ann-list fade-in">
-        <div class="skeleton skeleton-line medium"></div>
-        <div class="skeleton skeleton-line short"></div>
-        <div class="skeleton skeleton-line"></div>
-        <div class="skeleton skeleton-line medium"></div>
-        <div class="skeleton skeleton-line short"></div>
+      <div id="annList" class="ann-list fade-in"></div>
+
+      <!-- 載入更多 -->
+      <div class="ann-load-more" id="loadMore" style="display:none;">
+        <button class="btn btn-outline" id="loadMoreBtn">載入更多</button>
       </div>
 
       <!-- 空狀態 -->
       <div id="annEmpty" class="ann-empty" style="display:none;">
-        <div class="empty-icon">🔍</div>
+        <div class="icon">🔍</div>
         <p>找不到符合條件的公告</p>
       </div>
-
     </div>
   </div>
 
@@ -542,146 +574,316 @@
 
   <p class="page-revise">網站最後修改日期 2026.04.12 / 總計修改 <span id="deployCount">—</span> 次</p>
 
-  <script src="tips.js" defer></script>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose">✕</button>
+    <button class="lb-prev" id="lbPrev">‹</button>
+    <button class="lb-next" id="lbNext">›</button>
+    <img id="lbImg" src="" alt="">
+    <div class="lb-counter" id="lbCounter"></div>
+  </div>
+
   <script src="utils.js"></script>
   <script src="main.js?v=260412b"></script>
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const listEl = document.getElementById('annList');
-    const emptyEl = document.getElementById('annEmpty');
+  (() => {
+    'use strict';
+
+    const PAGE_SIZE = 30;
+    const TAG_ICONS = { '公告': '📢', '更新': '🔧', '活動': '🎉', '維護': '🛠' };
+
+    let allData = [];
+    let filtered = [];
+    let displayed = 0;
+    let activeTag = 'all';
+    let searchQuery = '';
+
+    // DOM
     const statsEl = document.getElementById('annStats');
+    const tagsEl = document.getElementById('annTags');
     const searchEl = document.getElementById('annSearch');
     const clearBtn = document.getElementById('searchClear');
-    let allItems = [];
-    let activeTag = 'all';
+    const monthNavEl = document.getElementById('monthNav');
+    const listEl = document.getElementById('annList');
+    const emptyEl = document.getElementById('annEmpty');
+    const loadMoreEl = document.getElementById('loadMore');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
 
-    fetch('announcements.json')
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+    const lbPrev = document.getElementById('lbPrev');
+    const lbNext = document.getElementById('lbNext');
+    const lbCounter = document.getElementById('lbCounter');
+    let lbImages = [];
+    let lbIdx = 0;
+
+    // Init
+    fetch('announcements_v2.json')
       .then(r => r.json())
       .then(data => {
-        allItems = data.announcements;
+        allData = data.announcements;
         buildStats();
-        render();
+        bindEvents();
+        applyFilters();
       })
       .catch(() => {
-        listEl.innerHTML = '<div class="ann-empty"><div class="empty-icon">😵</div><p>公告載入失敗，請稍後再試</p></div>';
+        listEl.innerHTML = '<div class="ann-empty"><div class="icon">😵</div><p>公告載入失敗</p></div>';
       });
 
-    // 統計卡片
     function buildStats() {
-      const counts = { '全部': allItems.length, '公告': 0, '更新': 0, '維護': 0, '活動': 0 };
-      allItems.forEach(i => { if (counts[i.tag] !== undefined) counts[i.tag]++; });
-      statsEl.innerHTML = Object.entries(counts).map(([tag, count]) => {
-        const icon = tag === '全部' ? '📊' : getTagIcon(tag);
-        const dataAttr = tag === '全部' ? '' : `data-tag="${tag}"`;
-        return `<div class="ann-stat-card" ${dataAttr}>
-          <div class="stat-num">${count}</div>
-          <div class="stat-label">${icon} ${tag}</div>
-        </div>`;
+      const counts = { '全部': allData.length };
+      allData.forEach(a => { counts[a.tag] = (counts[a.tag] || 0) + 1; });
+      statsEl.innerHTML = Object.entries(counts).map(([tag, n]) => {
+        const icon = tag === '全部' ? '📊' : (TAG_ICONS[tag] || '📝');
+        const da = tag === '全部' ? '' : `data-tag="${tag}"`;
+        return `<div class="ann-stat" ${da}><div class="num">${n}</div><div class="label">${icon} ${tag}</div></div>`;
       }).join('');
+
+      // Update tag button badges
+      tagsEl.querySelectorAll('.ann-tag-btn').forEach(btn => {
+        const t = btn.dataset.tag;
+        const n = t === 'all' ? allData.length : (counts[t] || 0);
+        let badge = btn.querySelector('.badge');
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'badge';
+          btn.appendChild(badge);
+        }
+        badge.textContent = n;
+      });
     }
 
-    // 篩選按鈕
-    document.querySelectorAll('.ann-filter').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.ann-filter').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeTag = btn.dataset.tag;
-        render();
+    function bindEvents() {
+      // Tag filter
+      tagsEl.querySelectorAll('.ann-tag-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          tagsEl.querySelectorAll('.ann-tag-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeTag = btn.dataset.tag;
+          applyFilters();
+        });
       });
-    });
 
-    // 搜尋
-    searchEl.addEventListener('input', () => {
-      clearBtn.classList.toggle('visible', searchEl.value.length > 0);
-      render();
-    });
-    clearBtn.addEventListener('click', () => {
-      searchEl.value = '';
-      clearBtn.classList.remove('visible');
-      render();
-      searchEl.focus();
-    });
+      // Search with debounce
+      let timer;
+      searchEl.addEventListener('input', () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          searchQuery = searchEl.value.trim().toLowerCase();
+          clearBtn.classList.toggle('visible', searchQuery.length > 0);
+          applyFilters();
+        }, 250);
+      });
+      clearBtn.addEventListener('click', () => {
+        searchEl.value = '';
+        searchQuery = '';
+        clearBtn.classList.remove('visible');
+        applyFilters();
+        searchEl.focus();
+      });
 
-    function render() {
-      const q = searchEl.value.trim().toLowerCase();
-      let filtered = allItems;
-      if (activeTag !== 'all') filtered = filtered.filter(i => i.tag === activeTag);
-      if (q) filtered = filtered.filter(i =>
-        i.title.toLowerCase().includes(q) ||
-        i.content.toLowerCase().includes(q) ||
-        (i.id && i.id.toLowerCase().includes(q))
-      );
+      // Load more
+      loadMoreBtn.addEventListener('click', () => renderChunk());
 
+      // Stat card click → filter
+      statsEl.addEventListener('click', e => {
+        const card = e.target.closest('.ann-stat[data-tag]');
+        if (card) {
+          const tag = card.dataset.tag;
+          tagsEl.querySelectorAll('.ann-tag-btn').forEach(b => {
+            b.classList.toggle('active', b.dataset.tag === tag);
+          });
+          activeTag = tag;
+          applyFilters();
+        }
+      });
+
+      // Lightbox
+      lbClose.addEventListener('click', closeLightbox);
+      lbPrev.addEventListener('click', () => showLb(lbIdx - 1));
+      lbNext.addEventListener('click', () => showLb(lbIdx + 1));
+      lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+      document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showLb(lbIdx - 1);
+        if (e.key === 'ArrowRight') showLb(lbIdx + 1);
+      });
+    }
+
+    function applyFilters() {
+      filtered = allData;
+      if (activeTag !== 'all') filtered = filtered.filter(a => a.tag === activeTag);
+      if (searchQuery) {
+        filtered = filtered.filter(a =>
+          a.title.toLowerCase().includes(searchQuery) ||
+          a.content.toLowerCase().includes(searchQuery) ||
+          (a.id && a.id.toLowerCase().includes(searchQuery))
+        );
+      }
+
+      displayed = 0;
+      listEl.innerHTML = '';
       emptyEl.style.display = filtered.length ? 'none' : 'block';
-      listEl.style.display = filtered.length ? 'flex' : 'none';
+      loadMoreEl.style.display = 'none';
 
-      if (!filtered.length) return;
+      if (filtered.length) {
+        buildMonthNav();
+        renderChunk();
+      }
+    }
+
+    function buildMonthNav() {
+      const months = new Set();
+      filtered.forEach(a => {
+        if (a.isoDate) months.add(a.isoDate.slice(0, 7)); // YYYY-MM
+      });
+      const sorted = [...months].sort().reverse();
+      monthNavEl.innerHTML = sorted.map(m => {
+        const [y, mo] = m.split('-');
+        return `<button class="ann-month-btn" data-month="${m}">${y}.${mo}</button>`;
+      }).join('');
+
+      monthNavEl.querySelectorAll('.ann-month-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const month = btn.dataset.month;
+          const target = listEl.querySelector(`[data-month="${month}"]`);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    }
+
+    function renderChunk() {
+      const start = displayed;
+      const end = Math.min(start + PAGE_SIZE, filtered.length);
+      const chunk = filtered.slice(start, end);
 
       let html = '';
-      filtered.forEach((item, i) => {
-        const tag = item.tag || '更新';
-        const icon = getTagIcon(tag);
-        const date = formatDate(item.date, item.timestamp);
-        const pinnedClass = item.pinned ? ' pinned' : '';
-        const pinBadge = item.pinned ? '<span class="ann-card-pin">📌</span>' : '';
-        const idBadge = item.id ? `<span class="ann-card-id">${item.id}</span>` : '';
-        const tagBadge = `<span class="ann-card-tag tag-${tag}">${tag}</span>`;
+      let lastMonth = '';
 
-        // 圖片預覽（最多顯示 3 張縮圖）
-        let imagesHtml = '';
-        if (item.images && item.images.length) {
-          const preview = item.images.slice(0, 3);
-          imagesHtml = '<div class="ann-card-images">' +
-            preview.map(img => `<img src="${img}" loading="lazy" class="ann-img" alt="">`).join('') +
-            (item.images.length > 3 ? `<span style="color:var(--fog);font-size:0.8rem;align-self:center;">+${item.images.length - 3}</span>` : '') +
-            '</div>';
+      chunk.forEach((item, i) => {
+        const month = item.isoDate ? item.isoDate.slice(0, 7) : '';
+        if (month !== lastMonth) {
+          const [y, mo] = month.split('-');
+          const monthCount = filtered.filter(a => a.isoDate && a.isoDate.startsWith(month)).length;
+          html += `<div class="ann-month-header" data-month="${month}">${y} 年 ${parseInt(mo)} 月 <span class="month-count">(${monthCount} 則)</span></div>`;
+          lastMonth = month;
         }
-
-        html += `
-          <div class="ann-card${pinnedClass}" data-tag="${tag}" data-index="${i}">
-            <div class="ann-card-header" onclick="toggleCard(this)">
-              <span class="ann-card-icon">${icon}</span>
-              <span class="ann-card-date">${date}</span>
-              <span class="ann-card-title">${item.title}</span>
-              <span class="ann-card-meta">
-                ${pinBadge}
-                ${idBadge}
-                ${tagBadge}
-                <span class="ann-card-arrow">▾</span>
-              </span>
-            </div>
-            <div class="ann-card-body">
-              <div class="ann-card-body-inner">
-                <div class="b-content">${md2html(item.content)}</div>
-                ${imagesHtml}
-              </div>
-            </div>
-          </div>`;
+        html += renderCard(item, start + i);
       });
-      listEl.innerHTML = html;
+
+      listEl.insertAdjacentHTML('beforeend', html);
+      displayed = end;
+
+      // Show/hide load more
+      if (displayed < filtered.length) {
+        loadMoreEl.style.display = 'block';
+        loadMoreBtn.textContent = `載入更多（還有 ${filtered.length - displayed} 則）`;
+      } else {
+        loadMoreEl.style.display = 'none';
+      }
+
+      // Bind card toggles
+      listEl.querySelectorAll('.ann-card-head:not([data-bound])').forEach(head => {
+        head.setAttribute('data-bound', '1');
+        head.addEventListener('click', () => {
+          const card = head.closest('.ann-card');
+          const wasOpen = card.classList.contains('open');
+          // Close others
+          listEl.querySelectorAll('.ann-card.open').forEach(c => c.classList.remove('open'));
+          if (!wasOpen) card.classList.add('open');
+        });
+      });
+
+      // Bind image lightbox
+      listEl.querySelectorAll('.ann-images img:not([data-bound])').forEach(img => {
+        img.setAttribute('data-bound', '1');
+        img.addEventListener('click', () => {
+          const container = img.closest('.ann-images');
+          lbImages = Array.from(container.querySelectorAll('img')).map(i => i.src);
+          lbIdx = lbImages.indexOf(img.src);
+          showLb(lbIdx >= 0 ? lbIdx : 0);
+          lb.classList.add('open');
+        });
+      });
     }
 
-    // Toggle card expand
-    window.toggleCard = function(header) {
-      const card = header.closest('.ann-card');
-      const wasOpen = card.classList.contains('open');
-      // 關閉其他已展開的卡片
-      card.closest('.ann-list').querySelectorAll('.ann-card.open').forEach(c => {
-        if (c !== card) c.classList.remove('open');
-      });
-      card.classList.toggle('open', !wasOpen);
-    };
-  });
+    function renderCard(item, idx) {
+      const tag = item.tag || '更新';
+      const icon = TAG_ICONS[tag] || '📝';
+      const date = formatDateShort(item.isoDate);
+      const idBadge = item.id ? `<span class="ann-card-id">${item.id}</span>` : '';
+      const tagBadge = `<span class="ann-card-tag tag-${tag}">${tag}</span>`;
+
+      // Images (local WebP)
+      let imagesHtml = '';
+      const imgs = item.localImages.length ? item.localImages : item.images;
+      if (imgs.length) {
+        const preview = imgs.slice(0, 4);
+        imagesHtml = '<div class="ann-images">' +
+          preview.map(src => `<img src="${src}" loading="lazy" alt="" onerror="this.style.display='none'">`).join('') +
+          (imgs.length > 4 ? `<span style="color:var(--fog);font-size:0.78rem;align-self:center;">+${imgs.length - 4}</span>` : '') +
+          '</div>';
+      }
+
+      // Reactions
+      let reactionsHtml = '';
+      if (item.reactions && item.reactions.length) {
+        reactionsHtml = '<div class="ann-reactions">' +
+          item.reactions.map(r => `<span class="ann-reaction">${r.emoji} <span class="rcount">${r.count}</span></span>`).join('') +
+          '</div>';
+      }
+
+      // Content
+      const contentHtml = md2html(item.content);
+
+      const imgIcon = imgs.length ? `<svg class="ann-card-img-indicator" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>` : '';
+
+      return `<div class="ann-card" data-tag="${tag}" data-idx="${idx}">
+        <div class="ann-card-head">
+          <span class="ann-card-date">${date}</span>
+          <span class="ann-card-title">${item.title}</span>
+          <span class="ann-card-right">
+            ${idBadge}
+            ${imgIcon}
+            ${tagBadge}
+            <span class="ann-card-arrow">▾</span>
+          </span>
+        </div>
+        <div class="ann-card-body">
+          <div class="ann-card-body-inner">
+            <div class="ann-content">${contentHtml}</div>
+            ${imagesHtml}
+            <div class="ann-card-footer">
+              ${reactionsHtml}
+              <span>${item.author || ''}</span>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function formatDateShort(iso) {
+      if (!iso) return '—';
+      const [y, m, d] = iso.split('-');
+      return `${y.slice(2)}.${m}.${d}`;
+    }
+
+    // Lightbox
+    function showLb(i) {
+      if (!lbImages.length) return;
+      if (i < 0) i = lbImages.length - 1;
+      if (i >= lbImages.length) i = 0;
+      lbIdx = i;
+      lbImg.src = lbImages[lbIdx];
+      lbCounter.textContent = `${lbIdx + 1} / ${lbImages.length}`;
+    }
+    function closeLightbox() {
+      lb.classList.remove('open');
+    }
+  })();
   </script>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightboxClose">✕</button>
-    <button class="lightbox-prev" id="lightboxPrev">‹</button>
-    <button class="lightbox-next" id="lightboxNext">›</button>
-    <img class="lightbox-img" id="lightboxImg" src="" alt="">
-    <div class="lightbox-counter" id="lightboxCounter"></div>
-  </div>
-
 </body>
 </html>

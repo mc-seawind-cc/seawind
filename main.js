@@ -443,59 +443,77 @@ function fetchServerStatus() {
 function initBulletinBoard() {
   const board = document.getElementById('bulletinBoard');
   if (!board) return;
-  fetch(SW_BASE + 'announcements.json')
-    .then(r => r.json())
-    .then(data => {
-      const MAX_SHOW = 7;
-      const items = data.announcements;
-      // 取最新 7 則（已經按時間倒序）
-      const showItems = items.slice(0, MAX_SHOW);
-      let html = '';
-
-      function toggleItem() {
-        const wasOpen = this.closest('.bulletin-item').classList.contains('open');
-        board.querySelectorAll('.bulletin-item.open').forEach(e => e.classList.remove('open'));
-        if (!wasOpen) {
-          this.closest('.bulletin-item').classList.add('open');
-        }
-      }
-
-      showItems.forEach((item, i) => {
-        const tag = item.tag || '更新';
-        const date = formatDate(item.date, item.timestamp);
-        const pinnedClass = item.pinned ? ' pinned' : '';
-        const pinLabel = item.pinned ? '<span class="b-pin">置頂</span>' : '';
-        const idLabel = item.id ? `<span class="b-id">${item.id}</span>` : '';
-        const tagLabel = `<span class="b-tag tag-${tag}">${tag}</span>`;
-
-        html += `<div class="bulletin-item${pinnedClass}" data-tag="${tag}" data-index="${i}">
-          <button class="bulletin-toggle" aria-expanded="false">
-            <span class="b-left">
-              <span class="b-date">${date}</span>
-            </span>
-            <span class="b-title">${item.title}</span>
-            <span class="b-right">
-              ${pinLabel}
-              ${idLabel}
-              ${tagLabel}
-              <span class="b-arrow">▾</span>
-            </span>
-          </button>
-          <div class="bulletin-body"><div class="b-content">${md2html(item.content)}</div></div>
-        </div>`;
-      });
-
-      if (items.length > MAX_SHOW) {
-        html += `<div class="bulletin-more"><a href="公告.html" class="btn btn-outline">查看全部公告 (${items.length} 則) →</a></div>`;
-      }
-      board.innerHTML = html;
-
-      // Bind click handlers
-      board.querySelectorAll('.bulletin-toggle').forEach(btn => {
-        btn.addEventListener('click', toggleItem);
-      });
+  // Try v2 format first, fallback to v1
+  fetch(SW_BASE + 'announcements_v2.json')
+    .then(r => {
+      if (!r.ok) throw new Error('v2 not found');
+      return r.json();
     })
-    .catch(() => { board.innerHTML = '<p style="text-align:center;color:var(--fog);padding:20px;">公告載入失敗</p>'; });
+    .then(data => {
+      renderBulletin(board, data.announcements, true);
+    })
+    .catch(() => {
+      // Fallback to old format
+      fetch(SW_BASE + 'announcements.json')
+        .then(r => r.json())
+        .then(data => { renderBulletin(board, data.announcements, false); })
+        .catch(() => { board.innerHTML = '<p style="text-align:center;color:var(--fog);padding:20px;">公告載入失敗</p>'; });
+    });
+}
+
+function renderBulletin(board, items, isV2) {
+  const MAX_SHOW = 7;
+  const showItems = items.slice(0, MAX_SHOW);
+  let html = '';
+
+  function toggleItem() {
+    const wasOpen = this.closest('.bulletin-item').classList.contains('open');
+    board.querySelectorAll('.bulletin-item.open').forEach(e => e.classList.remove('open'));
+    if (!wasOpen) {
+      this.closest('.bulletin-item').classList.add('open');
+    }
+  }
+
+  showItems.forEach((item, i) => {
+    const tag = item.tag || '更新';
+    const date = isV2 ? formatDateV2(item.isoDate) : formatDate(item.date, item.timestamp);
+    const pinnedClass = item.pinned ? ' pinned' : '';
+    const pinLabel = item.pinned ? '<span class="b-pin">置頂</span>' : '';
+    const idLabel = item.id ? `<span class="b-id">${item.id}</span>` : '';
+    const tagLabel = `<span class="b-tag tag-${tag}">${tag}</span>`;
+
+    html += `<div class="bulletin-item${pinnedClass}" data-tag="${tag}" data-index="${i}">
+      <button class="bulletin-toggle" aria-expanded="false">
+        <span class="b-left">
+          <span class="b-date">${date}</span>
+        </span>
+        <span class="b-title">${item.title}</span>
+        <span class="b-right">
+          ${pinLabel}
+          ${idLabel}
+          ${tagLabel}
+          <span class="b-arrow">▾</span>
+        </span>
+      </button>
+      <div class="bulletin-body"><div class="b-content">${md2html(item.content)}</div></div>
+    </div>`;
+  });
+
+  if (items.length > MAX_SHOW) {
+    html += `<div class="bulletin-more"><a href="公告.html" class="btn btn-outline">查看全部公告 (${items.length} 則) →</a></div>`;
+  }
+  board.innerHTML = html;
+
+  // Bind click handlers
+  board.querySelectorAll('.bulletin-toggle').forEach(btn => {
+    btn.addEventListener('click', toggleItem);
+  });
+}
+
+function formatDateV2(iso) {
+  if (!iso) return '—';
+  const [y, m, d] = iso.split('-');
+  return `${y}.${m}.${d}`;
 }
 
 // --- Rotating Tips ---
