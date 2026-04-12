@@ -84,7 +84,7 @@
     }
     .partner-card:hover::after { opacity: 1; }
 
-    /* 圖標 */
+    /* 圖標 — 支援圖片與文字 */
     .partner-icon {
       width: 56px;
       height: 56px;
@@ -97,8 +97,16 @@
       flex-shrink: 0;
       letter-spacing: -0.02em;
       transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+      overflow: hidden;
     }
-    .partner-card:hover .partner-icon {
+    .partner-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+    .partner-card:hover .partner-icon,
+    .partner-detail-toggle:hover .partner-icon {
       transform: scale(1.08) rotate(-3deg);
       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
@@ -108,6 +116,8 @@
     .ic-blush { background: rgba(224,181,212,0.12); color: var(--blush); border: 1px solid rgba(224,181,212,0.15); }
     .ic-lav   { background: rgba(171,114,249,0.12); color: var(--lavender); border: 1px solid rgba(171,114,249,0.15); }
     .ic-teal  { background: rgba(88,194,176,0.12); color: var(--teal); border: 1px solid rgba(88,194,176,0.15); }
+    /* 圖片模式移除背景色 */
+    .partner-icon:has(img) { background: transparent; border-color: rgba(255,255,255,0.1); }
 
     /* 文字區 */
     .partner-info { flex: 1; min-width: 0; }
@@ -388,7 +398,7 @@
       <div class="partner-grid fade-in">
 
         <a href="partner-mcu.html" class="partner-card" style="--card-accent: var(--sky);">
-          <div class="partner-icon ic-sky">MCU</div>
+          <div class="partner-icon ic-sky"><img src="assets/img/mcu.png" alt="MCU" loading="lazy"></div>
           <div class="partner-info">
             <div class="partner-name">MCU — 麥塊社群聯合會</div>
             <div class="partner-desc">以 Discord 為核心的 Minecraft 交流平台，提供技術交流、委託中介與合作媒合。</div>
@@ -400,7 +410,7 @@
         </a>
 
         <a href="https://dctw.xyz/" target="_blank" rel="noopener" class="partner-card" style="--card-accent: var(--foam);">
-          <div class="partner-icon ic-foam">DCT</div>
+          <div class="partner-icon ic-foam"><img src="https://dctw.xyz/favicon.ico" alt="DCTW" loading="lazy" onerror="this.parentElement.innerHTML='DCT'"></div>
           <div class="partner-info">
             <div class="partner-name">DCTW</div>
             <div class="partner-desc">全台最完善的 Discord 宣傳平台。穩定運行、介面美觀，提供數據分析與評論系統。</div>
@@ -421,7 +431,7 @@
       <div class="partner-grid fade-in">
 
         <a href="https://discord.gg/Z2xyR57FPy" target="_blank" rel="noopener" class="partner-card" style="--card-accent: var(--teal);">
-          <div class="partner-icon ic-teal">冰鳥</div>
+          <div class="partner-icon ic-teal"><img src="https://cdn.discordapp.com/icons/1277924819643400233/406f4e3704b903444442eeff5f75f674.webp?size=96" alt="冰鳥國" loading="lazy" onerror="this.parentElement.innerHTML='冰鳥'"></div>
           <div class="partner-info">
             <div class="partner-name">冰鳥國 Ice Bird Country</div>
             <div class="partner-desc">溫馨的小社群，你的第二個遊樂天地。</div>
@@ -457,7 +467,7 @@
 
         <!-- 蔚藍幻境 -->
         <a href="https://discord.gg/Zc7vwaFeyR" target="_blank" rel="noopener" class="partner-card" style="--card-accent: var(--lavender);">
-          <div class="partner-icon ic-lav">蔚藍</div>
+          <div class="partner-icon ic-lav"><img src="https://cdn.discordapp.com/icons/1456665701849763842/5387e01e2d100c3c1c0aaa1b843dbdd2.webp?size=96" alt="蔚藍幻境" loading="lazy" onerror="this.parentElement.innerHTML='蔚藍'"></div>
           <div class="partner-info">
             <div class="partner-name">蔚藍幻境</div>
             <div class="partner-desc">目前為測試階段。</div>
