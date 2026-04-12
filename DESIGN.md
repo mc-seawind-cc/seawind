@@ -1,228 +1,243 @@
-# 海風網站設計理念
+# 海風 SeaWind 網站設計指南
 
-> 最後更新：2026.04.12
+> 建立日期：2026.04.12  
+> 網站：https://www.seawind.cc  
+> 倉儲：https://github.com/mc-seawind-cc/website  
+> 部署方式：GitHub Pages（靜態託管）
 
 ---
 
-## 核心風格
+## 目錄
 
-- **深色為主、淺色為輔**：Minecraft 伺服器網站適合深色沉浸感，淺色模式同步設計但不妥協深色體驗
-- **海洋/風/自然意象**：配色圍繞 sky（藍）、foam（綠）、sand（暖色）展開
-- **不要可愛、不要花俏**：目標是乾淨、有質感、專業感，不是遊戲官網那種塞滿特效的風格
-- **中文優先**：所有文案使用繁體中文，台灣當地用語
+1. [整體架構](#整體架構)
+2. [設計系統](#設計系統)
+3. [已知問題與 Bug](#已知問題與-bug)
+4. [優化建議](#優化建議)
+5. [修改紀錄](#修改紀錄)
 
-## 首頁動畫設計
+---
 
-### 打字機效果
-- 副標題「在風與海之間，有一個可以長久生存的地方」用打字機逐字顯示
-- 「在風與海之間，」打完後停頓 1.2 秒，游標呼吸閃爍
-- 然後繼續打出「有一個可以長久生存的地方」
-- 停頓製造「正在思考」的感覺，比匀速打字更有生命力
-- 打字速度 80ms/字，標點符號後多停一下
+## 整體架構
 
-### 首頁動畫時間軸
-- 0.1s：「海」字浮現
-- 0.25s：「風」字浮現
-- 0.6s：打字機開始
-- 1.8s：按鈕淡入
-- 2.2s~2.6s：資訊卡片錯開入場
-- 2.8s：提示輪播顯示
-- 3.2s：向下探索箭頭
-- 原則：動畫有層次、不搶主視覺、手機端加速
+### 頁面一覽
 
-### 減少動效
-- `prefers-reduced-motion` 時所有動畫關閉，直接顯示完整內容
+| 頁面 | 檔案 | 類型 |
+|------|------|------|
+| 首頁 | `首頁.html` | 主頁，含公告欄、特色、文化藝廊精選、風景照輪播 |
+| 首頁跳轉 | `index.html` → `首頁.html` | JS redirect（GitHub Pages 無法做伺服器端 301）|
+| 404 | `404.html` | 自訂 404，含 8 個小遊戲（海風特色亮點！）|
+| 公告 | `公告.html` | 公告列表，支援篩選、搜尋、月份導航 |
+| 會員 | `會員.html` | 會員方案比較表 |
+| 海風團隊 | `海風團隊.html` | 5 部門、人員介紹（Crafatar 頭像）|
+| 合作夥伴 | `合作夥伴.html` | 合作社群列表 |
+| 風景照 | `風景照.html` | 無限滾動照片牆 |
+| 更多… | `管理規則.html`, `玩家須知.html`, `服務條款.html`, `隱私權政策.html` 等 | 社群須知類 |
+| 指南 | `guide/*.html` | 40+ 篇遊戲指南 |
+| 文化藝廊 | `lore/*.html` | 建築故事 |
 
-## 公告系統
+### 共用資源
 
-### 資料來源
-- Discord 頻道匯出 JSON（更新/公告/活動三個頻道）
-- Python 腳本解析 → `announcements_v2.json`
-- 圖片從 Discord CDN 下載並轉換為本地 WebP
+| 檔案 | 說明 |
+|------|------|
+| `style.css` (~97KB) | 全站共用樣式，深色/淺色雙主題 |
+| `main.js` | 共用邏輯：主題切換、手機導航、滾動動畫、公告欄、輪播、Lightbox 等 |
+| `utils.js` | Discord Markdown → HTML 轉換器、日期格式化 |
+| `tips.js` | 首頁提示輪播文字（~100 條）|
+| `music-player.css` | 音樂播放器樣式（播放器 JS `music-player.js` 未在倉儲中找到）|
+| `announcements_v2.json` | 公告資料（501 則）|
+| `photos.json` / `photos/` | 風景照資料與本地圖片 |
+| `assets/` | 圖片、圖標、音效、Lore 圖片 |
 
-### 設計原則
-- **編號優先**：公告編號是最重要的識別，用藍色標籤醒目顯示在左側
-- **民國年**：日期統一用民國紀年（如 115.04.12）
-- **不加裝飾性表情符號**：UI 保持乾淨，不靠 emoji 增加「活潑感」
-- **不顯示發布者**：公告是伺服器團隊發布的，不需要署名
-- **分頁載入**：每頁 30 則，不一次塞進 500 個 DOM
-- **月份分組**：按月分隔，方便快速定位
-- **內部引用自動轉連結**：「更新#0258」自動轉為可點擊跳轉
+### 技術棧
 
-### 內部連結機制
-- `[更新#0258](discord-url)` 和純文字 `更新#0258` 都會自動轉為內部連結
-- 點擊後自動展開目標卡片、捲動定位、藍色高亮 2 秒
-- 如果目標在未載入的分頁，自動切換「全部」篩選
+- **純靜態 HTML/CSS/JS**，無框架、無打包工具
+- 中文字體：Google Fonts（Noto Sans TC + Noto Serif TC）
+- 圖片：WebP 優先，PNG 備用
+- 外部 API：
+  - `api.mcsrvstat.us` — 伺服器狀態查詢
+  - `crafatar.com` — Minecraft 皮膚頭像
+  - `truth.bahamut.com.tw` — 巴哈姆特外部圖床（首頁明信片）
+  - `api.github.com` — 部署次數計數
 
-## 全站共用原則
+---
+
+## 設計系統
+
+### 配色（CSS 自訂屬性）
+
+```css
+/* 深色主題（預設）*/
+--bg:        #0d1117;   /* 主背景 */
+--ocean:     #161b22;   /* 卡片背景 */
+--cloud:     #e6edf3;   /* 主文字 */
+--fog:       #8b949e;   /* 次要文字 */
+--sky:       #9dafff;   /* 主色（品牌藍）*/
+--foam:      #a8e6cf;   /* 強調綠 */
+--sand:      #deac80;   /* 暖色 */
+--blush:     #e0b5d4;   /* 粉 */
+--lavender:  #ab72f9;   /* 紫 */
+--teal:      #58c2b0;   /* 青 */
+--mist:      rgba(255,255,255,0.06);  /* 邊框 */
+```
 
 ### 字體
-- 主要：Noto Sans TC（Google Fonts）
-- 等寬：JetBrains Mono / SF Mono / Cascadia Code
-- `display=swap` 避免 FOIT
 
-### 配色變數
-- 深色：`--deep` `--ocean` `--drift` `--mist` `--fog` `--cloud`
-- 主色：`--sky`（藍）`--foam`（綠）`--sand`（暖）
-- 淺色模式用 `[data-theme="light"]` 覆蓋
+- **主文字**：`Noto Sans TC`, 400/500/700/800
+- **標題裝飾**：`Noto Serif TC`, 700
 
 ### 動畫
-- 全站統一 `--ease: cubic-bezier(0.4,0,0.2,1)` 和 `--duration: 0.3s`
-- 滾動揭示動畫只觸發一次，不反覆隱藏
-- 卡片 hover 有微動畫但不誇張
 
-### 響應式
-- 斷點：768px（手機）、1024px（平板）、1400px（大螢幕）
-- 手機端觸控目標最小 44px
-- `hover: none` 裝置移除 hover 效果改用 active
-
-### 效能
-- 圖片使用 WebP 格式
-- `loading="lazy"` 非首屏圖片
-- CSS `content-visibility: auto` 大區塊
-- `prefers-reduced-motion` 尊重使用者偏好
-- 字體 `font-display: swap`
-
-## 部署流程
-
-1. 本地修改 → `git add` → `git commit` → `git push origin main`
-2. GitHub Pages 自動部署
-3. 快取破壞：CSS/JS 用 `?v=YYMMDDx` 版本號
-4. 部署後在 `https://github.com/mc-seawind-cc/website/deployments` 確認
-
-## 注意事項
-
-- 導覽列在每個 HTML 頁面都是硬編碼，改 nav 需同步所有頁面
-- `announcements.json`（舊版）仍保留作為 fallback，首頁自動偵測 v2
-- `_import/` 目錄包含匯出腳本和原始 Discord 資料，已加入 .gitignore
-- 圖片使用本地 WebP，來源是 Discord CDN，定期需要重新同步
+- 滾動進場：`.fade-in`, `.slide-up`, `.zoom-in`, `.slide-left`, `.reveal-up`
+- IntersectionObserver 驅動，觸發後加 `.visible`
+- 3 秒安全閘：防止動畫未觸發時元素永久隱藏
 
 ---
 
-## 交接指南：給下一位設計師/維護者
+## 已知問題與 Bug
 
-### 你會需要知道的
+### 🔴 嚴重
 
-這是一個 **純靜態網站**，沒有框架、沒有後端、沒有建置工具。所有頁面都是獨立的 HTML 檔案，共用同一組 CSS 和 JS。部署在 GitHub Pages，push 到 main 分支就會自動上線。
+1. **`music-player.js` 缺失**
+   - `main.js` 中用 `document.createElement('script')` 動態載入 `music-player.js`
+   - 此檔案不在倉儲中，導致音樂播放器完全無法運作
+   - **影響**：Console 會出現 404 錯誤，音樂播放器功能失效
 
-### 專案結構
+2. **`會員.html` 結構問題**
+   - `<div class="member-table-wrap fade-in">` 缺少閉合 `</div>`
+   - `</div>` 數量不足，表格區域後面直接跳到 `</div></div>` 然後是 footer
+   - **影響**：可能導致 footer 樣式錯亂
 
-```
-網站根目錄/
-├── 首頁.html              # 首頁（index.html 會跳轉到這裡）
-├── index.html             # 純跳轉頁，有 noindex
-├── 公告.html              # 公告系統（v2，獨立 JS 邏輯）
-├── 海風指南.html           # 指南入口（guide/ 下有 42 個子頁）
-├── 文化藝廊.html           # Lore 入口（lore/ 下有 7 篇文章）
-├── 風景照.html             # 照片牆
-├── 404.html               # 404 頁面（有小遊戲）
-├── *.html                 # 其他約 20 個獨立頁面
-│
-├── style.css              # 全站共用樣式（~120KB，包含深淺色）
-├── main.js                # 全站共用腳本（打字機、公告欄、輪播等）
-├── utils.js               # 工具函式（md2html 轉換器、日期格式化）
-├── tips.js                # 首頁提示輪播資料
-├── music-player.js/css    # 音樂播放器（YouTube 嵌入）
-│
-├── announcements_v2.json  # 公告資料（501 則，v2 格式）
-├── announcements.json     # 舊版公告資料（保留作 fallback）
-├── photos.json            # 風景照 URL 列表
-├── penalties.json         # 違規處分資料
-│
-├── assets/
-│   ├── img/               # 圖示、logo、hero 圖片
-│   ├── announcements/     # 公告圖片（WebP，161 張）
-│   ├── lore/              # 文化藝廊圖片（WebP）
-│   ├── photos_new/        # 風景照（本地備份）
-│   ├── sounds/            # 打字機音效（tick1~3.mp3）
-│   └── migrated/          # 舊版遷移資料
-│
-├── guide/                 # 42 個指南頁（領地、經濟、任務等）
-├── lore/                  # 7 篇文化藝廊文章
-├── photos/                # 舊版照片（JPG，29 張）
-├── template/nav.html      # 導覽列模板（參考用，實際是硬編碼）
-├── sync-nav.sh            # 導覽列同步腳本
-├── CNAME                  # GitHub Pages 自訂域名
-├── robots.txt / sitemap.xml
-├── DESIGN.md              # 本檔案
-└── _import/               # （gitignore）公告匯出腳本和原始資料
-```
+### 🟡 中等
 
-### 常見任務
+3. **公告內容錯字**
+   - 公告 #0127：「投影倒網站上」應為「投影到網站上」
+   - 公告日期格式混用：ROC（114.04.23）與 ISO（2026-04-11）並存（此為 v1/v2 資料格式差異，非 bug）
 
-#### 改導覽列
-導覽列在每個 HTML 檔案裡都是**硬編碼的重複內容**（約 30 行 `<nav>`）。改一個頁面的 nav 不會同步到其他頁面。
+4. **首頁明信片依賴巴哈姆特外部圖床**
+   - `truth.bahamut.com.tw` 的圖片無法預載（DNS prefetch 已設，但 fetchpriority 未加）
+   - 若巴哈圖床改版或失效，明信片區塊會變空
+   - 目前 5 張都是硬編碼 URL
 
-目前所有頁面的 nav 結構一致。如果你要改 nav：
-1. 改一個檔案的 `<nav>` 區塊
-2. 用編輯器的「搜尋全部取代」或寫個簡單的 sed 腳本同步到所有 `.html`
-3. 或者執行 `bash sync-nav.sh`（如果腳本還適用的話）
+5. **部署計數 API 無認證且可能觸發 rate limit**
+   - `main.js` 中呼叫 `api.github.com/repos/.../deployments`
+   - 未認證的 GitHub API 每小時 60 次限制
+   - 若網站流量稍高，計數會顯示 `—`
 
-**長期建議**：考慮引入靜態網站產生器（如 11ty、Hugo），把 nav 抽成 partial。
+6. **Lightbox 事件監聽器累積問題**
+   - `initPhotoGallery()` 中每次開啟 lightbox 時都 cloneNode + 重新綁定事件
+   - `initGeneralLightbox()` 和 `initPostcardLightbox()` 都跑在同一頁面
+   - 雖然有判斷避免重複，但邏輯層級複雜，容易出錯
 
-#### 更新公告
-1. 從 Discord 匯出頻道 JSON（頻道 → 右鍵 → 匯出聊天紀錄）
-2. 把 JSON 放進 `_import/` 目錄
-3. 執行 `python3 _import/parse_announcements.py` 重新解析
-4. 執行 `python3 _import/download_images.py` 下載新圖片
-5. 提交 `announcements_v2.json` 和 `assets/announcements/`
+### 🟢 輕微
 
-公告頁面的 JS 會自動讀取 `announcements_v2.json`，不用改前端。
+7. **Nav 「關於」下拉選單的雙重功能**
+   - 點擊「關於」文字會跳轉到 `文化藝廊.html`
+   - 同時也是下拉 toggle（手機版 preventDefault）
+   - 桌面版 hover 打開，但若快速移動滑鼠可能意外點擊跳轉
 
-#### 新增頁面
-1. 複製任何一個現有 HTML 頁面作為模板
-2. 改 `<title>`、`<meta description>`、OG tags
-3. 內容放在 `<div class="content-section">` 裡
-4. 更新 `sitemap.xml` 加入新頁面
-5. 如果需要在導覽列出現，同步改所有頁面的 `<nav>`
+8. **`<html lang="zh-Hant">` 正確，但 URL 包含中文**
+   - `首頁.html`, `公告.html` 等中文檔名
+   - GitHub Pages 支援，但某些舊瀏覽器或爬蟲可能編碼出錯
+   - SEO 影響不大，但 index.html 的 JS redirect 不如 meta refresh 友善
 
-#### 改配色
-所有顏色都定義在 `style.css` 最開頭的 `:root` CSS 變數：
-```css
---sky: #9dafff;      /* 主藍 */
---foam: #a8e6cf;     /* 主綠 */
---sand: #deac80;     /* 暖色 */
---deep: #0d1117;     /* 背景深色 */
---ocean: #161b22;    /* 卡片背景 */
-...
-```
-淺色模式在 `[data-theme="light"]` 裡覆蓋這些變數。改配色只需要動這兩個區塊。
+9. **`index.html` 的 JS redirect**
+   - `<meta rel="canonical" href="...首頁.html">` 是對的
+   - 但 `<noscript>` fallback 只有文字連結，沒有 `meta http-equiv="refresh"`
+   - 若 JS 被禁用，使用者需要手動點擊
 
-#### 改首頁動畫
-打字機邏輯在 `main.js` 的 `initTypewriter()` 函式。動畫 CSS 在 `style.css` 最後面的「打字機增強 + 首頁動畫 v2」區塊。
+10. **404 遊戲手機版適配**
+    - 4×4 翻牌遊戲在 375px 寬的手機上，每格約 80px，偏小
+    - 打海怪 3×3 在小螢幕上 OK
 
-#### 部署
-```bash
-git add -A
-git commit -m "描述改了什麼"
-git push origin main
-# GitHub Pages 會自動部署，通常 1~2 分鐘生效
-```
-快取破壞：改 CSS/JS 的 `?v=` 版本號（如 `style.css?v=260413a`）。
+---
 
-### 容易踩的坑
+## 優化建議
 
-1. **CSS 全在一行**（120KB 單行）：格式化工具跑一下會比較好讀，但部署前記得壓回去或確認 GitHub Pages 的傳輸大小
-2. **導覽列不同步**：最常見的 bug 來源，改 nav 要確認所有頁面
-3. **中文檔名**：`首頁.html`、`公告.html` 等用中文命名，在某些環境（Windows cmd、舊版 git）可能出問題
-4. **`index.html` 不是首頁**：真正的首頁是 `首頁.html`，`index.html` 只做 JS 跳轉
-5. **照片輪播用外部 CDN**：首頁明信片圖片來自巴哈姆特 CDN，失效的話要改成本地
-6. **音樂播放器用 YouTube**：播放清單 ID 在 `music-player.js` 裡，影片被下架會靜默失敗
-7. **公告圖片是 Discord CDN**：定期要把新圖片下載轉 WebP，否則 CDN 連結會過期
-8. **GitHub API 未認證**：部署計數器用 GitHub API，未認證每小時 60 次限制
+### 🚀 效能
 
-### 技術債務（有空可以改）
+1. **`style.css` 過大（~97KB）**
+   - 所有頁面共用一個大 CSS 檔案
+   - 建議：拆分為 base.css（共用）+ 各頁面獨立的 page-*.css
+   - 或至少用 `@media` 把 print 樣式分離
 
-- [ ] 導覽列改用靜態網站產生器或 JS 動態載入
-- [ ] CSS 拆分成多檔案（base / components / pages）
-- [ ] 照片從 JPG 轉 WebP（目前 photos/ 還是 JPG）
-- [ ] 首頁明信片圖片搬回本地（目前用巴哈姆特 CDN）
-- [ ] 部署計數器改用靜態值或 build script
-- [ ] 加入 CI/CD 自動化（公告匯出、圖片轉換、CSS 壓縮）
-- [ ] `style.css` 加入 source map 或拆檔方便除錯
+2. **圖片最佳化**
+   - 首頁已用 `preload` + `fetchpriority="high"` 預載 hero 圖 ✅
+   - 建議：首頁公告欄中如果有圖片，應加 `loading="lazy"`
+   - 建議：feature card 圖標（PNG）可考慮改用 SVG inline（減少 HTTP 請求）
 
-### 聯絡窗口
+3. **字體載入**
+   - 已用 `preconnect` ✅
+   - 但每個 HTML 都重複載入 Google Fonts CSS，可考慮用 `<link rel="preload">` 預載字體檔
+   - `Noto Serif TC` 只用在 hero title 和 404 title，可考慮用 `font-display: swap` + `unicode-range` 縮減
 
-- Discord 社群：https://discord.gg/HdS2HrJEH7
-- 服務信箱：service@seawind.cc
-- GitHub 倉庫：https://github.com/mc-seawind-cc/website
+4. **JavaScript**
+   - `main.js` 是單一檔案，所有邏輯都在裡面
+   - 建議：把 Lightbox、公告欄、輪播等拆成獨立模組
+   - `defer` 只用在 `tips.js`，其他兩個 `<script>` 都是同步載入阻塞渲染
+
+### 📱 響應式
+
+5. **Nav 捲動問題**
+   - 手機版導航展開時，如果項目多（目前約 8 個 + 下拉），螢幕小的裝置可能需要捲動
+   - 建議：手機版導航加 `max-height: 100vh; overflow-y: auto`
+
+6. **表格響應式**
+   - `會員.html` 的比較表在窄螢幕用 `overflow-x: auto` 是好的
+   - 但表格內容文字在 320px 寬時可能會被截斷
+
+### ♿ 無障礙
+
+7. **下拉選單缺少 ARIA 屬性**
+   - `.nav-dropdown-toggle` 缺少 `aria-expanded`、`aria-haspopup`
+   - 手機版下拉展開時，沒有 `aria-expanded` 狀態切換
+   - 鍵盤導航（Tab）無法操作下拉選單
+
+8. **Lightbox 焦點管理**
+   - 開啟 lightbox 後，焦點沒有被 trap 在 lightbox 內
+   - 關閉後焦點沒有回到觸發元素
+   - 建議：加 `role="dialog"` + `aria-modal="true"` + 焦點 trap
+
+9. **公告欄摺疊**
+   - `.bulletin-toggle` 有 `aria-expanded` ✅
+   - 但公告展開/收合的動畫（max-height: 0/3000px）對螢幕閱讀器不友善
+   - 建議：展開時把隱藏內容從 accessibility tree 移除（`hidden` 屬性）
+
+### 🎨 設計一致性
+
+10. **404 頁面樣式獨立**
+    - `404.html` 完全不載入 `style.css`，所有樣式都是 inline
+    - 品牌色值和設計 token 與主站不同（例如 `rgba(87,138,255,0.18)` vs `--sky`）
+    - 建議：至少引入 CSS 變數，或把 404 的樣式模組化
+
+11. **各子頁面都有各自的 `<style>` block**
+    - `公告.html` 有 ~250 行 inline CSS
+    - `合作夥伴.html` 有 ~100 行 inline CSS
+    - 建議：共用樣式移到 `style.css`，頁面特定樣式可保留 inline 或分檔案
+
+### 🔒 安全性
+
+12. **GitHub Token 已暴露**
+    - 在對話中提供了 Personal Access Token
+    - **強烈建議**：立即到 GitHub Settings → Developer settings → Personal access tokens 刪除此 token
+
+### 🔧 開發體驗
+
+13. **版本控制（cache busting）**
+    - 使用 `?v=260412g` 手動版本號
+    - 建議：改用 Git commit hash（GitHub Actions 可自動注入）
+
+14. **無自動化部署流程**
+    - 目前是手動 push 到 main 分支 → GitHub Pages 自動部署
+    - 建議：加 GitHub Actions 做圖片最佳化、CSS 壓縮、HTML 驗證
+
+---
+
+## 修改紀錄
+
+| 日期 | 修改內容 | 負責 |
+|------|----------|------|
+| 2026.04.12 | 建立 DESIGN.md，完成首次網站全面健診 | AI 助手 |
+
+---
+
+_本文件作為海風網站的交接與設計基準，所有重大修改都應記錄在此。_

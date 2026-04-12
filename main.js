@@ -397,7 +397,7 @@ function initTypewriter() {
   const PART2 = '有一個可以長久生存的地方';
   const SPEED = 80;
   const PAUSE_MS = 1200;
-  const DOTS_MS = 2500; // 「...」顯示時間
+  const DOTS_MS = 1200; // 「...」顯示時間
 
   function typeChars(textNode, text, idx, cb) {
     if (idx < text.length) {
