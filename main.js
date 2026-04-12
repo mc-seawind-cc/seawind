@@ -512,7 +512,50 @@ function renderBulletin(board, items, isV2) {
     const pinnedClass = item.pinned ? ' pinned' : '';
     const tagDot = `<span class="b-dot tag-dot-${tag}" title="${tag}"></span>`;
     const tagLabel = `<span class="b-tag tag-${tag}">${tag}</span>`;
-    const idLabel = item.id ? `<span class="b-id">${item.id}</span>` : '';
+
+    // --- 展開內容 ---
+    let bodyParts = [];
+
+    // ID + 作者 + 時間 元資訊列
+    let metaParts = [];
+    if (item.id) metaParts.push(`<span class="b-meta-id">${item.id}</span>`);
+    if (item.author) metaParts.push(`<span class="b-meta-author">👤 ${item.author}</span>`);
+    if (item.timestamp) {
+      const t = new Date(item.timestamp);
+      const timeStr = `${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}`;
+      metaParts.push(`<span class="b-meta-time">🕐 ${timeStr}</span>`);
+    }
+    if (metaParts.length) {
+      bodyParts.push(`<div class="b-meta">${metaParts.join('')}</div>`);
+    }
+
+    // 反應數
+    const rc = item.reactionCount || (item.reactions ? item.reactions.length : 0);
+    if (rc > 0) {
+      const reactionEmojis = (item.reactions || []).slice(0, 5).map(r => {
+        const name = r.name || r.emoji || '👍';
+        const count = r.count || '';
+        return `<span class="b-reaction-item">${name}${count ? ' ' + count : ''}</span>`;
+      }).join('');
+      bodyParts.push(`<div class="b-reactions">${reactionEmojis || '<span class="b-reaction-item">💬 ' + rc + '</span>'}</div>`);
+    }
+
+    // 圖片
+    const images = (item.localImages && item.localImages.length) ? item.localImages : (item.images || []);
+    if (images.length) {
+      const imgHtml = images.slice(0, 4).map(src =>
+        `<img src="${src}" alt="公告圖片" class="b-img" loading="lazy" onerror="this.style.display='none'">`
+      ).join('');
+      bodyParts.push(`<div class="b-images">${imgHtml}</div>`);
+    }
+
+    // 內容
+    bodyParts.push(`<div class="b-text">${md2html(item.content)}</div>`);
+
+    // Discord 連結
+    if (item.discordId) {
+      bodyParts.push(`<a href="https://discord.com/channels/1090959090878140447/1090959091750559816/${item.discordId}" target="_blank" rel="noopener" class="b-discord-link">在 Discord 查看 →</a>`);
+    }
 
     html += `<div class="bulletin-item${pinnedClass}" data-tag="${tag}" data-index="${i}">
       <button class="bulletin-toggle" aria-expanded="false">
@@ -520,11 +563,13 @@ function renderBulletin(board, items, isV2) {
         <span class="b-date">${date}</span>
         <span class="b-title">${item.title}</span>
         <span class="b-right">
+          ${item.pinned ? '<span class="b-pin">📌</span>' : ''}
+          ${rc > 0 ? '<span class="b-reaction-count">💬' + rc + '</span>' : ''}
           ${tagLabel}
           <span class="b-arrow">▾</span>
         </span>
       </button>
-      <div class="bulletin-body"><div class="b-content">${idLabel}${md2html(item.content)}</div></div>
+      <div class="bulletin-body"><div class="b-content">${bodyParts.join('')}</div></div>
     </div>`;
   });
 
