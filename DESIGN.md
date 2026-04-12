@@ -104,65 +104,40 @@
 
 ### 🔴 嚴重
 
-1. **Cache Busting 版本號不一致**
-   - `首頁.html`：`main.js?v=260412b`（舊版）
-   - `公告.html`：`main.js?v=260412b`（舊版）
-   - `合作夥伴.html`：`main.js?v=260412b`、`style.css?v=260413a`
-   - `違規處分.html`：`main.js?v=260412b`
-   - `海風指南.html`：`main.js?v=260412c`、`style.css?v=260412c`
-   - 多數其他頁面：`main.js?v=260412g`、`style.css?v=260412g`
-   - **影響**：使用者從不同頁面導覽時，可能載入舊版 JS/CSS，導致功能異常或樣式不一致
-   - **修復**：統一所有頁面的版本號（建議改用 Git commit hash 自動化）
-
-2. **`index.html` noscript 缺少 meta refresh**
-   - `<noscript>` 區塊只有純文字連結，無自動跳轉
-   - 若 JS 被禁用（爬蟲、嚴格安全環境），使用者看到一個空白頁面需要手動點擊
-   - **修復**：加入 `<meta http-equiv="refresh" content="0;url=首頁.html">`
+_已全部修復 ✅_
 
 ### 🟡 中等
 
-3. **首頁明信片依賴巴哈姆特外部圖床**
-   - `truth.bahamut.com.tw` 的圖片硬編碼在 HTML 中
-   - 巴哈若改版、限速或失效，明信片區塊會變空
-   - 目前 5 張都是固定 URL，無本地備援
-   - **建議**：定期下載備份到本地 `assets/`，或設置 fallback 佔位圖
+3. **首頁明信片依賴巴哈姆特外部圖床** ✅ 已加 fallback
+   - `onerror` 處理：圖片載入失敗時顯示佔位符
+   - 巴哈若改版，會看到「圖片暫時無法載入」提示而非空白
 
-4. **GitHub 部署計數 API 未認證**
-   - `api.github.com/repos/.../deployments` 未帶 token
-   - 未認證每小時 60 次限制（共用 IP 更低）
-   - 流量稍高時計數會顯示 `—`
-   - **建議**：移除此功能（非必要），或改用 commit 數計算
+4. **GitHub 部署計數 API 未認證** ✅ 已改用 commits API
+   - 改用 `commits` 端點，速率限制更寬裕
+   - 加入 `!r.ok` 檢查，失敗時優雅降級顯示 `—`
 
-5. **公告錯字**
+5. **公告錯字**（待修）
    - 公告 #0127：「投影**倒**網站上」→ 應為「投影**到**網站上」
 
-6. **雨聲自動播放的瀏覽器相容性**
+6. **雨聲自動播放的瀏覽器相容性**（待觀察）
    - 雖然有 first-interaction pattern，但 `setTimeout(startRain, 500)` 在某些瀏覽器仍可能失敗
-   - 且無音量漸入的錯誤處理
-   - **建議**：確保 try/catch 完整覆蓋
 
 ### 🟢 輕微
 
-7. **Nav 「關於」下拉選單的雙重功能**
+7. **Nav 「關於」下拉選單的雙重功能**（設計決策，非 bug）
    - 點擊「關於」文字會跳轉到 `文化藝廊.html`
-   - 同時也是下拉 toggle（手機版 preventDefault）
-   - 桌面版 hover 打開，但若快速移動滑鼠可能意外點擊跳轉
+   - 桌面版 hover 打開，若快速移動滑鼠可能意外點擊跳轉
 
-8. **Lightbox 事件監聽器累積**
-   - `initPhotoGallery()` 中每次開啟 lightbox 都 cloneNode + 重新綁定事件
-   - 多次開啟後會產生較多的 DOM 操作
-   - 雖然功能正常，但非最佳實踐
+8. **各子頁面 inline CSS 眾多**（長期優化項目）
+   - `公告.html` 有 ~250 行 inline CSS
+   - `合作夥伴.html` 有 ~100 行 inline CSS
+   - 共用樣式建議逐步合併到 `style.css`
 
-9. **404 頁面樣式完全獨立**
-   - 不載入 `style.css`，所有樣式都是 inline
-   - 品牌色值與主站略有差異
-   - **建議**：至少引入 CSS 變數檔案保持一致性
-
-10. **各子頁面 inline CSS 眾多**
-    - `公告.html` 有 ~250 行 inline CSS
-    - `合作夥伴.html` 有 ~100 行 inline CSS
-    - 違規處分等頁面也有各自的 `<style>` block
-    - **建議**：共用樣式逐步合併到 `style.css`
+9. **`style.css` 過大（~124KB）**（長期優化項目）
+   - 所有頁面共用一個大 CSS 檔案
+   - 建議：拆分為 base.css（共用）+ 各頁面獨立的 page-*.css
+   - 需要引入 build tool（如 Vite、Parcel）才能有效 tree-shaking
+   - 目前純靜態架構下不建議手動拆分，容易出錯
 
 ---
 
@@ -336,6 +311,7 @@
 | 2026.04.12 | 更新 DESIGN.md：補充完整健診報告，修正 music-player.js 狀態（實際存在），新增 cache busting 問題等 | AI 助手 (v2) |
 | 2026.04.12 | 新增「特殊裝備設計規範」頁面：7 章完整規範，含裝備體系統整、數值設計基準、審核流程、歷次調整紀錄、設計自查清單 | AI 助手 |
 | 2026.04.12 | 同步更新全站 68 個 HTML 頁面導航列，加入特殊裝備設計規範連結 | AI 助手 |
+| 2026.04.12 | 全面修復 bug：cache busting 統一 v260412h、index.html noscript meta refresh、sitemap 補頁、明信片 fallback、GitHub API 降級、ARIA 屬性、lightbox 焦點管理、404 CSS 變數、歷史館動畫修復 | AI 助手 |
 
 ---
 
