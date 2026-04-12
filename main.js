@@ -502,43 +502,46 @@ function initBulletinBoard() {
 }
 
 function renderBulletin(board, items, isV2) {
-  const MAX_SHOW = 7;
+  const MAX_SHOW = 5;
   const showItems = items.slice(0, MAX_SHOW);
   let html = '';
+
+  // 預先計算各類別數量
+  const tagCounts = {};
+  items.forEach(item => {
+    const t = item.tag || '更新';
+    tagCounts[t] = (tagCounts[t] || 0) + 1;
+  });
 
   showItems.forEach((item, i) => {
     const tag = item.tag || '更新';
     const date = isV2 ? formatDateV2(item.isoDate) : formatDate(item.date, item.timestamp);
     const pinnedClass = item.pinned ? ' pinned' : '';
-    const tagDot = `<span class="b-dot tag-dot-${tag}" title="${tag}"></span>`;
-    const tagLabel = `<span class="b-tag tag-${tag}">${tag}</span>`;
+    const tagColors = { '公告': '#578aff', '更新': '#64dcb4', '維護': '#ff8282', '活動': '#ffaa32' };
+    const accentColor = tagColors[tag] || '#578aff';
+
+    // 內容預覽（取第一行純文字）
+    const plainText = (item.content || '').replace(/[#*_~`>|-]/g, '').replace(/\n/g, ' ').trim();
+    const preview = plainText.length > 60 ? plainText.slice(0, 60) + '…' : plainText;
 
     // --- 展開內容 ---
     let bodyParts = [];
 
-    // ID + 作者 + 時間 元資訊列
+    // 元資訊列
     let metaParts = [];
     if (item.id) metaParts.push(`<span class="b-meta-id">${item.id}</span>`);
-    if (item.author) metaParts.push(`<span class="b-meta-author">👤 ${item.author}</span>`);
+    if (item.author) metaParts.push(`<span class="b-meta-author">${item.author}</span>`);
     if (item.timestamp) {
       const t = new Date(item.timestamp);
       const timeStr = `${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}`;
-      metaParts.push(`<span class="b-meta-time">🕐 ${timeStr}</span>`);
+      metaParts.push(`<span class="b-meta-time">${timeStr}</span>`);
     }
     if (metaParts.length) {
-      bodyParts.push(`<div class="b-meta">${metaParts.join('')}</div>`);
+      bodyParts.push(`<div class="b-meta">${metaParts.join('<span class="b-meta-sep">·</span>')}</div>`);
     }
 
-    // 反應數
-    const rc = item.reactionCount || (item.reactions ? item.reactions.length : 0);
-    if (rc > 0) {
-      const reactionEmojis = (item.reactions || []).slice(0, 5).map(r => {
-        const name = r.name || r.emoji || '👍';
-        const count = r.count || '';
-        return `<span class="b-reaction-item">${name}${count ? ' ' + count : ''}</span>`;
-      }).join('');
-      bodyParts.push(`<div class="b-reactions">${reactionEmojis || '<span class="b-reaction-item">💬 ' + rc + '</span>'}</div>`);
-    }
+    // 內容
+    bodyParts.push(`<div class="b-text">${md2html(item.content)}</div>`);
 
     // 圖片
     const images = (item.localImages && item.localImages.length) ? item.localImages : (item.images || []);
@@ -549,33 +552,38 @@ function renderBulletin(board, items, isV2) {
       bodyParts.push(`<div class="b-images">${imgHtml}</div>`);
     }
 
-    // 內容
-    bodyParts.push(`<div class="b-text">${md2html(item.content)}</div>`);
-
     // Discord 連結
     if (item.discordId) {
       bodyParts.push(`<a href="https://discord.com/channels/1090959090878140447/1090959091750559816/${item.discordId}" target="_blank" rel="noopener" class="b-discord-link">在 Discord 查看 →</a>`);
     }
 
-    html += `<div class="bulletin-item${pinnedClass}" data-tag="${tag}" data-index="${i}">
+    html += `<div class="bulletin-item${pinnedClass}" data-tag="${tag}" data-index="${i}" style="--tag-color:${accentColor}">
       <button class="bulletin-toggle" aria-expanded="false">
-        ${tagDot}
-        <span class="b-date">${date}</span>
-        <span class="b-title">${item.title}</span>
-        <span class="b-right">
+        <div class="b-left">
+          <span class="b-dot" style="background:${accentColor}"></span>
+          <span class="b-date">${date}</span>
+        </div>
+        <div class="b-center">
+          <span class="b-title">${item.title}</span>
+          <span class="b-preview">${preview}</span>
+        </div>
+        <div class="b-right">
           ${item.pinned ? '<span class="b-pin">📌</span>' : ''}
-          ${rc > 0 ? '<span class="b-reaction-count">💬' + rc + '</span>' : ''}
-          ${tagLabel}
-          <span class="b-arrow">▾</span>
-        </span>
+          <span class="b-tag" style="background:${accentColor}15;color:${accentColor}">${tag}</span>
+          <span class="b-arrow">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg>
+          </span>
+        </div>
       </button>
       <div class="bulletin-body"><div class="b-content">${bodyParts.join('')}</div></div>
     </div>`;
   });
 
-  if (items.length > MAX_SHOW) {
-    html += `<div class="bulletin-more"><a href="公告.html" class="btn btn-outline">查看全部公告 (${items.length} 則) →</a></div>`;
-  }
+  // 統計列 + 查看全部
+  html += `<div class="bulletin-footer">
+    <span class="bulletin-count">共 ${items.length} 則公告</span>
+    <a href="公告.html" class="btn btn-outline btn-sm">查看全部 →</a>
+  </div>`;
   board.innerHTML = html;
 
   board.querySelectorAll('.bulletin-toggle').forEach(btn => {
