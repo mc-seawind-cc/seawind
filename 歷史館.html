@@ -5,16 +5,15 @@
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>海風 — 關於 — 歷史館</title>
-  <meta name="description" content="海風伺服器的發展歷程，從封測到穩定營運的每一個重要時刻。">
+  <meta name="description" content="海風伺服器的發展歷程，從純麥到海風的每一個重要時刻。">
   <meta property="og:title" content="歷史館 — 關於 — 海風">
-  <meta property="og:description" content="海風伺服器的發展歷程，從封測到穩定營運的每一個重要時刻。">
+  <meta property="og:description" content="海風伺服器的發展歷程，從純麥到海風的每一個重要時刻。">
   <meta property="og:image" content="assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:image" content="assets/img/logo.png">
   <meta name="theme-color" content="#0d1117">
   <link rel="dns-prefetch" href="//cdn.discordapp.com">
-  <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
   <link rel="dns-prefetch" href="//api.mcsrvstat.us">
   <link rel="icon" href="assets/img/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,324 +22,586 @@
   <link rel="stylesheet" href="style.css?v=260412i">
   <link rel="stylesheet" href="music-player.css">
   <style>
-    /* 歷史館專屬樣式 */
-    .history-hero {
-      position: relative;
-      padding: var(--space-2xl) var(--space-xl);
-      text-align: center;
-      overflow: hidden;
-    }
-    .history-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 600px 300px at 50% 80%, rgba(157,175,255,0.08) 0%, transparent 70%),
-                  radial-gradient(ellipse 400px 200px at 20% 30%, rgba(168,230,207,0.05) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .history-hero h1 {
-      font-family: 'Noto Serif TC', serif;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-sm);
-      position: relative;
-    }
-    .history-hero .history-subtitle {
-      color: var(--fog);
-      font-size: 1rem;
-      font-style: italic;
-      position: relative;
-      min-height: 1.6em;
-    }
-    .history-hero .history-subtitle .tw-cursor {
-      display: inline-block;
-      color: var(--sky);
-      animation: blink 0.8s step-end infinite;
-      margin-left: 2px;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  /* ═══════════════════════════════════════
+     海風歷史館 — 完整重新設計
+     ═══════════════════════════════════════ */
 
-    /* 時間軸照片卡 */
-    .tl-photo-card {
-      margin-top: var(--space-md);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.06);
-      cursor: zoom-in;
-      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-      position: relative;
-    }
-    .tl-photo-card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-    .tl-photo-card::after {
-      content: '🔍';
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background: rgba(0,0,0,0.5);
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      opacity: 0;
-      transition: opacity 0.2s;
-      pointer-events: none;
-    }
-    .tl-photo-card:hover::after {
-      opacity: 1;
-    }
-    .tl-photo-card img {
-      width: 100%;
-      display: block;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-    }
-    .tl-photo-card .tl-photo-caption {
-      padding: 8px 12px;
-      font-size: 0.75rem;
-      color: var(--fog);
-      background: rgba(255,255,255,0.03);
-    }
-    [data-theme="light"] .tl-photo-card {
-      border-color: rgba(0,0,0,0.08);
-    }
-    [data-theme="light"] .tl-photo-card:hover {
-      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-    }
+  /* ── Hero ── */
+  .history-hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 100px 24px 60px;
+  }
+  .history-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 800px 400px at 30% 20%, rgba(157,175,255,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 600px 300px at 70% 70%, rgba(168,230,207,0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 400px at 50% 50%, rgba(171,114,249,0.03) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .history-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, var(--deep));
+    pointer-events: none;
+  }
+  .history-hero .hero-era-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+    position: relative;
+    animation: float-y 3s ease-in-out infinite;
+  }
+  @keyframes float-y {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .history-hero h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.15em;
+    margin-bottom: var(--space-sm);
+    position: relative;
+    background: linear-gradient(135deg, #fff 0%, #c8deff 50%, var(--sky) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .history-hero .history-subtitle {
+    color: var(--fog);
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    font-style: italic;
+    position: relative;
+    min-height: 1.6em;
+    letter-spacing: 0.05em;
+  }
+  .history-hero .history-subtitle .tw-cursor {
+    display: inline-block;
+    color: var(--sky);
+    animation: blink 0.8s step-end infinite;
+    margin-left: 2px;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-    /* 里程碑卡片加強 */
-    .tl-card.milestone-card {
-      background: linear-gradient(135deg, rgba(157,175,255,0.06), rgba(168,230,207,0.04));
-      border-color: rgba(157,175,255,0.15);
-    }
+  /* ── Era Nav（時代導航） ── */
+  .era-nav {
+    position: sticky;
+    top: 72px;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 16px;
+    background: rgba(13,17,23,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: box-shadow 0.3s;
+  }
+  .era-nav.scrolled-shadow {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .era-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--fog);
+    text-decoration: none;
+    transition: all 0.25s var(--ease);
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+  .era-nav a:hover, .era-nav a.active {
+    color: var(--white);
+    background: rgba(157,175,255,0.1);
+    border-color: rgba(157,175,255,0.2);
+  }
+  .era-nav a .era-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .era-nav a[data-era="purewheat"] .era-dot { background: var(--sand); }
+  .era-nav a[data-era="founding"] .era-dot { background: var(--foam); }
+  .era-nav a[data-era="growth"] .era-dot { background: var(--sky); }
+  .era-nav a[data-era="stable"] .era-dot { background: var(--lavender); }
+  [data-theme="light"] .era-nav {
+    background: rgba(240,242,245,0.9);
+    border-bottom-color: rgba(0,0,0,0.05);
+  }
+  [data-theme="light"] .era-nav.scrolled-shadow {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
 
-    /* 時間軸圓點動畫 */
-    .tl-dot.milestone {
-      width: 16px;
-      height: 16px;
-      box-shadow: 0 0 12px rgba(157,175,255,0.4);
-    }
+  /* ── Stats ── */
+  .history-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    max-width: 800px;
+    margin: 0 auto var(--space-2xl);
+    padding: 0 var(--space-lg);
+  }
+  .history-stat {
+    text-align: center;
+    padding: var(--space-lg);
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: var(--radius-lg);
+    transition: transform 0.3s var(--ease), border-color 0.3s;
+  }
+  .history-stat:hover {
+    transform: translateY(-3px);
+    border-color: rgba(157,175,255,0.15);
+  }
+  .history-stat-icon {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .history-stat-num {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--sky);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    transition: transform 0.3s var(--ease);
+  }
+  .history-stat:hover .history-stat-num {
+    transform: scale(1.08);
+  }
+  .history-stat-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--fog);
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+  }
+  [data-theme="light"] .history-stat {
+    background: rgba(255,255,255,0.8);
+    border-color: rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  }
+  [data-theme="light"] .history-stat:hover {
+    border-color: rgba(157,175,255,0.2);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  }
 
-    /* 統計數字動畫 */
-    .history-stat-num {
-      transition: transform 0.3s var(--ease);
-    }
-    .history-stat:hover .history-stat-num {
-      transform: scale(1.1);
-    }
+  /* ── Timeline ── */
+  .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg) 0 calc(var(--space-lg) + 20px);
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg,
+      var(--sand) 0%, var(--sand) 25%,
+      var(--foam) 25%, var(--foam) 50%,
+      var(--sky) 50%, var(--sky) 75%,
+      var(--lavender) 75%, var(--lavender) 100%);
+    opacity: 0.25;
+  }
 
-    /* 統計列 */
+  /* ── Era Section ── */
+  .timeline-era {
+    position: relative;
+    margin-bottom: var(--space-2xl);
+    padding-top: var(--space-md);
+  }
+  .timeline-era-label {
+    position: relative;
+    z-index: 2;
+    margin-bottom: var(--space-xl);
+    padding-left: 52px;
+  }
+  .era-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: var(--radius-lg);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  .era-purewheat .era-badge {
+    background: linear-gradient(135deg, rgba(222,172,128,0.15), rgba(222,172,128,0.05));
+    border: 1px solid rgba(222,172,128,0.25);
+    color: var(--sand);
+  }
+  .era-founding .era-badge {
+    background: linear-gradient(135deg, rgba(168,230,207,0.15), rgba(168,230,207,0.05));
+    border: 1px solid rgba(168,230,207,0.25);
+    color: var(--foam);
+  }
+  .era-growth .era-badge {
+    background: linear-gradient(135deg, rgba(157,175,255,0.15), rgba(157,175,255,0.05));
+    border: 1px solid rgba(157,175,255,0.25);
+    color: var(--sky);
+  }
+  .era-stable .era-badge {
+    background: linear-gradient(135deg, rgba(171,114,249,0.15), rgba(171,114,249,0.05));
+    border: 1px solid rgba(171,114,249,0.25);
+    color: var(--lavender);
+  }
+  .era-count {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    font-weight: 500;
+  }
+
+  /* ── Timeline Items ── */
+  .tl-item {
+    position: relative;
+    padding-left: 52px;
+    margin-bottom: var(--space-lg);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  }
+  .tl-item.visible, .tl-item.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: 22px;
+    top: 14px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--sky);
+    border: 3px solid var(--deep);
+    z-index: 2;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .tl-item:hover .tl-dot {
+    transform: scale(1.3);
+  }
+  .tl-dot.milestone {
+    width: 18px;
+    height: 18px;
+    left: 20px;
+    top: 12px;
+  }
+
+  /* Era-specific dot colors */
+  .era-purewheat .tl-dot { background: var(--sand); }
+  .era-purewheat .tl-dot.milestone { box-shadow: 0 0 12px rgba(222,172,128,0.5); }
+  .era-founding .tl-dot { background: var(--foam); }
+  .era-founding .tl-dot.milestone { box-shadow: 0 0 12px rgba(168,230,207,0.5); }
+  .era-growth .tl-dot { background: var(--sky); }
+  .era-growth .tl-dot.milestone { box-shadow: 0 0 12px rgba(157,175,255,0.5); }
+  .era-stable .tl-dot { background: var(--lavender); }
+  .era-stable .tl-dot.milestone { box-shadow: 0 0 12px rgba(171,114,249,0.5); }
+
+  [data-theme="light"] .tl-dot { border-color: #f0f2f5; }
+
+  /* ── Cards ── */
+  .tl-card {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    transition: all 0.3s var(--ease);
+    position: relative;
+    overflow: hidden;
+  }
+  .tl-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    border-radius: 3px 0 0 3px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .tl-card:hover::before { opacity: 1; }
+  .era-purewheat .tl-card::before { background: var(--sand); }
+  .era-founding .tl-card::before { background: var(--foam); }
+  .era-growth .tl-card::before { background: var(--sky); }
+  .era-stable .tl-card::before { background: var(--lavender); }
+
+  .tl-card:hover {
+    background: rgba(255,255,255,0.045);
+    border-color: rgba(255,255,255,0.1);
+    transform: translateX(4px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+  }
+
+  /* Milestone card */
+  .tl-card.milestone-card {
+    padding: var(--space-lg) var(--space-xl);
+    border-width: 1px;
+  }
+  .era-purewheat .tl-card.milestone-card {
+    background: linear-gradient(135deg, rgba(222,172,128,0.06), rgba(222,172,128,0.02));
+    border-color: rgba(222,172,128,0.15);
+  }
+  .era-founding .tl-card.milestone-card {
+    background: linear-gradient(135deg, rgba(168,230,207,0.06), rgba(168,230,207,0.02));
+    border-color: rgba(168,230,207,0.15);
+  }
+  .era-growth .tl-card.milestone-card {
+    background: linear-gradient(135deg, rgba(157,175,255,0.06), rgba(157,175,255,0.02));
+    border-color: rgba(157,175,255,0.15);
+  }
+  .era-stable .tl-card.milestone-card {
+    background: linear-gradient(135deg, rgba(171,114,249,0.06), rgba(171,114,249,0.02));
+    border-color: rgba(171,114,249,0.15);
+  }
+
+  .tl-date {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .era-purewheat .tl-date { color: var(--sand); }
+  .era-founding .tl-date { color: var(--foam); }
+  .era-growth .tl-date { color: var(--sky); }
+  .era-stable .tl-date { color: var(--lavender); }
+
+  .tl-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .tl-card.milestone-card .tl-title {
+    font-size: 1.1rem;
+  }
+  .tl-desc {
+    font-size: 0.85rem;
+    color: var(--fog);
+    line-height: 1.75;
+  }
+
+  /* Tags */
+  .tl-tag {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .tl-tag-event { background: rgba(255,170,50,0.1); color: #ffc566; }
+  .tl-tag-update { background: rgba(100,220,180,0.1); color: #6dd8b4; }
+  .tl-tag-milestone { background: rgba(157,175,255,0.1); color: #9dafff; }
+
+  /* ── Photo Card ── */
+  .tl-photo-card {
+    margin-top: var(--space-md);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+    cursor: zoom-in;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    position: relative;
+  }
+  .tl-photo-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  .tl-photo-card::after {
+    content: '🔍';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+  .tl-photo-card:hover::after { opacity: 1; }
+  .tl-photo-card img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+  .tl-photo-caption {
+    padding: 8px 12px;
+    font-size: 0.72rem;
+    color: var(--fog);
+    background: rgba(255,255,255,0.02);
+  }
+  [data-theme="light"] .tl-photo-card { border-color: rgba(0,0,0,0.06); }
+  [data-theme="light"] .tl-photo-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+
+  /* ── Era Divider ── */
+  .era-divider {
+    text-align: center;
+    padding: var(--space-2xl) 0 var(--space-xl);
+    position: relative;
+  }
+  .era-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(157,175,255,0.15), transparent);
+  }
+  .era-divider span {
+    position: relative;
+    background: var(--deep);
+    padding: 0 var(--space-lg);
+    font-size: 0.75rem;
+    color: var(--fog);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Footer Meta ── */
+  .rules-meta {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-lg);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.8;
+  }
+  .rules-meta a {
+    color: var(--sky);
+    text-decoration: none;
+  }
+
+  /* ── Lightbox ── */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(8px);
+  }
+  .lightbox.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+  .lightbox-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
     .history-stats {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-2xl);
-      padding: var(--space-xl) var(--space-lg);
-      margin: 0 auto var(--space-2xl);
-      max-width: 700px;
-      background: rgba(157,175,255,0.04);
-      border: 1px solid rgba(157,175,255,0.08);
-      border-radius: var(--radius-lg);
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
     }
-    .history-stat {
-      text-align: center;
-    }
-    .history-stat-num {
-      display: block;
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--sky);
-      line-height: 1;
-      font-variant-numeric: tabular-nums;
-    }
-    .history-stat-label {
-      display: block;
-      font-size: 0.8rem;
-      color: var(--fog);
-      margin-top: 6px;
-      letter-spacing: 0.05em;
-    }
+    .history-stat { padding: var(--space-md); }
+    .history-stat-num { font-size: 1.5rem; }
+    .era-nav { overflow-x: auto; justify-content: flex-start; gap: 2px; padding: 8px 12px; }
+    .era-nav a { padding: 5px 12px; font-size: 0.72rem; }
+    .timeline { padding-left: var(--space-md); }
+    .timeline::before { left: 14px; }
+    .tl-item { padding-left: 36px; }
+    .tl-dot { left: 8px; top: 14px; }
+    .tl-dot.milestone { left: 6px; top: 12px; }
+    .timeline-era-label { padding-left: 36px; }
+  }
 
-    /* 時間軸 */
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 var(--space-lg);
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--sky), var(--foam), var(--lavender), var(--sky));
-      opacity: 0.3;
-      transform: translateX(-50%);
-    }
-    .timeline-era {
-      position: relative;
-      margin-bottom: var(--space-2xl);
-    }
-    .timeline-era-label {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      margin-bottom: var(--space-xl);
-    }
-    .era-badge {
-      display: inline-block;
-      padding: 8px 24px;
-      background: linear-gradient(135deg, rgba(157,175,255,0.15), rgba(168,230,207,0.1));
-      border: 1px solid rgba(157,175,255,0.25);
-      border-radius: 100px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--sky);
-      letter-spacing: 0.08em;
-    }
-
-    .tl-item {
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: var(--space-xl);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
-    }
-    .tl-item.visible, .tl-item.fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .tl-item:nth-child(odd) {
-      flex-direction: row;
-    }
-    .tl-item:nth-child(even) {
-      flex-direction: row-reverse;
-    }
-
-    .tl-dot {
-      position: absolute;
-      left: 50%;
-      top: 12px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--sky);
-      border: 2px solid var(--bg);
-      transform: translateX(-50%);
-      z-index: 2;
-      box-shadow: 0 0 12px rgba(157,175,255,0.4);
-    }
-    .tl-dot.milestone {
-      width: 16px;
-      height: 16px;
-      background: var(--foam);
-      box-shadow: 0 0 16px rgba(168,230,207,0.5);
-    }
-
-    .tl-card {
-      width: calc(50% - 30px);
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--radius-md);
-      padding: var(--space-lg);
-      transition: all 0.3s var(--ease);
-    }
-    .tl-card:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(157,175,255,0.15);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    }
-    .tl-card.milestone-card {
-      background: linear-gradient(135deg, rgba(157,175,255,0.06), rgba(168,230,207,0.04));
-      border-color: rgba(157,175,255,0.12);
-    }
-
-    .tl-date {
-      font-size: 0.75rem;
-      color: var(--sky);
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      margin-bottom: 4px;
-    }
-    .tl-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
-    }
-    .tl-desc {
-      font-size: 0.85rem;
-      color: var(--fog);
-      line-height: 1.7;
-    }
-    .tl-tag {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 2px 10px;
-      border-radius: 100px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-    .tl-tag-event { background: rgba(255,170,50,0.12); color: #ffc566; }
-    .tl-tag-update { background: rgba(100,220,180,0.12); color: #6dd8b4; }
-    .tl-tag-milestone { background: rgba(157,175,255,0.12); color: #9dafff; }
-
-    /* 響應式 */
-    @media (max-width: 768px) {
-      .timeline::before {
-        left: 20px;
-      }
-      .tl-item, .tl-item:nth-child(even) {
-        flex-direction: row;
-      }
-      .tl-dot {
-        left: 20px;
-      }
-      .tl-card {
-        width: calc(100% - 50px);
-        margin-left: 44px;
-      }
-      .history-stats {
-        gap: var(--space-lg);
-        flex-wrap: wrap;
-      }
-      .history-stat-num {
-        font-size: 1.6rem;
-      }
-    }
-
-    [data-theme="light"] .tl-card {
-      background: rgba(255,255,255,0.8);
-      border-color: rgba(0,0,0,0.06);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    }
-    [data-theme="light"] .tl-card:hover {
-      background: #fff;
-      border-color: rgba(157,175,255,0.2);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-    }
-    [data-theme="light"] .tl-title { color: var(--cloud); }
-    [data-theme="light"] .tl-desc { color: #5a6270; }
-    [data-theme="light"] .tl-dot { border-color: #f0f2f5; }
-    [data-theme="light"] .history-hero h1 { color: var(--cloud); }
+  /* ── Light Theme ── */
+  [data-theme="light"] .tl-card {
+    background: rgba(255,255,255,0.85);
+    border-color: rgba(0,0,0,0.05);
+  }
+  [data-theme="light"] .tl-card:hover {
+    background: #fff;
+    border-color: rgba(0,0,0,0.08);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+  }
+  [data-theme="light"] .tl-title { color: var(--cloud); }
+  [data-theme="light"] .tl-desc { color: #5a6270; }
+  [data-theme="light"] .history-hero h1 {
+    background: linear-gradient(135deg, var(--cloud) 0%, var(--sky) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  [data-theme="light"] .tl-photo-caption { background: rgba(0,0,0,0.02); }
+  [data-theme="light"] .era-divider span { background: #f0f2f5; }
   </style>
 </head>
 <body>
+  <!-- Scroll Progress -->
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
+  <!-- Nav -->
   <nav class="nav">
     <a href="首頁.html" class="nav-logo">
       <img src="assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high">
@@ -391,37 +652,59 @@
   </nav>
 
   <div class="page">
+
+    <!-- ═══ Hero ═══ -->
     <div class="history-hero">
+      <div class="hero-era-icon">🌊</div>
       <h1>海風歷史館</h1>
       <p class="history-subtitle typewriter" data-text="別忘了海是如何被風吹過來的，記得回望來時的每一步。"></p>
     </div>
 
+    <!-- ═══ Era Navigation ═══ -->
+    <div class="era-nav" id="eraNav">
+      <a href="#era-purewheat" data-era="purewheat"><span class="era-dot"></span>純麥時期</a>
+      <a href="#era-founding" data-era="founding"><span class="era-dot"></span>創立期</a>
+      <a href="#era-growth" data-era="growth"><span class="era-dot"></span>成長期</a>
+      <a href="#era-stable" data-era="stable"><span class="era-dot"></span>穩定期</a>
+    </div>
+
     <div class="content-section">
-      <div class="history-stats fade-in">
-        <div class="history-stat">
-          <span class="history-stat-num">2023</span>
-          <span class="history-stat-label">創立年份（純麥）</span>
-        </div>
-        <div class="history-stat">
-          <span class="history-stat-num">290+</span>
-          <span class="history-stat-label">更新次數</span>
-        </div>
-        <div class="history-stat">
-          <span class="history-stat-num">50+</span>
-          <span class="history-stat-label">活動舉辦</span>
-        </div>
-        <div class="history-stat">
-          <span class="history-stat-num">500+</span>
-          <span class="history-stat-label">公告發佈</span>
+
+      <!-- ═══ Stats ═══ -->
+      <div style="padding-top: var(--space-2xl);">
+        <div class="history-stats fade-in">
+          <div class="history-stat">
+            <span class="history-stat-icon">🌾</span>
+            <span class="history-stat-num">2023</span>
+            <span class="history-stat-label">創立年份</span>
+          </div>
+          <div class="history-stat">
+            <span class="history-stat-icon">📢</span>
+            <span class="history-stat-num">500+</span>
+            <span class="history-stat-label">公告發佈</span>
+          </div>
+          <div class="history-stat">
+            <span class="history-stat-icon">🎉</span>
+            <span class="history-stat-num">50+</span>
+            <span class="history-stat-label">活動舉辦</span>
+          </div>
+          <div class="history-stat">
+            <span class="history-stat-icon">🔧</span>
+            <span class="history-stat-num">290+</span>
+            <span class="history-stat-label">更新次數</span>
+          </div>
         </div>
       </div>
 
       <div class="timeline">
 
-
-        <!-- ═══ 純麥時期 ═══ -->
-        <div class="timeline-era">
-          <div class="timeline-era-label"><span class="era-badge">🌾 前傳 — 純麥時期（2023~2024）</span></div>
+        <!-- ════════════════════════════════════ -->
+        <!-- 純麥時期 -->
+        <!-- ════════════════════════════════════ -->
+        <div class="timeline-era era-purewheat" id="era-purewheat">
+          <div class="timeline-era-label">
+            <span class="era-badge">🌾 前傳 — 純麥時期（2023~2024）<span class="era-count">32 則</span></span>
+          </div>
 
           <div class="tl-item fade-in">
             <div class="tl-dot milestone"></div>
@@ -434,8 +717,8 @@
           </div>
 
           <div class="tl-item fade-in">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
+            <div class="tl-dot milestone"></div>
+            <div class="tl-card milestone-card">
               <span class="tl-date">2023.10.25</span>
               <div class="tl-title">神焰加入管理團隊</div>
               <div class="tl-desc">tstw5306（神焰）被 cry 招為管理員，開始了純麥伺服器的管理與技術改革。</div>
@@ -458,7 +741,7 @@
             <div class="tl-card">
               <span class="tl-date">2023.12.09</span>
               <div class="tl-title">伺服器形象建立</div>
-              <div class="tl-desc">新增 Discord 橫幅、Minecraft 伺服器圖標。IP 正式訂為 chunmai.mcs.tw，伺服器開始有正式的品牌識別。</div>
+              <div class="tl-desc">新增 Discord 橫幅、Minecraft 伺服器圖標。伺服器開始有正式的品牌識別。</div>
               <span class="tl-tag tl-tag-update">更新</span>
             </div>
           </div>
@@ -518,7 +801,7 @@
             <div class="tl-card">
               <span class="tl-date">2024.01.31</span>
               <div class="tl-title">春節活動</div>
-              <div class="tl-desc">春節活動開始。cry 用「新年快乐！祝你们家庭幸福美满，金玉满堂……」等百字祝福刷屏，被玩家笑稱「你他娘真是人才」。純麥的歡樂日常。</div>
+              <div class="tl-desc">春節活動開始。cry 用百字春節祝福刷屏，被玩家笑稱「你他娘真是人才」。純麥的歡樂日常。</div>
               <span class="tl-tag tl-tag-event">事件</span>
             </div>
           </div>
@@ -528,14 +811,14 @@
             <div class="tl-card">
               <span class="tl-date">2024.02.09</span>
               <div class="tl-title">託管危機</div>
-              <div class="tl-desc">資金不足更換為 kiwisever 託管（IP: chunmei.kwserver.xyz），同時實施圖書管理員村民限制。4 天後因玩家抗議，緊急換回 icehost，恢復 chunmai.mcs.tw。</div>
+              <div class="tl-desc">資金不足更換託管商。4 天後因玩家抗議，緊急換回原託管。伺服器的穩定性一直是純麥的痛。</div>
               <span class="tl-tag tl-tag-event">事件</span>
             </div>
           </div>
 
           <div class="tl-item fade-in">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
+            <div class="tl-dot milestone"></div>
+            <div class="tl-card milestone-card">
               <span class="tl-date">2024.02.17</span>
               <div class="tl-title">會員制度確立</div>
               <div class="tl-desc">經過公投，贊助走向確定為會員制度。基岩版同步開放連線，玩家群體進一步擴大。奠定了後續的經濟模型。</div>
@@ -564,8 +847,8 @@
           </div>
 
           <div class="tl-item fade-in">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
+            <div class="tl-dot milestone"></div>
+            <div class="tl-card milestone-card">
               <span class="tl-date">2024.03.15</span>
               <div class="tl-title">社區制度開放</div>
               <div class="tl-desc">石頭完善管理制度，開放玩家成立社區。海風「高自由度」文化的雛形在此誕生。</div>
@@ -578,17 +861,7 @@
             <div class="tl-card">
               <span class="tl-date">2024.03.15</span>
               <div class="tl-title">櫻花活動 & 釣魚系列開端</div>
-              <div class="tl-desc">櫻花活動開跑（陽春櫻花掃把），由狐桃（BBK）主辦的釣魚系列成為純麥最受歡迎的玩家活動之一，後續發展出休閒釣魚二期、「寧靜之夜」套裝等兌換內容。</div>
-              <span class="tl-tag tl-tag-event">活動</span>
-            </div>
-          </div>
-
-          <div class="tl-item fade-in">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <span class="tl-date">2024.04.07</span>
-              <div class="tl-title">Boss 墓穴開放</div>
-              <div class="tl-desc">石頭（lapis.regnate）主持的 Boss 墓穴正式開放，是純麥時期第一個 PvE 副本內容。</div>
+              <div class="tl-desc">櫻花活動開跑，由狐桃（BBK）主辦的釣魚系列成為純麥最受歡迎的玩家活動之一。</div>
               <span class="tl-tag tl-tag-event">活動</span>
             </div>
           </div>
@@ -598,7 +871,7 @@
             <div class="tl-card">
               <span class="tl-date">2024.04.04</span>
               <div class="tl-title">人數新高 32 人 & 超加速骨頭事件</div>
-              <div class="tl-desc">遊玩人數創新高導致多次崩潰。活動出包「超加速骨頭」，因速度加太快影響遊戲平衡，隔天全面回收。不配合者將被永 ban。成長的陣痛。</div>
+              <div class="tl-desc">遊玩人數創新高導致多次崩潰。活動出包「超加速骨頭」，因速度加太快影響遊戲平衡，隔天全面回收。成長的陣痛。</div>
               <span class="tl-tag tl-tag-event">事件</span>
             </div>
           </div>
@@ -608,7 +881,7 @@
             <div class="tl-card">
               <span class="tl-date">2024.04.06</span>
               <div class="tl-title">託管再炸 & 重傷害物品出包</div>
-              <div class="tl-desc">伺服器強制關閉、基岩版連線異常。+8 鑽石等重傷害物品被回收引發玩家抗議。cry 嘆息：「我不想開個伺服器也要看到有人在閃😔」</div>
+              <div class="tl-desc">伺服器強制關閉。+8 鑽石等重傷害物品被回收引發玩家抗議。cry 嘆息：「我不想開個伺服器也要看到有人在閃😔」</div>
               <span class="tl-tag tl-tag-event">事件</span>
             </div>
           </div>
@@ -628,7 +901,7 @@
             <div class="tl-card">
               <span class="tl-date">2024.05.05</span>
               <div class="tl-title">升級極致 & 人數 44 人</div>
-              <div class="tl-desc">先後升級至「超值」再到「極致」託管方案。人數創新高 44 人同時在線。領地飛行開放，但領地外飛行會被「擊落」。同日 cry 手機壞掉失聯。</div>
+              <div class="tl-desc">先後升級至「超值」再到「極致」託管方案。人數創新高 44 人同時在線。領地飛行開放。</div>
               <span class="tl-tag tl-tag-update">更新</span>
             </div>
           </div>
@@ -648,7 +921,7 @@
             <div class="tl-card">
               <span class="tl-date">2024.05.31</span>
               <div class="tl-title">管理權洩漏事件</div>
-              <div class="tl-desc">路人甲帳號遭他人盜用，導致管理權限外洩。神焰當時誤判為正版驗證系統的副作用，實際上是帳號被入侵。伺服器關閉數日進行安全處理，涉事異常物品（附魔金蘋果、鑽石磚等）列入追查名單。</div>
+              <div class="tl-desc">路人甲帳號遭他人盜用，導致管理權限外洩。神焰當時誤判為正版驗證系統的副作用，實際上是帳號被入侵。</div>
               <span class="tl-tag tl-tag-event">事件</span>
             </div>
           </div>
@@ -658,22 +931,22 @@
             <div class="tl-card">
               <span class="tl-date">2024.06.01</span>
               <div class="tl-title">大規模漏洞利用事件</div>
-              <div class="tl-desc">9 名玩家被查獲利用漏洞：複製物資、侵入他人帳號、使用漏洞獲取管理權限。涉事名單包含使用漏洞獲取權限者（Yuzhi__、shenr297、lestok 等）、直接獲利者、間接獲利者。處分公告後全面追查不法所得。</div>
+              <div class="tl-desc">9 名玩家被查獲利用漏洞：複製物資、侵入他人帳號、使用漏洞獲取管理權限。處分公告後全面追查不法所得。</div>
               <span class="tl-tag tl-tag-event">事件</span>
             </div>
           </div>
 
           <div class="tl-item fade-in">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
+            <div class="tl-dot milestone"></div>
+            <div class="tl-card milestone-card">
               <span class="tl-date">2024.06.04</span>
               <div class="tl-title">蔚藍伸出援手 & 人數 51 人</div>
-              <div class="tl-desc">外部社群「藍冰伺服器」（後更名蔚藍幻境）主動伸出援手，將自己主機多餘的效能分給純麥使用，幫助伺服器度過託管困境。這份跨社群的善意，成為純麥歷史上溫暖的一頁。人數創新高 51 人，TPS 最低 13。月底 TPS 改善至 17。部分資料（稱號、皮膚）損毀待修。</div>
+              <div class="tl-desc">外部社群「藍冰伺服器」（後更名蔚藍幻境）主動伸出援手，將自己主機多餘的效能分給純麥使用。這份跨社群的善意，成為純麥歷史上溫暖的一頁。人數創新高 51 人。</div>
               <div class="tl-photo-card">
-                <img src="assets/img/tablist-51players.webp" alt="純麥時期 51 人在線的 Tablist 畫面" loading="lazy" onerror="this.parentElement.style.display='none'">
+                <img src="assets/img/tablist-51players.webp" alt="純麥時期 51 人在線" loading="lazy" onerror="this.parentElement.style.display='none'">
                 <div class="tl-photo-caption">純麥時期 51 人在線的盛況（2024.06.25 Tablist 截圖）</div>
               </div>
-              <span class="tl-tag tl-tag-update">更新</span>
+              <span class="tl-tag tl-tag-milestone">里程碑</span>
             </div>
           </div>
 
@@ -682,7 +955,7 @@
             <div class="tl-card milestone-card">
               <span class="tl-date">2024.06.24</span>
               <div class="tl-title">公務人員職權規範條例通過</div>
-              <div class="tl-desc">經人民大會堂投票，以 11:0 全票通過「公務人員職權規範條例」。由石頭（lapis.regnate）擔任主席主導立法。純麥建立了正式的權力制衡與公務人員管理制度，是社群治理的里程碑。</div>
+              <div class="tl-desc">經人民大會堂投票，以 11:0 全票通過。由石頭擔任主席主導立法。純麥建立了正式的權力制衡與公務人員管理制度。</div>
               <span class="tl-tag tl-tag-milestone">里程碑</span>
             </div>
           </div>
@@ -690,60 +963,10 @@
           <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
-              <span class="tl-date">2024.06.27</span>
-              <div class="tl-title">正版驗證決定</div>
-              <div class="tl-desc">經過討論決定於 7/8 開啟正版驗證。玩家需清空背包、終界箱、餘額，記住領地名稱與傳送點座標。重大轉型期。</div>
-              <span class="tl-tag tl-tag-update">更新</span>
-            </div>
-          </div>
-
-          <div class="tl-item fade-in">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <span class="tl-date">2024.07.03</span>
-              <div class="tl-title">任務系統正式上線</div>
-              <div class="tl-desc">安裝任務插件並完成全方塊、實體翻譯。指令 /plk open 啟用。純麥開始有系統化的遊戲內任務內容。</div>
-              <span class="tl-tag tl-tag-update">更新</span>
-            </div>
-          </div>
-
-          <div class="tl-item fade-in">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <span class="tl-date">2024.07.06</span>
-              <div class="tl-title">純麥網站上線 & 新手指導</div>
-              <div class="tl-desc">www.chunmai.cc 正式上線。同步新增 #⌨｜新手指導 頻道，降低新玩家入門門檻。</div>
-              <span class="tl-tag tl-tag-update">更新</span>
-            </div>
-          </div>
-
-          <div class="tl-item fade-in">
-            <div class="tl-dot milestone"></div>
-            <div class="tl-card milestone-card">
               <span class="tl-date">2024.07.08</span>
               <div class="tl-title">正版驗證正式啟用</div>
-              <div class="tl-desc">移除登入插件，伺服器開啟正版驗證。領地系統經歷 UUID 轉 ID 修復。這一步提升了伺服器安全性，但也意味著部分玩家的流失。</div>
+              <div class="tl-desc">移除登入插件，伺服器開啟正版驗證。領地系統經歷 UUID 轉 ID 修復。這一步提升了安全性，但也意味著部分玩家的流失。</div>
               <span class="tl-tag tl-tag-milestone">里程碑</span>
-            </div>
-          </div>
-
-          <div class="tl-item fade-in">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <span class="tl-date">2024.07.16</span>
-              <div class="tl-title">客服系統整合</div>
-              <div class="tl-desc">封存舊的問題回報、帳號處理、公共政策參與平台頻道，合併為統一的 #🎫｜開客服單。管理流程精簡化。</div>
-              <span class="tl-tag tl-tag-update">更新</span>
-            </div>
-          </div>
-
-          <div class="tl-item fade-in">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <span class="tl-date">2024.07.21</span>
-              <div class="tl-title">正式編號制度 & 日誌頻道</div>
-              <div class="tl-desc">公告開始使用連續編號（公告 0001 ~、更新日誌 #0013 起），通知格式加入日期與標號。封包限制從 120 提升至 400。純麥進入制度化管理階段。</div>
-              <span class="tl-tag tl-tag-update">更新</span>
             </div>
           </div>
 
@@ -752,7 +975,7 @@
             <div class="tl-card">
               <span class="tl-date">2024.07.24</span>
               <div class="tl-title">身分組重整 & 玩家動態</div>
-              <div class="tl-desc">身分組與頻道全面重整（地區、生日、生理性別等）。新增 #💬｜玩家動態頻道，顯示登入、登出、死亡、進度。安裝資源再生插件、MCMMO 翻譯、禮包系統。上架 McList 伺服器列表。</div>
+              <div class="tl-desc">身分組與頻道全面重整。新增玩家動態頻道。安裝資源再生插件、MCMMO 翻譯、禮包系統。上架伺服器列表。</div>
               <span class="tl-tag tl-tag-update">更新</span>
             </div>
           </div>
@@ -772,7 +995,7 @@
             <div class="tl-card">
               <span class="tl-date">2024.08.07</span>
               <div class="tl-title">託管商硬碟損壞</div>
-              <div class="tl-desc">路人甲公告純麥伺服器因託管商硬碟損壞而關閉，開啟日期不明。舊群組的玩家開始尋找新去處。8/21 路人甲嘗試重新開放，但因同步聊天未設定好又立即關閉。純麥舊服就此走入歷史。</div>
+              <div class="tl-desc">路人甲公告純麥伺服器因託管商硬碟損壞而關閉。8/21 路人甲嘗試重新開放，但因同步聊天未設定好又立即關閉。純麥舊服就此走入歷史。</div>
               <span class="tl-tag tl-tag-event">事件</span>
             </div>
           </div>
@@ -802,26 +1025,34 @@
             <div class="tl-card milestone-card">
               <span class="tl-date">2024.08.12</span>
               <div class="tl-title">「海風伺服器」正式命名</div>
-              <div class="tl-desc">神焰公告：因純麥伺服器服主解雇蜂聊縣政府團隊，團隊已無任何管理、合作或商業關係。新伺服器正式定名為「海風伺服器」，傳承純麥及粉雪伺服器的傳統和理念。Discord 伺服器同步更名。</div>
+              <div class="tl-desc">神焰公告：因純麥伺服器服主解雇蜂聊縣政府團隊，團隊已無任何管理、合作或商業關係。新伺服器正式定名為「海風伺服器」，傳承純麥及粉雪伺服器的傳統和理念。</div>
               <div class="tl-photo-card">
-                <img src="assets/img/logo.png" alt="海風伺服器標誌" loading="lazy" onerror="this.parentElement.style.display='none'" style="aspect-ratio:1/1;max-width:200px;margin:0 auto;">
+                <img src="assets/img/logo.png" alt="海風伺服器標誌" loading="lazy" onerror="this.parentElement.style.display='none'" style="aspect-ratio:1/1;max-width:180px;margin:0 auto;">
                 <div class="tl-photo-caption">海風伺服器 — 跟隨風抵達海的彼端</div>
               </div>
               <span class="tl-tag tl-tag-milestone">里程碑</span>
             </div>
           </div>
-        </div>
 
-        <!-- ═══ 創立期 ═══ -->
-        <div class="timeline-era">
-          <div class="timeline-era-label"><span class="era-badge">🌱 創立期 — 113 年（2024）</span></div>
+        </div><!-- /era-purewheat -->
+
+        <!-- ═══ Era Divider ═══ -->
+        <div class="era-divider"><span>從純麥到海風，帶著所有的經驗與教訓</span></div>
+
+        <!-- ════════════════════════════════════ -->
+        <!-- 創立期 -->
+        <!-- ════════════════════════════════════ -->
+        <div class="timeline-era era-founding" id="era-founding">
+          <div class="timeline-era-label">
+            <span class="era-badge">🌱 創立期 — 113 年（2024）<span class="era-count">~15 則</span></span>
+          </div>
 
           <div class="tl-item fade-in">
             <div class="tl-dot milestone"></div>
             <div class="tl-card milestone-card">
               <span class="tl-date">113.08.14</span>
               <div class="tl-title">海風封測 v0.1</div>
-              <div class="tl-desc">經過 8/12 正式命名後，海風伺服器進入封測階段。安裝箱子商店，開放第一個生存世界。測試版本 v0.1，一切從零開始。</div>
+              <div class="tl-desc">海風伺服器進入封測階段。安裝箱子商店，開放第一個生存世界。測試版本 v0.1，一切從零開始。</div>
               <span class="tl-tag tl-tag-milestone">里程碑</span>
             </div>
           </div>
@@ -897,8 +1128,8 @@
           </div>
 
           <div class="tl-item fade-in">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
+            <div class="tl-dot milestone"></div>
+            <div class="tl-card milestone-card">
               <span class="tl-date">114.04.01</span>
               <div class="tl-title">防礦透機制 & 種子碼公布</div>
               <div class="tl-desc">礦物被動生成機制實裝，解決礦物經濟問題。同時公布世界種子碼，增加透明度。</div>
@@ -920,7 +1151,7 @@
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.04.06</span>
-              <div class="tl-title">新增 IP tw.seawind.cc</div>
+              <div class="tl-title">新增台灣專屬 IP</div>
               <div class="tl-desc">新增台灣專屬連線位址，降低延遲提升遊戲體驗。</div>
               <span class="tl-tag tl-tag-update">更新</span>
             </div>
@@ -935,11 +1166,18 @@
               <span class="tl-tag tl-tag-update">更新</span>
             </div>
           </div>
-        </div>
+        </div><!-- /era-founding -->
 
-        <!-- ═══ 成長期 ═══ -->
-        <div class="timeline-era">
-          <div class="timeline-era-label"><span class="era-badge">🌿 成長期 — 114 年（2025）</span></div>
+        <!-- ═══ Era Divider ═══ -->
+        <div class="era-divider"><span>從零開始，一步一步建立新的家</span></div>
+
+        <!-- ════════════════════════════════════ -->
+        <!-- 成長期 -->
+        <!-- ════════════════════════════════════ -->
+        <div class="timeline-era era-growth" id="era-growth">
+          <div class="timeline-era-label">
+            <span class="era-badge">🌿 成長期 — 114 年（2025）<span class="era-count">~12 則</span></span>
+          </div>
 
           <div class="tl-item fade-in">
             <div class="tl-dot"></div>
@@ -1014,16 +1252,6 @@
           <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
-              <span class="tl-date">114.07.02</span>
-              <div class="tl-title">蜂聊郵政上線</div>
-              <div class="tl-desc">遊戲內通訊系統，玩家間可以互相傳訊。</div>
-              <span class="tl-tag tl-tag-update">更新</span>
-            </div>
-          </div>
-
-          <div class="tl-item fade-in">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
               <span class="tl-date">114.08.18</span>
               <div class="tl-title">壓力瑪斯內下架事件</div>
               <div class="tl-desc">魚套高階部件因數據問題緊急下架，已兌換玩家可 100% 退還資源。這是海風裝備調整的重要案例。</div>
@@ -1050,11 +1278,18 @@
               <span class="tl-tag tl-tag-event">活動</span>
             </div>
           </div>
-        </div>
+        </div><!-- /era-growth -->
 
-        <!-- ═══ 穩定期 ═══ -->
-        <div class="timeline-era">
-          <div class="timeline-era-label"><span class="era-badge">🌊 穩定期 — 115 年（2026）</span></div>
+        <!-- ═══ Era Divider ═══ -->
+        <div class="era-divider"><span>成長的陣痛，也是前進的動力</span></div>
+
+        <!-- ════════════════════════════════════ -->
+        <!-- 穩定期 -->
+        <!-- ════════════════════════════════════ -->
+        <div class="timeline-era era-stable" id="era-stable">
+          <div class="timeline-era-label">
+            <span class="era-badge">🌊 穩定期 — 115 年（2026）<span class="era-count">~10 則</span></span>
+          </div>
 
           <div class="tl-item fade-in">
             <div class="tl-dot"></div>
@@ -1135,15 +1370,17 @@
               <span class="tl-tag tl-tag-update">更新</span>
             </div>
           </div>
-        </div>
-      </div>
+        </div><!-- /era-stable -->
 
-      <div class="rules-meta fade-in" style="margin-top: var(--space-2xl);">
+      </div><!-- /timeline -->
+
+      <div class="rules-meta fade-in">
         <p>本館內容整理自伺服器 Discord 更新頻道、活動頻道與公告頻道之歷史紀錄。</p>
         <p>如有遺漏或錯誤，歡迎至 Discord 回報補充。</p>
       </div>
-    </div>
-  </div>
+
+    </div><!-- /content-section -->
+  </div><!-- /page -->
 
   <footer class="footer">
     <div class="footer-inner">
@@ -1170,17 +1407,14 @@
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="圖片瀏覽" tabindex="-1">
     <button class="lightbox-close" id="lightboxClose">✕</button>
-    <button class="lightbox-prev" id="lightboxPrev">‹</button>
-    <button class="lightbox-next" id="lightboxNext">›</button>
     <img class="lightbox-img" id="lightboxImg" src="" alt="">
     <div class="lightbox-counter" id="lightboxCounter"></div>
   </div>
 
   <script>
-  // 歷史館照片卡 Lightbox
   document.addEventListener('DOMContentLoaded', () => {
+    // Photo card lightbox
     const cards = document.querySelectorAll('.tl-photo-card');
-    if (!cards.length) return;
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lightboxImg');
     const lbClose = document.getElementById('lightboxClose');
@@ -1198,18 +1432,33 @@
 
     cards.forEach((card, i) => {
       card.style.cursor = 'zoom-in';
-      card.addEventListener('click', () => {
-        show(i);
-        lb.classList.add('open');
-      });
+      card.addEventListener('click', () => { show(i); lb.classList.add('open'); });
     });
-
     lbClose.addEventListener('click', () => lb.classList.remove('open'));
     lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
     document.addEventListener('keydown', e => {
       if (!lb.classList.contains('open')) return;
       if (e.key === 'Escape') lb.classList.remove('open');
     });
+
+    // Era nav active state
+    const eraNav = document.getElementById('eraNav');
+    const eraLinks = eraNav.querySelectorAll('a');
+    const eras = document.querySelectorAll('.timeline-era');
+    const eraObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          eraLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+    eras.forEach(era => eraObserver.observe(era));
+
+    // Era nav scroll shadow
+    window.addEventListener('scroll', () => {
+      eraNav.classList.toggle('scrolled-shadow', window.scrollY > 400);
+    }, { passive: true });
   });
   </script>
 </body>
