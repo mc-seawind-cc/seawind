@@ -720,3 +720,191 @@ html, body {
     font-size: 3rem;
   }
 }
+
+/* ═══ 打字機增強 + 首頁動畫 v2 ═══ */
+
+/* 打字機游標 — 停頓呼吸效果 */
+.hero-subtitle .cursor {
+  animation: blink 0.8s step-end infinite;
+  transition: opacity 0.8s;
+}
+.hero-subtitle .cursor.cursor-pause {
+  animation: cursor-breathe 1.2s ease-in-out infinite;
+  color: var(--foam);
+}
+@keyframes cursor-breathe {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.3; transform: scaleY(0.6); }
+}
+
+/* 打字機第二段微調 */
+.typewriter-part2 {
+  opacity: 1;
+  display: inline;
+}
+
+/* Hero 標題入場動畫 — 逐字浮現然後搖曳 */
+.hero-title .char {
+  animation: wind-sway 4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.6s + 0.7s), calc(var(--i) * 0.15s + 0.1s);
+  opacity: 0;
+  animation-name: wind-sway, char-rise;
+  animation-duration: 4s, 0.6s;
+  animation-timing-function: ease-in-out, cubic-bezier(0.22, 1, 0.36, 1);
+  animation-iteration-count: infinite, 1;
+  animation-fill-mode: none, forwards;
+  animation-delay: calc(var(--i) * 0.6s + 0.7s), calc(var(--i) * 0.15s + 0.1s);
+}
+@keyframes char-rise {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Hero 副標題區域入場 */
+.hero-content:not(.hero-collapsed) .hero-subtitle {
+  opacity: 0;
+  animation: subtitle-fade-in 0.8s ease-out 0.5s forwards;
+}
+@keyframes subtitle-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero 按鈕延遲入場 */
+.hero-actions {
+  opacity: 0;
+  animation: actions-rise 0.6s ease-out 1.8s forwards;
+}
+@keyframes actions-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero 資訊卡片 — 錯開入場 */
+.hero-info .info-card {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: info-card-in 0.5s ease-out forwards;
+}
+.hero-info .info-card:nth-child(1) { animation-delay: 2.2s; }
+.hero-info .info-card:nth-child(2) { animation-delay: 2.4s; }
+.hero-info .info-card:nth-child(3) { animation-delay: 2.6s; }
+@keyframes info-card-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero 提示輪播入場 */
+.hero-tips {
+  opacity: 0;
+  animation: tips-fade-in 0.6s ease-out 2.8s forwards;
+}
+@keyframes tips-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Hero 向下探索箭頭入場 */
+.hero-scroll {
+  opacity: 0;
+  animation: scroll-arrow-in 0.5s ease-out 3.2s forwards;
+}
+@keyframes scroll-arrow-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 0.9; transform: translateY(0); }
+}
+
+/* 背景氛圍光暈動態 */
+.bg-atmosphere::before {
+  animation: drift 30s ease-in-out infinite alternate, atmosphere-breathe 8s ease-in-out infinite;
+}
+@keyframes atmosphere-breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Hero 背景 — 深色模式光暈 */
+.hero::before {
+  animation: hero-bg-drift 20s ease-in-out infinite alternate;
+}
+@keyframes hero-bg-drift {
+  0% { filter: brightness(0.85) contrast(1.1) hue-rotate(0deg); }
+  100% { filter: brightness(0.9) contrast(1.05) hue-rotate(5deg); }
+}
+
+/* Hero 標題微風搖曳 */
+.hero-title {
+  animation: hero-breathe 6s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* ═══ 淺色模式動畫適配 ═══ */
+[data-theme="light"] .hero::before {
+  animation-name: hero-bg-drift-light;
+}
+@keyframes hero-bg-drift-light {
+  0% { filter: brightness(1.05) contrast(1.05) saturate(1.1) hue-rotate(0deg); }
+  100% { filter: brightness(1.1) contrast(1.0) saturate(1.15) hue-rotate(3deg); }
+}
+
+[data-theme="light"] .hero-subtitle .cursor.cursor-pause {
+  color: var(--ocean-blue);
+}
+
+[data-theme="light"] .hero-info .info-card {
+  animation-name: info-card-in-light;
+}
+@keyframes info-card-in-light {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══ 手機端動畫精簡 ═══ */
+@media (max-width: 768px) {
+  .hero-title .char {
+    animation-duration: 0.4s;
+  }
+  .hero-actions {
+    animation-delay: 1.5s;
+  }
+  .hero-info .info-card:nth-child(1) { animation-delay: 1.8s; }
+  .hero-info .info-card:nth-child(2) { animation-delay: 1.9s; }
+  .hero-info .info-card:nth-child(3) { animation-delay: 2.0s; }
+  .hero-tips {
+    animation-delay: 2.2s;
+  }
+  .hero-scroll {
+    animation-delay: 2.5s;
+  }
+}
+
+/* 減少動效偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .char {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hero-subtitle .cursor.cursor-pause {
+    animation: blink 0.8s step-end infinite;
+  }
+  .hero-actions,
+  .hero-info .info-card,
+  .hero-tips,
+  .hero-scroll {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hero-title {
+    animation: none;
+  }
+  .hero::before {
+    animation: none;
+  }
+  .bg-atmosphere::before {
+    animation: drift 30s ease-in-out infinite alternate;
+  }
+}

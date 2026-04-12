@@ -346,7 +346,6 @@ function createHeroParticles() {
 function initTypewriter() {
   const el = document.getElementById('heroSubtitle');
   if (!el) return;
-  // Prevent double-init
   if (el.dataset.typed) return;
   el.dataset.typed = '1';
 
@@ -370,32 +369,60 @@ function initTypewriter() {
 
   el.textContent = '';
 
+  // Cursor
   const cursor = document.createElement('span');
   cursor.className = 'cursor';
   cursor.textContent = '_';
   el.appendChild(cursor);
 
-  const mainText = document.createTextNode('');
-  el.insertBefore(mainText, cursor);
+  // Part 1 text node
+  const part1Text = document.createTextNode('');
+  el.insertBefore(part1Text, cursor);
 
-  const speed = 100;
+  // Part 2 text node (separate for potential styling)
+  const part2Span = document.createElement('span');
+  part2Span.className = 'typewriter-part2';
+  el.insertBefore(part2Span, cursor);
+  const part2Text = document.createTextNode('');
+  part2Span.appendChild(part2Text);
 
-  function typeMain(text, idx, cb) {
+  const PART1 = '在風與海之間，';
+  const PART2 = '有一個可以長久生存的地方';
+  const SPEED = 80;
+  const PAUSE_MS = 1200; // 中間停頓
+
+  function typeChars(textNode, text, idx, cb) {
     if (idx < text.length) {
-      mainText.textContent += text[idx];
+      textNode.textContent += text[idx];
       playTick();
-      setTimeout(() => typeMain(text, idx + 1, cb), speed + Math.random() * 40);
+      const delay = SPEED + Math.random() * 30;
+      // 標點後多停一下
+      const extra = (text[idx] === '，' || text[idx] === '。' || text[idx] === '、') ? 120 : 0;
+      setTimeout(() => typeChars(textNode, text, idx + 1, cb), delay + extra);
     } else {
       cb();
     }
   }
 
-  // Start typing after a short pause
+  // Hero entrance animation
   setTimeout(() => {
-    typeMain('在風與海之間，有一個可以長久生存的地方', 0, () => {
-      // Done — cursor keeps blinking
+    // Type part 1
+    typeChars(part1Text, PART1, 0, () => {
+      // Pause — cursor breathing effect
+      cursor.classList.add('cursor-pause');
+      setTimeout(() => {
+        cursor.classList.remove('cursor-pause');
+        // Type part 2
+        typeChars(part2Text, PART2, 0, () => {
+          // Done — fade out cursor
+          setTimeout(() => {
+            cursor.style.opacity = '0';
+            cursor.style.transition = 'opacity 0.8s';
+          }, 2000);
+        });
+      }, PAUSE_MS);
     });
-  }, 400);
+  }, 600);
 }
 
 // --- Copy Server IP ---
