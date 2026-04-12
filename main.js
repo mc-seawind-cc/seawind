@@ -446,11 +446,10 @@ function initBulletinBoard() {
   fetch(SW_BASE + 'announcements.json')
     .then(r => r.json())
     .then(data => {
-      const MAX_TOTAL = 10;
+      const MAX_SHOW = 7;
       const items = data.announcements;
-      const pinned = items.filter(i => i.pinned);
-      const regular = items.filter(i => !i.pinned);
-      const maxRegular = Math.max(0, MAX_TOTAL - pinned.length);
+      // 取最新 7 則（已經按時間倒序）
+      const showItems = items.slice(0, MAX_SHOW);
       let html = '';
 
       function toggleItem() {
@@ -461,32 +460,32 @@ function initBulletinBoard() {
         }
       }
 
-      pinned.forEach((item, i) => {
-        const icon = getTagIcon(item.tag);
-        const date = formatDate(item.date, item.timestamp);
-        html += `<div class="bulletin-item pinned open" data-tag="${item.tag || '公告'}" data-index="${i}">
-          <button class="bulletin-toggle" aria-expanded="true">
-            <span class="b-left"><span class="b-icon">${icon}</span><span class="b-date">${date}</span></span>
-            <span class="b-title">📌 ${item.title}</span>
-            <span class="b-right"><span class="b-id">${item.id || ''}</span><span class="b-arrow">▾</span></span>
-          </button>
-          <div class="bulletin-body"><div class="b-content">${md2html(item.content)}</div></div>
-        </div>`;
-      });
-      regular.slice(0, maxRegular).forEach((item, i) => {
+      showItems.forEach((item, i) => {
         const tag = item.tag || '更新';
-        const icon = getTagIcon(tag);
         const date = formatDate(item.date, item.timestamp);
-        html += `<div class="bulletin-item" data-tag="${tag}" data-index="${i}">
+        const pinnedClass = item.pinned ? ' pinned' : '';
+        const pinLabel = item.pinned ? '<span class="b-pin">置頂</span>' : '';
+        const idLabel = item.id ? `<span class="b-id">${item.id}</span>` : '';
+        const tagLabel = `<span class="b-tag tag-${tag}">${tag}</span>`;
+
+        html += `<div class="bulletin-item${pinnedClass}" data-tag="${tag}" data-index="${i}">
           <button class="bulletin-toggle" aria-expanded="false">
-            <span class="b-left"><span class="b-icon">${icon}</span><span class="b-date">${date}</span></span>
+            <span class="b-left">
+              <span class="b-date">${date}</span>
+            </span>
             <span class="b-title">${item.title}</span>
-            <span class="b-right"><span class="b-id">${item.id || ''}</span><span class="b-tag tag-${tag}">${tag}</span><span class="b-arrow">▾</span></span>
+            <span class="b-right">
+              ${pinLabel}
+              ${idLabel}
+              ${tagLabel}
+              <span class="b-arrow">▾</span>
+            </span>
           </button>
           <div class="bulletin-body"><div class="b-content">${md2html(item.content)}</div></div>
         </div>`;
       });
-      if (regular.length > maxRegular) {
+
+      if (items.length > MAX_SHOW) {
         html += `<div class="bulletin-more"><a href="公告.html" class="btn btn-outline">查看全部公告 (${items.length} 則) →</a></div>`;
       }
       board.innerHTML = html;
