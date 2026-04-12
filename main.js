@@ -212,7 +212,7 @@ function initScrollTypewriters() {
             el.insertBefore(document.createTextNode(text[i]), cursor);
             playTick();
             i++;
-            setTimeout(type, 60 + Math.random() * 40);
+            setTimeout(type, 100 + Math.random() * 60);
           } else {
             // Fade out cursor after done
             setTimeout(() => {
@@ -397,7 +397,7 @@ function initTypewriter() {
 
   const PART1 = '在風與海之間，';
   const PART2 = '有一個可以長久生存的地方';
-  const SPEED = 80;
+  const SPEED = 120;
   const PAUSE_MS = 1200;
   const DOTS_MS = 1200; // 「...」顯示時間
 
