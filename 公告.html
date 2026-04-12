@@ -333,37 +333,44 @@
     }
     .ann-card.open .ann-card-body { max-height: 3000px; }
     .ann-card-body-inner {
-      padding: 0 14px 14px;
-      border-top: 1px solid var(--mist);
+      padding: 16px 18px 14px;
+      background: rgba(255,255,255,0.015);
+      border-top: 1px solid rgba(157,175,255,0.1);
+    }
+    [data-theme="light"] .ann-card-body-inner {
+      background: rgba(0,0,0,0.008);
+      border-top-color: rgba(0,0,0,0.06);
     }
 
     /* 內文 */
     .ann-content {
       color: var(--cloud);
-      font-size: 0.86rem;
-      line-height: 1.8;
-      margin-top: 12px;
+      font-size: 0.9rem;
+      line-height: 1.9;
     }
-    [data-theme="light"] .ann-content { color: #4a5260; }
-    .ann-content p { margin-bottom: 0.5em; }
+    [data-theme="light"] .ann-content { color: #3a4250; }
+    .ann-content p { margin-bottom: 0.6em; }
     .ann-content p:last-child { margin-bottom: 0; }
-    .ann-content ul, .ann-content ol { padding-left: 1.4em; margin: 4px 0; }
-    .ann-content a { color: var(--sky); text-decoration: none; }
-    .ann-content a:hover { text-decoration: underline; }
+    .ann-content ul, .ann-content ol { padding-left: 1.4em; margin: 6px 0; }
+    .ann-content li { margin-bottom: 2px; }
+    .ann-content a { color: var(--sky); text-decoration: none; border-bottom: 1px solid rgba(157,175,255,0.25); padding-bottom: 1px; }
+    .ann-content a:hover { border-bottom-color: var(--sky); }
     .ann-content code {
-      background: rgba(157,175,255,0.08);
-      padding: 1px 6px;
+      background: rgba(157,175,255,0.1);
+      padding: 2px 7px;
       border-radius: 4px;
-      font-size: 0.84em;
-      font-family: 'SF Mono', 'Cascadia Code', monospace;
+      font-size: 0.85em;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', monospace;
+      color: var(--sky);
     }
     .ann-content blockquote {
-      border-left: 3px solid rgba(157,175,255,0.2);
-      padding: 6px 14px;
-      margin: 8px 0;
-      background: rgba(157,175,255,0.03);
-      border-radius: 0 6px 6px 0;
+      border-left: 3px solid rgba(157,175,255,0.25);
+      padding: 8px 16px;
+      margin: 10px 0;
+      background: rgba(157,175,255,0.04);
+      border-radius: 0 8px 8px 0;
       color: var(--fog);
+      font-size: 0.88rem;
     }
     .ann-content .ann-small { color: var(--text-muted); font-size: 0.8em; }
     .ann-content .ann-spoiler {
@@ -382,49 +389,67 @@
     /* 圖片 */
     .ann-images {
       display: flex;
-      gap: 6px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-top: 10px;
+      margin-top: 14px;
     }
     .ann-images img {
-      max-width: 180px;
-      max-height: 140px;
-      border-radius: 6px;
+      max-width: 240px;
+      max-height: 180px;
+      border-radius: 8px;
       cursor: zoom-in;
       transition: transform 0.2s, box-shadow 0.2s;
       object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.06);
     }
     .ann-images img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      transform: scale(1.04);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      border-color: rgba(157,175,255,0.2);
+    }
+    [data-theme="light"] .ann-images img {
+      border-color: rgba(0,0,0,0.06);
+    }
+    [data-theme="light"] .ann-images img:hover {
+      border-color: rgba(157,175,255,0.3);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
-    /* 底部 meta */
+    /* 底部 reactions */
     .ann-card-footer {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-top: 10px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255,255,255,0.04);
-      font-size: 0.72rem;
-      color: var(--text-muted);
+      gap: 8px;
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    [data-theme="light"] .ann-card-footer {
+      border-top-color: rgba(0,0,0,0.05);
     }
     .ann-reactions {
       display: flex;
-      gap: 4px;
+      gap: 6px;
     }
     .ann-reaction {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(157,175,255,0.06);
+      border: 1px solid rgba(157,175,255,0.1);
       border-radius: 99px;
-      padding: 2px 8px;
-      font-size: 0.72rem;
+      padding: 4px 10px;
+      font-size: 0.82rem;
       display: flex;
       align-items: center;
       gap: 4px;
+      transition: background 0.2s;
     }
-    .ann-reaction .rcount { color: var(--fog); }
+    .ann-reaction:hover {
+      background: rgba(157,175,255,0.12);
+    }
+    .ann-reaction .rcount { color: var(--fog); font-size: 0.78rem; }
+    [data-theme="light"] .ann-reaction {
+      background: rgba(157,175,255,0.06);
+      border-color: rgba(157,175,255,0.12);
+    }
 
     /* Load more */
     .ann-load-more {
@@ -471,7 +496,7 @@
       .ann-card-date { min-width: 55px; font-size: 0.66rem; }
       .ann-card-title { font-size: 0.82rem; }
       .ann-card-id { font-size: 0.65rem; min-width: 40px; padding: 2px 4px; }
-      .ann-images img { max-width: 100px; max-height: 75px; }
+      .ann-images img { max-width: 140px; max-height: 100px; }
       .ann-month-nav { gap: 4px; }
       .ann-month-btn { padding: 3px 8px; font-size: 0.7rem; }
     }
