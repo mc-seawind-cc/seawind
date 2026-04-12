@@ -137,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initPostcardLightbox();
     initGeneralLightbox();
     initGuideSidebar();
-    initPhotoPage();
   };
 
   // Standalone rain toggle button (only on 首頁, left of music player)
@@ -1164,6 +1163,9 @@ function initPhotoPage() {
       if (floatCounter) floatCounter.remove();
     });
 }
+
+// --- Photo Page: 獨立初始化，不依賴 deferredInit ---
+document.addEventListener('DOMContentLoaded', () => { initPhotoPage(); });
 
 // --- Deployment Count (使用 GitHub commits API，未認證時友善降級) ---
 (function() {
