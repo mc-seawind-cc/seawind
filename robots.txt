@@ -2,3 +2,9 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.seawind.cc/sitemap.xml
+
+# Block access to non-page assets
+Disallow: /announcements.json
+Disallow: /announcements_v2.json
+Disallow: /photos.json
+Disallow: /penalties.json

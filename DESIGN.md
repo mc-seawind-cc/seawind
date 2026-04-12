@@ -250,24 +250,27 @@
 
 ---
 
-## 七、未來規劃 & 待辦
+## 七、更新記錄
 
-- [ ] 修復 CSS 語法錯誤（line 1037 的 `@media (prefers-reduced-motion: reduce)`）
-- [ ] 修復 `.back-to-top` 重複定義
-- [ ] 修復 `.feature-card::before` 重複定義
-- [ ] 為缺失的圖片補上 WebP 版本
-- [ ] 遷移巴哈外部圖片到本地
-- [ ] 生成 sitemap.xml
-- [ ] 新增 robots.txt
-- [ ] 各頁面補充 meta description
-- [ ] 部分圖片 alt 文字更具體化
+### 2026.04.12 — 初始分析 & 優化
+- ✅ 修復 CSS 語法錯誤（`prefers-reduced-motion` 區塊 `.community-body` 尾隨逗號）
+- ✅ 新增 `sitemap.xml`（涵蓋所有 60+ 頁面）
+- ✅ 新增 `robots.txt`
+- ✅ 所有頁面補上 `rel="canonical"`
+- ✅ 改善首頁明信片圖片 alt 文字（更具體的描述）
+- ✅ 建立本 DESIGN.md
+
+## 八、未來規劃 & 待辦
+
+- [ ] 為缺失的圖片補上 WebP 版本（guide-menu.png 等）
+- [ ] 遷移巴哈外部圖片到本地 assets
 - [ ] 淺色模式對比度檢查 & 修正
 - [ ] 考慮 CSS 拆分以優化載入速度
-- [ ] GitHub API rate limit 應對方案
+- [ ] GitHub API rate limit 應對方案（deployCount）
 
 ---
 
-## 八、交接注意事項
+## 九、交接注意事項
 
 1. **所有設計決策記錄在此文件**，修改前請先閱讀
 2. **CSS 是全站共用的**，修改時請確認不影響其他頁面
