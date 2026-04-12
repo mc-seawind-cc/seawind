@@ -281,6 +281,83 @@
     .click-cps { font-size: 1.2rem; color: #a8e6cf; font-weight: 700; }
     .click-label { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
 
+    /* ═══ Color Challenge ═══ */
+    .color-zone {
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      padding: 24px; background: rgba(6,14,28,0.5); border-radius: 12px;
+      border: 1px solid rgba(157,175,255,0.08);
+    }
+    .color-word {
+      font-size: 2rem; font-weight: 800; text-align: center;
+      padding: 10px 0; user-select: none; min-height: 50px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .color-buttons {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%;
+    }
+    .color-btn {
+      padding: 12px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.1);
+      font-size: 0.85rem; font-weight: 700; cursor: pointer;
+      font-family: inherit; transition: all 0.15s; user-select: none;
+    }
+    .color-btn:hover { transform: scale(1.05); border-color: rgba(255,255,255,0.3); }
+    .color-btn:active { transform: scale(0.95); }
+    .color-btn.wrong { animation: shake 0.3s ease; border-color: rgba(255,100,100,0.5); }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      75% { transform: translateX(8px); }
+    }
+
+    /* ═══ Reaction Time ═══ */
+    .reaction-zone {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 40px 24px; border-radius: 12px; cursor: pointer;
+      transition: background 0.1s; min-height: 160px; text-align: center;
+      border: 1px solid rgba(157,175,255,0.08);
+    }
+    .reaction-zone.waiting {
+      background: rgba(255,80,80,0.15);
+      border-color: rgba(255,80,80,0.2);
+    }
+    .reaction-zone.ready {
+      background: rgba(80,200,120,0.15);
+      border-color: rgba(80,200,120,0.3);
+    }
+    .reaction-zone.idle {
+      background: rgba(6,14,28,0.5);
+    }
+    .reaction-text { font-size: 1.1rem; color: rgba(255,255,255,0.7); }
+    .reaction-ms { font-size: 2.5rem; font-weight: 800; color: #a8e6cf; }
+
+    /* ═══ Number Guess ═══ */
+    .number-zone {
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      padding: 24px; background: rgba(6,14,28,0.5); border-radius: 12px;
+      border: 1px solid rgba(157,175,255,0.08);
+    }
+    .number-display {
+      font-size: 2.5rem; font-weight: 800; color: #9dafff;
+      font-variant-numeric: tabular-nums;
+    }
+    .number-hint {
+      font-size: 0.9rem; color: rgba(255,255,255,0.5);
+      min-height: 1.5em;
+    }
+    .number-hint.high { color: #ff8080; }
+    .number-hint.low { color: #80c8ff; }
+    .number-buttons {
+      display: flex; gap: 12px;
+    }
+    .number-btn {
+      padding: 14px 28px; border-radius: 10px; font-size: 1.2rem;
+      font-weight: 700; cursor: pointer; border: 2px solid rgba(157,175,255,0.2);
+      background: rgba(157,175,255,0.1); color: #b3c8ff;
+      font-family: inherit; transition: all 0.15s; user-select: none;
+    }
+    .number-btn:hover { background: rgba(157,175,255,0.2); transform: scale(1.05); }
+    .number-btn:active { transform: scale(0.95); }
+
     @media (max-width: 768px) {
       .moon { width: 44px; height: 44px; top: 10%; right: 12%; }
       .content { top: 32%; }
@@ -336,6 +413,9 @@
         <button class="game-btn" onclick="startGame('stars')">⭐ 打星星</button>
         <button class="game-btn" onclick="startGame('mole')">🔨 打海怪</button>
         <button class="game-btn" onclick="startGame('click')">⚡ 點擊測速</button>
+        <button class="game-btn" onclick="startGame('color')">🎨 顏色</button>
+        <button class="game-btn" onclick="startGame('reaction')">⏱️ 反應</button>
+        <button class="game-btn" onclick="startGame('number')">🎲 猜數</button>
       </div>
     </div>
   </div>
@@ -396,6 +476,9 @@
       else if (type === 'stars') initStars(area);
       else if (type === 'mole') initMole(area);
       else if (type === 'click') initClick(area);
+      else if (type === 'color') initColor(area);
+      else if (type === 'reaction') initReaction(area);
+      else if (type === 'number') initNumber(area);
 
       clearInterval(timerHandle);
       timerHandle = setInterval(() => {
@@ -403,6 +486,12 @@
         document.getElementById('gameTimer').textContent = '⏱ ' + timeLeft + 's';
         if (timeLeft <= 0) endGame();
       }, 1000);
+
+      // Timer-less games: set infinite time
+      if (type === 'color' || type === 'reaction') {
+        clearInterval(timerHandle);
+        document.getElementById('gameTimer').textContent = '⏱ ∞';
+      }
     }
 
     function endGame() {
@@ -418,7 +507,15 @@
         ? (score >= 20 ? '🌟' : score >= 10 ? '⭐' : '💫')
         : currentGame === 'mole'
         ? (score >= 12 ? '🔨' : score >= 6 ? '🐙' : '🌊')
-        : (score >= 80 ? '⚡' : score >= 40 ? '💨' : '🖱️');
+        : currentGame === 'click'
+        ? (score >= 80 ? '⚡' : score >= 40 ? '💨' : '🖱️')
+        : currentGame === 'color'
+        ? (score >= 15 ? '🎨' : score >= 8 ? '🌈' : '🖌️')
+        : currentGame === 'reaction'
+        ? (score < 200 ? '⚡' : score < 300 ? '🏃' : score < 400 ? '👍' : '🐢')
+        : currentGame === 'number'
+        ? (score >= 8 ? '🧠' : score >= 4 ? '🎲' : '💪')
+        : '🎮';
 
       const text = currentGame === 'fishing'
         ? (score >= 15 ? '釣魚大師！' : score >= 8 ? '收穫滿滿！' : score >= 3 ? '還不錯喔' : '繼續加油～')
@@ -428,10 +525,22 @@
         ? (score >= 20 ? '星空獵手！' : score >= 10 ? '抓到不少星星' : '繼續努力～')
         : currentGame === 'mole'
         ? (score >= 12 ? '海怪殺手！' : score >= 6 ? '打到不少！' : '繼續打～')
-        : (score >= 80 ? '閃電快手！' : score >= 40 ? '手速不錯' : '再快一點！');
+        : currentGame === 'click'
+        ? (score >= 80 ? '閃電快手！' : score >= 40 ? '手速不錯' : '再快一點！')
+        : currentGame === 'color'
+        ? (score >= 15 ? '色彩大師！' : score >= 8 ? '眼力不錯' : '繼續挑戰～')
+        : currentGame === 'reaction'
+        ? (score < 200 ? '反應神速！' : score < 300 ? '反應很快！' : score < 400 ? '反應不錯' : '再快一點～')
+        : currentGame === 'number'
+        ? (score >= 8 ? '直覺超強！' : score >= 4 ? '判斷力不錯' : '再試試～')
+        : '🎮';
+
+      const scoreDisplay = currentGame === 'click' ? (score / 5).toFixed(1) + ' CPS'
+        : currentGame === 'reaction' ? score + 'ms'
+        : score;
 
       document.getElementById('resultEmoji').textContent = emoji;
-      document.getElementById('resultScore').textContent = currentGame === 'click' ? (score / 5).toFixed(1) + ' CPS' : score;
+      document.getElementById('resultScore').textContent = scoreDisplay;
       document.getElementById('resultText').textContent = text;
       document.getElementById('resultBtn').onclick = () => startGame(currentGame);
       document.getElementById('gameResult').classList.add('active');
@@ -642,6 +751,198 @@
 
       zone.appendChild(label);
       zone.appendChild(target);
+      area.appendChild(zone);
+    }
+
+    // ═══ Color Challenge (Stroop Effect) ═══
+    const COLOR_NAMES = ['紅','藍','綠','黃','紫','橘'];
+    const COLOR_CSS = ['#ff5555','#5599ff','#55cc77','#ffcc33','#bb66ff','#ff9944'];
+
+    function initColor(area) {
+      document.getElementById('gameInfo').innerHTML = '🎨 <span class="hud-score" id="gameScore">0</span>';
+      const zone = document.createElement('div');
+      zone.className = 'color-zone';
+
+      const word = document.createElement('div');
+      word.className = 'color-word';
+      word.id = 'colorWord';
+
+      const buttons = document.createElement('div');
+      buttons.className = 'color-buttons';
+      buttons.id = 'colorButtons';
+
+      const hint = document.createElement('div');
+      hint.className = 'click-label';
+      hint.textContent = '點擊文字的「顏色」，不是文字內容！';
+
+      zone.appendChild(word);
+      zone.appendChild(buttons);
+      zone.appendChild(hint);
+      area.appendChild(zone);
+
+      nextColor();
+    }
+
+    function nextColor() {
+      const wordEl = document.getElementById('colorWord');
+      const btnsEl = document.getElementById('colorButtons');
+      if (!wordEl || !btnsEl) return;
+
+      const wordIdx = Math.floor(Math.random() * COLOR_NAMES.length);
+      let colorIdx = Math.floor(Math.random() * COLOR_CSS.length);
+      while (colorIdx === wordIdx) colorIdx = (colorIdx + 1) % COLOR_CSS.length;
+
+      wordEl.textContent = COLOR_NAMES[wordIdx];
+      wordEl.style.color = COLOR_CSS[colorIdx];
+
+      // Shuffle buttons
+      const indices = [0,1,2,3,4,5].sort(() => Math.random() - 0.5).slice(0, 6);
+      btnsEl.innerHTML = '';
+      indices.forEach(i => {
+        const btn = document.createElement('button');
+        btn.className = 'color-btn';
+        btn.textContent = COLOR_NAMES[i];
+        btn.style.background = COLOR_CSS[i] + '22';
+        btn.style.color = COLOR_CSS[i];
+        btn.onclick = () => {
+          if (i === colorIdx) {
+            score++;
+            document.getElementById('gameScore').textContent = score;
+            nextColor();
+          } else {
+            btn.classList.add('wrong');
+            setTimeout(() => btn.classList.remove('wrong'), 300);
+          }
+        };
+        btnsEl.appendChild(btn);
+      });
+    }
+
+    // ═══ Reaction Time ═══
+    function initReaction(area) {
+      document.getElementById('gameInfo').innerHTML = '⏱️ 最佳 <span class="hud-score" id="gameScore">—</span>';
+      const zone = document.createElement('div');
+      zone.className = 'reaction-zone idle';
+      zone.id = 'reactionZone';
+
+      const text = document.createElement('div');
+      text.className = 'reaction-text';
+      text.textContent = '點擊開始';
+      text.id = 'reactionText';
+
+      zone.appendChild(text);
+      area.appendChild(zone);
+
+      let bestTime = Infinity;
+      let waitingTimeout = null;
+      let startTime = 0;
+      let state = 'idle'; // idle, waiting, ready
+
+      zone.onclick = () => {
+        if (state === 'idle') {
+          state = 'waiting';
+          zone.className = 'reaction-zone waiting';
+          text.textContent = '等待綠色...';
+          text.className = 'reaction-text';
+          const delay = 1500 + Math.random() * 3000;
+          waitingTimeout = setTimeout(() => {
+            state = 'ready';
+            zone.className = 'reaction-zone ready';
+            text.textContent = '點！';
+            text.className = 'reaction-text';
+            startTime = performance.now();
+          }, delay);
+        } else if (state === 'waiting') {
+          clearTimeout(waitingTimeout);
+          state = 'idle';
+          zone.className = 'reaction-zone idle';
+          text.textContent = '太早了！再試一次';
+          text.className = 'reaction-text';
+        } else if (state === 'ready') {
+          const elapsed = Math.round(performance.now() - startTime);
+          score = elapsed;
+          if (elapsed < bestTime) {
+            bestTime = elapsed;
+            document.getElementById('gameScore').textContent = bestTime + 'ms';
+          }
+          state = 'idle';
+          zone.className = 'reaction-zone idle';
+
+          const rating = elapsed < 200 ? '閃電⚡' : elapsed < 300 ? '很快！' : elapsed < 400 ? '不錯' : elapsed < 500 ? '普通' : '有點慢';
+          text.innerHTML = `<div class="reaction-ms">${elapsed}ms</div><div class="reaction-text">${rating} — 再來一次</div>`;
+        }
+      };
+    }
+
+    // ═══ Number Guess ═══
+    function initNumber(area) {
+      document.getElementById('gameInfo').innerHTML = '🎲 猜中 <span class="hud-score" id="gameScore">0</span>';
+      document.getElementById('gameTimer').textContent = '⏱ 30s';
+      timeLeft = 30;
+
+      const zone = document.createElement('div');
+      zone.className = 'number-zone';
+
+      let target = Math.floor(Math.random() * 100) + 1;
+      let current = Math.floor(Math.random() * 100) + 1;
+      while (current === target) current = Math.floor(Math.random() * 100) + 1;
+
+      const display = document.createElement('div');
+      display.className = 'number-display';
+      display.id = 'numDisplay';
+      display.textContent = current;
+
+      const hint = document.createElement('div');
+      hint.className = 'number-hint';
+      hint.id = 'numHint';
+      hint.textContent = '目標在...？';
+
+      const buttons = document.createElement('div');
+      buttons.className = 'number-buttons';
+
+      const higherBtn = document.createElement('button');
+      higherBtn.className = 'number-btn';
+      higherBtn.textContent = '↑ 更大';
+      higherBtn.onclick = () => {
+        if (target > current) {
+          score++;
+          document.getElementById('gameScore').textContent = score;
+          nextGuess();
+        } else {
+          hint.textContent = '錯了！答案比這小';
+          hint.className = 'number-hint high';
+          setTimeout(nextGuess, 600);
+        }
+      };
+
+      const lowerBtn = document.createElement('button');
+      lowerBtn.className = 'number-btn';
+      lowerBtn.textContent = '↓ 更小';
+      lowerBtn.onclick = () => {
+        if (target < current) {
+          score++;
+          document.getElementById('gameScore').textContent = score;
+          nextGuess();
+        } else {
+          hint.textContent = '錯了！答案比這大';
+          hint.className = 'number-hint low';
+          setTimeout(nextGuess, 600);
+        }
+      };
+
+      function nextGuess() {
+        target = Math.floor(Math.random() * 100) + 1;
+        do { current = Math.floor(Math.random() * 100) + 1; } while (current === target);
+        display.textContent = current;
+        hint.textContent = '目標在...？';
+        hint.className = 'number-hint';
+      }
+
+      buttons.appendChild(higherBtn);
+      buttons.appendChild(lowerBtn);
+      zone.appendChild(display);
+      zone.appendChild(hint);
+      zone.appendChild(buttons);
       area.appendChild(zone);
     }
 
