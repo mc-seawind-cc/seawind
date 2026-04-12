@@ -18,121 +18,189 @@
   <link rel="stylesheet" href="style.css?v=260413a">
   <link rel="stylesheet" href="music-player.css">
   <style>
-    .partner-grid {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-sm);
-    }
-    .partner-card {
+    /* ═══ 合作夥伴頁面 redesign ═══ */
+
+    /* 分類標題 */
+    .partner-category {
       display: flex;
       align-items: center;
+      gap: var(--space-md);
+      margin-top: var(--space-2xl);
+      margin-bottom: var(--space-lg);
+    }
+    .partner-category:first-child { margin-top: 0; }
+    .partner-category-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--sky);
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+    .partner-category-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(157,175,255,0.15), transparent);
+    }
+
+    /* 卡片網格 */
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+    }
+
+    /* 卡片 */
+    .partner-card {
+      display: flex;
+      align-items: flex-start;
       gap: var(--space-lg);
-      padding: var(--space-lg) var(--space-xl);
+      padding: var(--space-xl);
       background: var(--ocean);
       border: 1px solid var(--mist);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
       text-decoration: none;
       color: var(--cloud);
-      transition: all var(--duration) var(--ease);
+      transition: all 0.35s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .partner-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--card-accent, var(--sky));
+      opacity: 0;
+      transition: opacity 0.35s var(--ease);
     }
     .partner-card:hover {
       background: rgba(255,255,255,0.04);
-      border-color: rgba(157,175,255,0.2);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      border-color: color-mix(in srgb, var(--card-accent, var(--sky)) 25%, transparent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
     }
-    [data-theme="light"] .partner-card {
-      background: #fff;
-      border-color: rgba(0,0,0,0.06);
-    }
-    [data-theme="light"] .partner-card:hover {
-      border-color: rgba(157,175,255,0.25);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    }
+    .partner-card:hover::after { opacity: 1; }
+
+    /* 圖標 */
     .partner-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-md);
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.9rem;
-      font-weight: 700;
-      color: #fff;
+      font-weight: 800;
       flex-shrink: 0;
+      letter-spacing: -0.02em;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
     }
-    .partner-icon.ic-sky { background: rgba(157,175,255,0.15); color: var(--sky); }
-    .partner-icon.ic-foam { background: rgba(168,230,207,0.15); color: var(--foam); }
-    .partner-icon.ic-sand { background: rgba(222,172,128,0.15); color: var(--sand); }
-    .partner-icon.ic-blush { background: rgba(224,181,212,0.15); color: var(--blush); }
-    .partner-icon.ic-lav { background: rgba(171,114,249,0.15); color: var(--lavender); }
-    .partner-icon.ic-teal { background: rgba(88,194,176,0.15); color: var(--teal); }
-    [data-theme="light"] .partner-icon.ic-sky { background: rgba(157,175,255,0.1); }
-    [data-theme="light"] .partner-icon.ic-foam { background: rgba(168,230,207,0.1); }
-    [data-theme="light"] .partner-icon.ic-sand { background: rgba(222,172,128,0.1); }
-    [data-theme="light"] .partner-icon.ic-blush { background: rgba(224,181,212,0.1); }
-    [data-theme="light"] .partner-icon.ic-lav { background: rgba(171,114,249,0.1); }
-    [data-theme="light"] .partner-icon.ic-teal { background: rgba(88,194,176,0.1); }
+    .partner-card:hover .partner-icon {
+      transform: scale(1.08) rotate(-3deg);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .ic-sky   { background: rgba(157,175,255,0.12); color: var(--sky); border: 1px solid rgba(157,175,255,0.15); }
+    .ic-foam  { background: rgba(168,230,207,0.12); color: var(--foam); border: 1px solid rgba(168,230,207,0.15); }
+    .ic-sand  { background: rgba(222,172,128,0.12); color: var(--sand); border: 1px solid rgba(222,172,128,0.15); }
+    .ic-blush { background: rgba(224,181,212,0.12); color: var(--blush); border: 1px solid rgba(224,181,212,0.15); }
+    .ic-lav   { background: rgba(171,114,249,0.12); color: var(--lavender); border: 1px solid rgba(171,114,249,0.15); }
+    .ic-teal  { background: rgba(88,194,176,0.12); color: var(--teal); border: 1px solid rgba(88,194,176,0.15); }
+
+    /* 文字區 */
     .partner-info { flex: 1; min-width: 0; }
     .partner-name {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--white);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
+      line-height: 1.4;
     }
     .partner-desc {
       font-size: 0.85rem;
       color: var(--fog);
-      line-height: 1.6;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    .partner-bottom {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     .partner-badge {
-      padding: 4px 12px;
+      display: inline-block;
+      padding: 3px 10px;
       border-radius: 99px;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 600;
-      background: rgba(157,175,255,0.08);
+      background: rgba(157,175,255,0.06);
       color: var(--sky);
-      border: 1px solid rgba(157,175,255,0.12);
-      white-space: nowrap;
-      flex-shrink: 0;
+      border: 1px solid rgba(157,175,255,0.1);
     }
     .partner-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
       color: var(--fog);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+      margin-left: auto;
       flex-shrink: 0;
-      opacity: 0.4;
+      transition: all 0.3s var(--ease);
     }
-    .partner-card:hover .partner-arrow { opacity: 0.8; }
+    .partner-card:hover .partner-arrow {
+      background: rgba(157,175,255,0.12);
+      color: var(--sky);
+      transform: translateX(2px);
+    }
 
+    /* 展開式卡片 */
     .partner-detail-wrap {
-      border-radius: var(--radius-md);
+      grid-column: 1 / -1;
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-lg);
       overflow: hidden;
+      transition: all 0.35s var(--ease);
+      position: relative;
+    }
+    .partner-detail-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--card-accent, var(--blush));
+      opacity: 0;
+      transition: opacity 0.35s var(--ease);
+    }
+    .partner-detail-wrap.open::after { opacity: 1; }
+    .partner-detail-wrap:hover {
+      border-color: rgba(224,181,212,0.2);
     }
     .partner-detail-toggle {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: var(--space-lg);
-      padding: var(--space-lg) var(--space-xl);
-      background: var(--ocean);
-      border: 1px solid var(--mist);
-      border-radius: var(--radius-md);
+      padding: var(--space-xl);
+      background: none;
+      border: none;
+      border-radius: var(--radius-lg);
       cursor: pointer;
       width: 100%;
       text-align: left;
       font: inherit;
       color: inherit;
-      transition: all var(--duration) var(--ease);
+      transition: background 0.2s var(--ease);
     }
     .partner-detail-toggle:hover {
-      background: rgba(255,255,255,0.04);
-      border-color: rgba(157,175,255,0.2);
-    }
-    [data-theme="light"] .partner-detail-toggle {
-      background: #fff;
-      border-color: rgba(0,0,0,0.06);
-    }
-    [data-theme="light"] .partner-detail-toggle:hover {
-      border-color: rgba(157,175,255,0.25);
+      background: rgba(255,255,255,0.02);
     }
     .partner-detail-body {
       max-height: 0;
@@ -143,22 +211,13 @@
       max-height: 300px;
     }
     .partner-detail-inner {
-      padding: 0 var(--space-xl) var(--space-lg);
-      background: rgba(255,255,255,0.015);
-      border: 1px solid rgba(157,175,255,0.08);
-      border-top: none;
-      border-radius: 0 0 var(--radius-md) var(--radius-md);
-    }
-    [data-theme="light"] .partner-detail-inner {
-      background: rgba(0,0,0,0.008);
-      border-color: rgba(0,0,0,0.04);
+      padding: 0 var(--space-xl) var(--space-xl);
     }
     .partner-detail-inner strong {
       color: var(--sky);
       font-size: 0.85rem;
       display: block;
-      padding-top: var(--space-md);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .partner-detail-inner span {
       display: block;
@@ -168,43 +227,97 @@
     }
     .partner-detail-arrow {
       color: var(--fog);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       transition: transform 0.3s var(--ease);
       flex-shrink: 0;
+      margin-left: auto;
+      margin-top: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
     }
     .partner-detail-wrap.open .partner-detail-arrow {
       transform: rotate(180deg);
+      background: rgba(224,181,212,0.12);
+      color: var(--blush);
     }
 
+    /* CTA */
     .partner-cta {
       margin-top: var(--space-2xl);
-      padding: var(--space-xl);
-      background: rgba(157,175,255,0.04);
+      padding: var(--space-2xl);
+      background: linear-gradient(135deg, rgba(157,175,255,0.04), rgba(168,230,207,0.03));
       border: 1px solid rgba(157,175,255,0.1);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+    .partner-cta-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: var(--space-md);
     }
     .partner-cta h3 {
-      color: var(--sky);
-      font-weight: 600;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.2rem;
       margin-bottom: var(--space-sm);
     }
     .partner-cta p {
-      color: var(--cloud);
+      color: var(--fog);
       font-size: 0.9rem;
       line-height: 1.8;
+      max-width: 480px;
+      margin: 0 auto var(--space-lg);
     }
     .partner-cta a {
       color: var(--sky);
       text-decoration: none;
       border-bottom: 1px solid rgba(157,175,255,0.3);
+      transition: border-color 0.2s;
     }
     .partner-cta a:hover { border-bottom-color: var(--sky); }
+    .partner-cta .btn {
+      margin-top: var(--space-sm);
+    }
 
+    /* 淺色主題 */
+    [data-theme="light"] .partner-card {
+      background: #fff;
+      border-color: rgba(0,0,0,0.06);
+    }
+    [data-theme="light"] .partner-card:hover {
+      background: #fff;
+      border-color: color-mix(in srgb, var(--card-accent, var(--sky)) 30%, rgba(0,0,0,0.06));
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    [data-theme="light"] .partner-name { color: var(--cloud); }
+    [data-theme="light"] .partner-desc { color: #5a6270; }
+    [data-theme="light"] .partner-detail-wrap {
+      background: #fff;
+      border-color: rgba(0,0,0,0.06);
+    }
+    [data-theme="light"] .partner-detail-toggle:hover {
+      background: rgba(0,0,0,0.01);
+    }
+    [data-theme="light"] .partner-detail-inner span { color: #5a6270; }
+    [data-theme="light"] .partner-cta {
+      background: linear-gradient(135deg, rgba(157,175,255,0.06), rgba(168,230,207,0.04));
+      border-color: rgba(157,175,255,0.15);
+    }
+    [data-theme="light"] .partner-cta h3 { color: var(--cloud); }
+
+    /* RWD */
     @media (max-width: 768px) {
-      .partner-card { flex-direction: column; align-items: flex-start; gap: var(--space-sm); padding: var(--space-lg); }
-      .partner-badge { align-self: flex-start; }
-      .partner-arrow { display: none; }
-      .partner-detail-toggle { flex-direction: column; align-items: flex-start; gap: var(--space-sm); padding: var(--space-lg); }
+      .partner-grid { grid-template-columns: 1fr; }
+      .partner-card { padding: var(--space-lg); gap: var(--space-md); }
+      .partner-icon { width: 48px; height: 48px; border-radius: 12px; font-size: 0.82rem; }
+      .partner-detail-toggle { padding: var(--space-lg); gap: var(--space-md); }
+      .partner-detail-inner { padding: 0 var(--space-lg) var(--space-lg); }
+      .partner-cta { padding: var(--space-xl); }
     }
   </style>
 </head>
@@ -266,50 +379,70 @@
     </div>
 
     <div class="content-section">
+
+      <!-- 社群平台 -->
+      <div class="partner-category fade-in">
+        <span class="partner-category-label">社群平台</span>
+        <span class="partner-category-line"></span>
+      </div>
       <div class="partner-grid fade-in">
 
-        <!-- MCU -->
-        <a href="partner-mcu.html" class="partner-card">
+        <a href="partner-mcu.html" class="partner-card" style="--card-accent: var(--sky);">
           <div class="partner-icon ic-sky">MCU</div>
           <div class="partner-info">
             <div class="partner-name">MCU — 麥塊社群聯合會</div>
             <div class="partner-desc">以 Discord 為核心的 Minecraft 交流平台，提供技術交流、委託中介與合作媒合。</div>
+            <div class="partner-bottom">
+              <span class="partner-badge">社群平台</span>
+              <span class="partner-arrow">→</span>
+            </div>
           </div>
-          <span class="partner-badge">社群平台</span>
-          <span class="partner-arrow">→</span>
         </a>
 
-        <!-- DCTW -->
-        <a href="https://dctw.xyz/" target="_blank" rel="noopener" class="partner-card">
+        <a href="https://dctw.xyz/" target="_blank" rel="noopener" class="partner-card" style="--card-accent: var(--foam);">
           <div class="partner-icon ic-foam">DCT</div>
           <div class="partner-info">
             <div class="partner-name">DCTW</div>
             <div class="partner-desc">全台最完善的 Discord 宣傳平台。穩定運行、介面美觀，提供數據分析與評論系統。</div>
+            <div class="partner-bottom">
+              <span class="partner-badge">宣傳平台</span>
+              <span class="partner-arrow">→</span>
+            </div>
           </div>
-          <span class="partner-badge">宣傳平台</span>
-          <span class="partner-arrow">→</span>
         </a>
 
-        <!-- 冰鳥國 -->
-        <a href="https://discord.gg/Z2xyR57FPy" target="_blank" rel="noopener" class="partner-card">
+      </div>
+
+      <!-- Discord 社群 -->
+      <div class="partner-category fade-in">
+        <span class="partner-category-label">Discord 社群</span>
+        <span class="partner-category-line"></span>
+      </div>
+      <div class="partner-grid fade-in">
+
+        <a href="https://discord.gg/Z2xyR57FPy" target="_blank" rel="noopener" class="partner-card" style="--card-accent: var(--teal);">
           <div class="partner-icon ic-teal">冰鳥</div>
           <div class="partner-info">
             <div class="partner-name">冰鳥國 Ice Bird Country</div>
             <div class="partner-desc">溫馨的小社群，你的第二個遊樂天地。</div>
+            <div class="partner-bottom">
+              <span class="partner-badge">Discord</span>
+              <span class="partner-arrow">→</span>
+            </div>
           </div>
-          <span class="partner-badge">Discord</span>
-          <span class="partner-arrow">→</span>
         </a>
 
         <!-- 狐緣神社 (expandable) -->
-        <div class="partner-detail-wrap" id="pd-1">
+        <div class="partner-detail-wrap" id="pd-1" style="--card-accent: var(--blush);">
           <button class="partner-detail-toggle" onclick="this.closest('.partner-detail-wrap').classList.toggle('open')">
             <div class="partner-icon ic-blush">狐</div>
             <div class="partner-info">
               <div class="partner-name">狐緣神社 Kitsune Shrine</div>
               <div class="partner-desc">可愛 × 互動 × 狐狸等級 × 遊戲娛樂，找屬於你的狐族朋友。</div>
+              <div class="partner-bottom">
+                <span class="partner-badge">Discord</span>
+              </div>
             </div>
-            <span class="partner-badge">Discord</span>
             <span class="partner-detail-arrow">▾</span>
           </button>
           <div class="partner-detail-body">
@@ -323,22 +456,29 @@
         </div>
 
         <!-- 蔚藍幻境 -->
-        <a href="https://discord.gg/Zc7vwaFeyR" target="_blank" rel="noopener" class="partner-card">
+        <a href="https://discord.gg/Zc7vwaFeyR" target="_blank" rel="noopener" class="partner-card" style="--card-accent: var(--lavender);">
           <div class="partner-icon ic-lav">蔚藍</div>
           <div class="partner-info">
             <div class="partner-name">蔚藍幻境</div>
             <div class="partner-desc">目前為測試階段。</div>
+            <div class="partner-bottom">
+              <span class="partner-badge">Minecraft</span>
+              <span class="partner-arrow">→</span>
+            </div>
           </div>
-          <span class="partner-badge">Minecraft</span>
-          <span class="partner-arrow">→</span>
         </a>
 
       </div>
 
       <!-- CTA -->
       <div class="partner-cta fade-in">
+        <span class="partner-cta-icon">🤝</span>
         <h3>想成為合作夥伴？</h3>
-        <p>如果你是伺服器管理者、社群組織者或 Minecraft 創作者，歡迎透過 <a href="https://discord.gg/HdS2HrJEH7">Discord</a> 聯繫我們，或寄信至 <a href="mailto:service@seawind.cc">service@seawind.cc</a>。</p>
+        <p>如果你是伺服器管理者、社群組織者或 Minecraft 創作者，歡迎聯繫我們，一起打造更豐富的遊戲體驗。</p>
+        <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+          <a href="https://discord.gg/HdS2HrJEH7" class="btn btn-outline">💬 Discord 聯繫</a>
+          <a href="mailto:service@seawind.cc" class="btn btn-outline">✉️ 寄信聯絡</a>
+        </div>
       </div>
     </div>
   </div>
