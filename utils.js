@@ -27,11 +27,9 @@ function _inlineMd(text) {
   s = s.replace(/\[([^\]]+)\]\(<((?:https?:\/\/)[^>]+)>\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
   // Normal links
   s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-  // Auto-link bare URLs (skip if already inside an <a> tag or href attribute)
-  s = s.replace(/(https?:\/\/[^\s<>"')]+)(?![^<]*<\/a>)(?![^<]*>)/g, (match) => {
-    // Don't replace if preceded by href=
-    if (/(?:href=)["']?$/.test(s.substring(0, s.indexOf(match)))) return match;
-    return '<a href="' + match + '" target="_blank" rel="noopener">' + match + '</a>';
+  // Auto-link bare URLs (only standalone, not already linked)
+  s = s.replace(/(^|[\s(（])(https?:\/\/[^\s<>"')）]+)/g, (m, prefix, url) => {
+    return prefix + '<a href="' + url + '" target="_blank" rel="noopener">' + url + '</a>';
   });
   // Images
   s = s.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy" class="ann-img">');

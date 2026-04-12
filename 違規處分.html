@@ -5,90 +5,171 @@
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>海風 — 資料中心 — 違規處分</title>
-  <meta name="description" content="海風伺服器違規處分紀錄與相關文件。">
+  <meta name="description" content="海風伺服器違規處分紀錄。">
   <link rel="icon" href="assets/img/logo.png">
-  <meta property="og:title" content="違規處分 — 資料中心 — 海風">
-  <meta property="og:description" content="海風伺服器違規處分紀錄與相關文件。">
+  <meta property="og:title" content="違規處分 — 海風">
+  <meta property="og:description" content="海風伺服器違規處分紀錄。">
   <meta property="og:image" content="assets/img/logo.png">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="assets/img/logo.png">
   <meta name="theme-color" content="#0d1117">
-  <link rel="dns-prefetch" href="//cdn.discordapp.com">
-  <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
-  <link rel="dns-prefetch" href="//api.mcsrvstat.us">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260412g">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=260413a">
   <link rel="stylesheet" href="music-player.css">
   <style>
-    /* 違規處分專用樣式 */
-    .violation-card {
+    .pen-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+
+    .pen-card {
       background: var(--ocean);
       border: 1px solid var(--mist);
-      border-radius: var(--radius-lg);
-      padding: var(--space-lg);
-      transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
-    }
-    .violation-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-    .violation-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-      margin-bottom: var(--space-md);
-    }
-    .violation-case-num {
-      font-size: 0.85rem;
-      color: var(--fog);
-    }
-    .violation-title {
-      margin: var(--space-xs) 0 0;
-      font-size: 1.1rem;
-    }
-    .violation-badge {
-      padding: 4px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      white-space: nowrap;
-      color: #fff;
-    }
-    .badge-mute {
-      background: #e5534b;
-    }
-    .badge-ban {
-      background: #b62324;
-    }
-    .violation-meta {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: var(--space-sm);
-      margin-bottom: var(--space-md);
-      font-size: 0.9rem;
-      color: var(--fog);
-    }
-    .violation-meta strong {
-      color: var(--cloud);
-    }
-    .violation-body {
-      background: var(--drift);
       border-radius: var(--radius-md);
-      padding: var(--space-md);
-      font-size: 0.9rem;
-      line-height: 1.8;
+      overflow: hidden;
+      transition: border-color var(--duration) var(--ease);
     }
-    .violation-body ul {
-      margin: var(--space-xs) 0;
-      padding-left: 1.2em;
+    .pen-card:hover { border-color: rgba(157,175,255,0.15); }
+    .pen-card.open { border-color: rgba(255,130,130,0.3); }
+
+    .pen-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
     }
-    .violation-body p + ul {
-      margin-top: var(--space-xs);
+    .pen-head:hover { background: rgba(255,255,255,0.02); }
+    [data-theme="light"] .pen-head:hover { background: rgba(0,0,0,0.01); }
+
+    .pen-date {
+      font-size: 0.72rem;
+      color: var(--fog);
+      flex-shrink: 0;
+      min-width: 68px;
+      font-variant-numeric: tabular-nums;
+    }
+    .pen-title {
+      flex: 1;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--cloud);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .pen-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .pen-badge {
+      font-size: 0.62rem;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-weight: 500;
+    }
+    .pen-badge.badge-permanent {
+      background: rgba(255,100,100,0.12);
+      color: #ff6b6b;
+    }
+    .pen-badge.badge-temp {
+      background: rgba(255,170,50,0.12);
+      color: #ffaa32;
+    }
+    .pen-badge.badge-kick {
+      background: rgba(157,175,255,0.1);
+      color: var(--sky);
+    }
+    [data-theme="light"] .pen-badge.badge-permanent { background: rgba(255,60,60,0.08); color: #dc3545; }
+    [data-theme="light"] .pen-badge.badge-temp { background: rgba(255,170,50,0.08); color: #e69500; }
+    [data-theme="light"] .pen-badge.badge-kick { background: rgba(157,175,255,0.08); color: #4a6cf7; }
+
+    .pen-id {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+    .pen-arrow {
+      color: var(--fog);
+      font-size: 0.75rem;
+      transition: transform 0.25s;
+    }
+    .pen-card.open .pen-arrow { transform: rotate(180deg); }
+
+    .pen-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .pen-card.open .pen-body { max-height: 1000px; }
+    .pen-body-inner {
+      padding: 0 14px 14px;
+      background: rgba(255,255,255,0.01);
+      border-top: 1px solid rgba(255,130,130,0.08);
+    }
+    [data-theme="light"] .pen-body-inner {
+      background: rgba(0,0,0,0.005);
+      border-top-color: rgba(0,0,0,0.04);
+    }
+    .pen-content {
+      color: var(--cloud);
+      font-size: 0.88rem;
+      line-height: 1.9;
+      padding-top: 12px;
+    }
+    .pen-content p { margin-bottom: 0.5em; }
+    .pen-content p:last-child { margin-bottom: 0; }
+    .pen-content ul { padding-left: 1.4em; margin: 4px 0; }
+    .pen-content li { margin-bottom: 2px; }
+    .pen-content strong { color: var(--sky); }
+    .pen-content code {
+      background: rgba(157,175,255,0.08);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-family: monospace;
+    }
+
+    .pen-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    [data-theme="light"] .pen-footer { border-top-color: rgba(0,0,0,0.04); }
+
+    .pen-stats {
+      display: flex;
+      gap: 10px;
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    .pen-stat {
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      text-align: center;
+      flex: 1;
+      min-width: 80px;
+    }
+    .pen-stat .num { font-size: 1.3rem; font-weight: 800; color: var(--cloud); }
+    .pen-stat .label { font-size: 0.68rem; color: var(--fog); margin-top: 2px; }
+
+    @media (max-width: 768px) {
+      .pen-head { gap: 6px; padding: 10px; }
+      .pen-date { min-width: 52px; font-size: 0.66rem; }
+      .pen-title { font-size: 0.82rem; }
+      .pen-id { display: none; }
+      .pen-stats { gap: 6px; }
+      .pen-stat { padding: 8px; }
+      .pen-stat .num { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -129,10 +210,10 @@
         <li><a href="會員.html">會員</a></li>
         <li><a href="相關連結.html">相關連結</a></li>
         <li class="nav-dropdown">
-          <a href="合作夥伴.html" class="nav-dropdown-toggle">資料中心 <span class="arrow">▾</span></a>
+          <a href="合作夥伴.html" class="nav-dropdown-toggle active">資料中心 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="合作夥伴.html">合作夥伴</a></li>
-            <li><a href="違規處分.html">違規處分</a></li>
+            <li><a href="違規處分.html" class="active">違規處分</a></li>
           </ul>
         </li>
       </ul>
@@ -144,68 +225,17 @@
   </nav>
 
   <div class="page">
-    <div class="page-hero fade-in visible">      <h1>違規處分</h1>
-      <p class="section-desc">海風法院正式判決公告，判決內容以法院文件為準。</p>    </div>
+    <div class="page-hero fade-in">
+      <h1>違規處分</h1>
+      <p class="section-desc">海風伺服器違規處分紀錄，如對處分有異議請至 Discord 客服單申訴。</p>
+    </div>
 
     <div class="content-section">
-      <div class="fade-in visible">
-        <div class="rules-intro">
-          <p>如對處分有異議，請至 <strong>Discord 客服單</strong>申訴，由管理團隊做最終判定。</p>
-        </div>
+      <!-- 統計 -->
+      <div class="pen-stats fade-in" id="penStats"></div>
 
-        <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
-
-          <!-- 案件 1：115年度簡字第0001號 -->
-          <div class="violation-card">
-            <div class="violation-header">
-              <div>
-                <span class="violation-case-num">115 年度簡字第 0001 號</span>
-                <h3 class="violation-title">史莱姆 Slime Ch. — 公然侮辱案</h3>
-              </div>
-              <span class="violation-badge badge-mute">🔇 禁言 7 日</span>
-            </div>
-            <div class="violation-meta">
-              <div><strong>原告：</strong>MrPotato（馬鈴薯）</div>
-              <div><strong>被告：</strong>史莱姆 Slime Ch.</div>
-              <div><strong>日期：</strong>115 年 4 月 3 日</div>
-              <div><strong>法官：</strong>tstw5306、tdse9</div>
-            </div>
-            <div class="violation-body">
-              <p><strong>主文：</strong>被告違反海風伺服器社群須知第一章第 2 條，處禁言 7 日。</p>
-              <p><strong>事實：</strong>被告於公開聊天室以「腦殘」等文字貶損原告之名譽，有截圖佐證，事證明確。</p>
-            </div>
-          </div>
-
-          <!-- 案件 2：114年度簡字第0001號 -->
-          <div class="violation-card">
-            <div class="violation-header">
-              <div>
-                <span class="violation-case-num">114 年度簡字第 0001 號</span>
-                <h3 class="violation-title">GoldenLao — 竊盜及破壞案</h3>
-              </div>
-              <span class="violation-badge badge-ban">⛔ 停權 7 日</span>
-            </div>
-            <div class="violation-meta">
-              <div><strong>被告：</strong>GoldenLao</div>
-              <div><strong>日期：</strong>114 年 5 月 2 日</div>
-              <div><strong>罰金：</strong>21,000 風幣（得易科罰金）</div>
-              <div><strong>性質：</strong>初犯</div>
-            </div>
-            <div class="violation-body">
-              <p><strong>主文：</strong>被告違反海風伺服器社群須知，初犯，處停權 7 日，得易科罰金 21,000 風幣。</p>
-              <p><strong>事實：</strong></p>
-              <ul>
-                <li>竊取鐵砧至少 24 個、剝皮橡木原木 3 個</li>
-                <li>竊取裝有聖誕節活動物品之界伏盒 2 個</li>
-                <li>破壞盔甲架至少 3 個，並取走其上裝備（鋼劍、獄髓斧等）</li>
-                <li>另有破壞行為逾 200 件，多數於破壞後復原</li>
-              </ul>
-              <p><strong>理由：</strong>被告並非單次少量行竊，而係連續多次、大量竊盜及破壞，具有慣性。考量犯後態度良好，酌予減輕其刑至 7 日。</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      <!-- 處分列表 -->
+      <div class="pen-list fade-in" id="penList"></div>
     </div>
   </div>
 
@@ -226,10 +256,78 @@
     </div>
   </footer>
 
-  <p class="page-revise">網站最後修改日期 2026.04.11 / 總計修改 <span id="deployCount">—</span> 次</p>
+  <p class="page-revise">網站最後修改日期 2026.04.12 / 總計修改 <span id="deployCount">—</span> 次</p>
 
   <script src="utils.js"></script>
-  <script src="main.js?v=260412g"></script>
-  <button class="back-to-top" aria-label="回到頂部">↑</button>
+  <script src="main.js?v=260412b"></script>
+  <script>
+  (() => {
+    const listEl = document.getElementById('penList');
+    const statsEl = document.getElementById('penStats');
+
+    fetch('penalties.json')
+      .then(r => r.json())
+      .then(data => {
+        const items = data.penalties || [];
+        render(items);
+      })
+      .catch(() => {
+        listEl.innerHTML = '<p style="text-align:center;color:var(--fog);padding:20px;">載入失敗</p>';
+      });
+
+    function render(items) {
+      // Stats
+      const permanent = items.filter(i => /永久/.test(i.title)).length;
+      const temp = items.filter(i => /停權|禁言/.test(i.title) && !/永久/.test(i.title)).length;
+      const kick = items.filter(i => /踢出/.test(i.title)).length;
+      statsEl.innerHTML = `
+        <div class="pen-stat"><div class="num">${items.length}</div><div class="label">總計</div></div>
+        <div class="pen-stat"><div class="num" style="color:#ff6b6b">${permanent}</div><div class="label">永久停權</div></div>
+        <div class="pen-stat"><div class="num" style="color:#ffaa32">${temp}</div><div class="label">暫時處分</div></div>
+        <div class="pen-stat"><div class="num" style="color:var(--sky)">${kick}</div><div class="label">踢出</div></div>
+      `;
+
+      // Cards
+      let html = '';
+      items.forEach((item, i) => {
+        const date = formatDateROC(item.date);
+        const badge = getBadge(item.title);
+        const idLabel = item.id ? `<span class="pen-id">${item.id}</span>` : '';
+
+        html += `<div class="pen-card" data-idx="${i}">
+          <div class="pen-head" onclick="this.closest('.pen-card').classList.toggle('open')">
+            <span class="pen-date">${date}</span>
+            <span class="pen-title">${item.title}</span>
+            <span class="pen-right">
+              ${idLabel}
+              ${badge}
+              <span class="pen-arrow">▾</span>
+            </span>
+          </div>
+          <div class="pen-body">
+            <div class="pen-body-inner">
+              <div class="pen-content">${md2html(item.content)}</div>
+            </div>
+          </div>
+        </div>`;
+      });
+      listEl.innerHTML = html;
+    }
+
+    function formatDateROC(date) {
+      if (!date) return '—';
+      const parts = String(date).split('.');
+      if (parts.length === 3) return `${parts[0]}.${parts[1]}.${parts[2]}`;
+      return date;
+    }
+
+    function getBadge(title) {
+      if (/永久/.test(title)) return '<span class="pen-badge badge-permanent">永久</span>';
+      if (/踢出/.test(title)) return '<span class="pen-badge badge-kick">踢出</span>';
+      if (/停權|禁言/.test(title)) return '<span class="pen-badge badge-temp">暫時</span>';
+      return '<span class="pen-badge badge-temp">處分</span>';
+    }
+  })();
+  </script>
 </body>
 </html>

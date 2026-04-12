@@ -5,23 +5,208 @@
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>海風 — 資料中心 — 合作夥伴</title>
-  <meta name="description" content="海風伺服器合作夥伴。">
+  <meta name="description" content="海風伺服器合作夥伴與社群資源。">
   <link rel="icon" href="assets/img/logo.png">
-  <meta property="og:title" content="合作夥伴 — 資料中心 — 海風">">
-  <meta property="og:description" content="海風伺服器相關連結與社群資源。">
+  <meta property="og:title" content="合作夥伴 — 海風">
+  <meta property="og:description" content="海風伺服器合作夥伴與社群資源。">
   <meta property="og:image" content="assets/img/logo.png">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="assets/img/logo.png">
   <meta name="theme-color" content="#0d1117">
-  <link rel="dns-prefetch" href="//cdn.discordapp.com">
-  <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
-  <link rel="dns-prefetch" href="//api.mcsrvstat.us">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260412g">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=260413a">
   <link rel="stylesheet" href="music-player.css">
+  <style>
+    .partner-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .partner-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      padding: var(--space-lg) var(--space-xl);
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--cloud);
+      transition: all var(--duration) var(--ease);
+    }
+    .partner-card:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(157,175,255,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    [data-theme="light"] .partner-card {
+      background: #fff;
+      border-color: rgba(0,0,0,0.06);
+    }
+    [data-theme="light"] .partner-card:hover {
+      border-color: rgba(157,175,255,0.25);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .partner-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .partner-icon.ic-sky { background: rgba(157,175,255,0.15); color: var(--sky); }
+    .partner-icon.ic-foam { background: rgba(168,230,207,0.15); color: var(--foam); }
+    .partner-icon.ic-sand { background: rgba(222,172,128,0.15); color: var(--sand); }
+    .partner-icon.ic-blush { background: rgba(224,181,212,0.15); color: var(--blush); }
+    .partner-icon.ic-lav { background: rgba(171,114,249,0.15); color: var(--lavender); }
+    .partner-icon.ic-teal { background: rgba(88,194,176,0.15); color: var(--teal); }
+    [data-theme="light"] .partner-icon.ic-sky { background: rgba(157,175,255,0.1); }
+    [data-theme="light"] .partner-icon.ic-foam { background: rgba(168,230,207,0.1); }
+    [data-theme="light"] .partner-icon.ic-sand { background: rgba(222,172,128,0.1); }
+    [data-theme="light"] .partner-icon.ic-blush { background: rgba(224,181,212,0.1); }
+    [data-theme="light"] .partner-icon.ic-lav { background: rgba(171,114,249,0.1); }
+    [data-theme="light"] .partner-icon.ic-teal { background: rgba(88,194,176,0.1); }
+    .partner-info { flex: 1; min-width: 0; }
+    .partner-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .partner-desc {
+      font-size: 0.85rem;
+      color: var(--fog);
+      line-height: 1.6;
+    }
+    .partner-badge {
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: rgba(157,175,255,0.08);
+      color: var(--sky);
+      border: 1px solid rgba(157,175,255,0.12);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .partner-arrow {
+      color: var(--fog);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      opacity: 0.4;
+    }
+    .partner-card:hover .partner-arrow { opacity: 0.8; }
+
+    .partner-detail-wrap {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .partner-detail-toggle {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      padding: var(--space-lg) var(--space-xl);
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+      transition: all var(--duration) var(--ease);
+    }
+    .partner-detail-toggle:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(157,175,255,0.2);
+    }
+    [data-theme="light"] .partner-detail-toggle {
+      background: #fff;
+      border-color: rgba(0,0,0,0.06);
+    }
+    [data-theme="light"] .partner-detail-toggle:hover {
+      border-color: rgba(157,175,255,0.25);
+    }
+    .partner-detail-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .partner-detail-wrap.open .partner-detail-body {
+      max-height: 300px;
+    }
+    .partner-detail-inner {
+      padding: 0 var(--space-xl) var(--space-lg);
+      background: rgba(255,255,255,0.015);
+      border: 1px solid rgba(157,175,255,0.08);
+      border-top: none;
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+    }
+    [data-theme="light"] .partner-detail-inner {
+      background: rgba(0,0,0,0.008);
+      border-color: rgba(0,0,0,0.04);
+    }
+    .partner-detail-inner strong {
+      color: var(--sky);
+      font-size: 0.85rem;
+      display: block;
+      padding-top: var(--space-md);
+      margin-bottom: 6px;
+    }
+    .partner-detail-inner span {
+      display: block;
+      color: var(--fog);
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+    .partner-detail-arrow {
+      color: var(--fog);
+      font-size: 0.8rem;
+      transition: transform 0.3s var(--ease);
+      flex-shrink: 0;
+    }
+    .partner-detail-wrap.open .partner-detail-arrow {
+      transform: rotate(180deg);
+    }
+
+    .partner-cta {
+      margin-top: var(--space-2xl);
+      padding: var(--space-xl);
+      background: rgba(157,175,255,0.04);
+      border: 1px solid rgba(157,175,255,0.1);
+      border-radius: var(--radius-md);
+    }
+    .partner-cta h3 {
+      color: var(--sky);
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+    }
+    .partner-cta p {
+      color: var(--cloud);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .partner-cta a {
+      color: var(--sky);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(157,175,255,0.3);
+    }
+    .partner-cta a:hover { border-bottom-color: var(--sky); }
+
+    @media (max-width: 768px) {
+      .partner-card { flex-direction: column; align-items: flex-start; gap: var(--space-sm); padding: var(--space-lg); }
+      .partner-badge { align-self: flex-start; }
+      .partner-arrow { display: none; }
+      .partner-detail-toggle { flex-direction: column; align-items: flex-start; gap: var(--space-sm); padding: var(--space-lg); }
+    }
+  </style>
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -60,9 +245,9 @@
         <li><a href="會員.html">會員</a></li>
         <li><a href="相關連結.html">相關連結</a></li>
         <li class="nav-dropdown">
-          <a href="合作夥伴.html" class="nav-dropdown-toggle">資料中心 <span class="arrow">▾</span></a>
+          <a href="合作夥伴.html" class="nav-dropdown-toggle active">資料中心 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
-            <li><a href="合作夥伴.html">合作夥伴</a></li>
+            <li><a href="合作夥伴.html" class="active">合作夥伴</a></li>
             <li><a href="違規處分.html">違規處分</a></li>
           </ul>
         </li>
@@ -75,74 +260,86 @@
   </nav>
 
   <div class="page">
-    <div class="page-hero">      <h1>合作夥伴</h1>
-      <p class="section-desc">海風與不同社群合作，共同打造更豐富的遊戲體驗。</p>    </div>
+    <div class="page-hero fade-in">
+      <h1>合作夥伴</h1>
+      <p class="section-desc">海風與不同社群合作，共同打造更豐富的遊戲體驗。</p>
+    </div>
 
     <div class="content-section">
-      <div class="partner-list fade-in">
-        <a href="partner-mcu.html" class="partner-row">
-          <div class="partner-row-info">
-            <h3>MCU — 麥塊社群聯合會</h3>
-            <p>以 Discord 為核心的 Minecraft 交流平台，提供技術交流、委託中介與合作媒合。</p>
+      <div class="partner-grid fade-in">
+
+        <!-- MCU -->
+        <a href="partner-mcu.html" class="partner-card">
+          <div class="partner-icon ic-sky">MCU</div>
+          <div class="partner-info">
+            <div class="partner-name">MCU — 麥塊社群聯合會</div>
+            <div class="partner-desc">以 Discord 為核心的 Minecraft 交流平台，提供技術交流、委託中介與合作媒合。</div>
           </div>
-          <div class="partner-badges">
-            <span class="partner-row-badge">社群平台</span>
-            <span class="partner-row-badge">Minecraft</span>
-          </div>
+          <span class="partner-badge">社群平台</span>
+          <span class="partner-arrow">→</span>
         </a>
-        <a href="https://dctw.xyz/" target="_blank" rel="noopener" class="partner-row">
-          <div class="partner-row-info">
-            <h3>DCTW</h3>
-            <p>全台最完善的 Discord 宣傳平台。穩定運行、介面美觀，提供數據分析與評論系統。</p>
+
+        <!-- DCTW -->
+        <a href="https://dctw.xyz/" target="_blank" rel="noopener" class="partner-card">
+          <div class="partner-icon ic-foam">DCT</div>
+          <div class="partner-info">
+            <div class="partner-name">DCTW</div>
+            <div class="partner-desc">全台最完善的 Discord 宣傳平台。穩定運行、介面美觀，提供數據分析與評論系統。</div>
           </div>
-          <span class="partner-row-badge">宣傳平台</span>
+          <span class="partner-badge">宣傳平台</span>
+          <span class="partner-arrow">→</span>
         </a>
-        <a href="https://discord.gg/Z2xyR57FPy" target="_blank" rel="noopener" class="partner-row">
-          <div class="partner-row-info">
-            <h3>冰鳥國 Ice Bird Country</h3>
-            <p>溫馨的小社群，你的第二個遊樂天地。</p>
+
+        <!-- 冰鳥國 -->
+        <a href="https://discord.gg/Z2xyR57FPy" target="_blank" rel="noopener" class="partner-card">
+          <div class="partner-icon ic-teal">冰鳥</div>
+          <div class="partner-info">
+            <div class="partner-name">冰鳥國 Ice Bird Country</div>
+            <div class="partner-desc">溫馨的小社群，你的第二個遊樂天地。</div>
           </div>
-          <span class="partner-row-badge">Discord</span>
+          <span class="partner-badge">Discord</span>
+          <span class="partner-arrow">→</span>
         </a>
-        <div class="partner-row-wrap">
-          <a href="https://discord.gg/ar2cmH5wMX" target="_blank" rel="noopener" class="partner-row">
-            <div class="partner-row-info">
-              <h3>狐緣神社 Kitsune Shrine <span class="partner-tag">免費Nitro</span></h3>
-              <p>可愛 × 互動 × 狐狸等級 × 遊戲娛樂，找屬於你的狐族朋友，度過每個暖暖的夜晚。</p>
+
+        <!-- 狐緣神社 (expandable) -->
+        <div class="partner-detail-wrap" id="pd-1">
+          <button class="partner-detail-toggle" onclick="this.closest('.partner-detail-wrap').classList.toggle('open')">
+            <div class="partner-icon ic-blush">狐</div>
+            <div class="partner-info">
+              <div class="partner-name">狐緣神社 Kitsune Shrine</div>
+              <div class="partner-desc">可愛 × 互動 × 狐狸等級 × 遊戲娛樂，找屬於你的狐族朋友。</div>
             </div>
-            <div class="partner-badges">
-              <span class="partner-row-badge">Discord</span>
-              <button class="partner-expand-btn" aria-expanded="false" onclick="event.preventDefault();event.stopPropagation();this.closest('.partner-row-wrap').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.partner-row-wrap').classList.contains('open'))">▾</button>
-            </div>
-          </a>
-          <div class="partner-detail-dropdown">
+            <span class="partner-badge">Discord</span>
+            <span class="partner-detail-arrow">▾</span>
+          </button>
+          <div class="partner-detail-body">
             <div class="partner-detail-inner">
-              <strong>【特色玩法】</strong>
-              <span>✦ 等級系統 × 精品抽獎 × 神社小舖</span>
-              <span>✦ 專屬身分組 × 可愛貼圖 × 成就系統</span>
-              <span>✦ 深夜聊天 × 免費Nitro × 免費遊戲點數</span>
+              <strong>特色玩法</strong>
+              <span>等級系統、精品抽獎、神社小舖</span>
+              <span>專屬身分組、可愛貼圖、成就系統</span>
+              <span>深夜聊天、免費活動獎勵</span>
             </div>
           </div>
         </div>
-        <a href="https://discord.gg/Zc7vwaFeyR" target="_blank" rel="noopener" class="partner-row">
-          <div class="partner-row-info">
-            <h3>蔚藍幻境</h3>
-            <p>目前為測試階段。</p>
+
+        <!-- 蔚藍幻境 -->
+        <a href="https://discord.gg/Zc7vwaFeyR" target="_blank" rel="noopener" class="partner-card">
+          <div class="partner-icon ic-lav">蔚藍</div>
+          <div class="partner-info">
+            <div class="partner-name">蔚藍幻境</div>
+            <div class="partner-desc">目前為測試階段。</div>
           </div>
-          <span class="partner-row-badge">Minecraft</span>
+          <span class="partner-badge">Minecraft</span>
+          <span class="partner-arrow">→</span>
         </a>
+
       </div>
 
-      <!-- 想加入？ -->
-      <div class="fade-in" style="margin-top: var(--space-2xl);">
-        <div style="padding: var(--space-lg); background: rgba(157, 175, 255, 0.04); border: 1px solid rgba(157, 175, 255, 0.1); border-radius: var(--radius-md);">
-          <p style="color: var(--sky); font-weight: 600; margin-bottom: var(--space-sm);">📬 想成為合作夥伴？</p>
-          <p style="color: var(--cloud); font-size: 0.9rem; line-height: 1.8;">
-            如果你是伺服器管理者、社群組織者或 Minecraft 創作者，歡迎透過 <a href="https://discord.gg/HdS2HrJEH7" style="color: var(--sky);">Discord</a> 聯繫我們，或寄信至 <a href="mailto:service@seawind.cc" style="color: var(--sky);">service@seawind.cc</a>。
-          </p>
-        </div>
+      <!-- CTA -->
+      <div class="partner-cta fade-in">
+        <h3>想成為合作夥伴？</h3>
+        <p>如果你是伺服器管理者、社群組織者或 Minecraft 創作者，歡迎透過 <a href="https://discord.gg/HdS2HrJEH7">Discord</a> 聯繫我們，或寄信至 <a href="mailto:service@seawind.cc">service@seawind.cc</a>。</p>
       </div>
-
     </div>
   </div>
 
@@ -163,9 +360,9 @@
     </div>
   </footer>
 
-  <p class="page-revise">網站最後修改日期 2026.04.11 / 總計修改 <span id="deployCount">—</span> 次</p>
+  <p class="page-revise">網站最後修改日期 2026.04.12 / 總計修改 <span id="deployCount">—</span> 次</p>
 
   <script src="utils.js"></script>
-  <script src="main.js?v=260412g"></script>
+  <script src="main.js?v=260412b"></script>
 </body>
 </html>
